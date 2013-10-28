@@ -2,11 +2,12 @@ require 'spec_helper'
 
 describe Experience do
 
+  it { should belong_to (:user)}
 	let(:exp) {FactoryGirl.build(:experience)}
 
 	subject{exp}
-	it { should be_valid }
- 	it { should respond_to(:title) }
+	  it { should be_valid }
+   	it { should respond_to(:title) }
   	it { should respond_to(:desc) }
   	it { should respond_to(:sdate) }
   	it { should respond_to(:fdate) }
@@ -19,6 +20,8 @@ describe Experience do
   	it { should respond_to(:supervisor_phone) }
     it { should respond_to(:user_id) }
     it { should respond_to(:experience_id) }
+    it { should belong_to (:user) }
+    it { should have_many (:keywords) }
 
   	 describe "title is invalid" do
         it "should be invalid" do
