@@ -1,5 +1,5 @@
 class Skill < ActiveRecord::Base
 
-validates :label, presence: true
- 
+	validates  :label, presence: true
+	
 end
