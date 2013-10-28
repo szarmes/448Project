@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20131008164900) do
     t.string   "desc",                 default: "",      null: false
     t.datetime "sdate",                null: false               
     t.datetime "fdate",                null: false
-    t.string   "company_name",          default: "",      null: false
+    t.string   "company_name",         default: "",      null: false
     t.string   "company_address"
     t.string   "company_city"
     t.string   "company_province"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20131008164900) do
    end
 
    create_table "requirements", force: true do |t|
-    t.boolean  "mandatory?",          default: true,    null: false 
+    t.boolean  "mandatory",          default: true,    null: false 
     t.string   "degree"
     t.string   "educationLvl"
     t.string   "desc",                default: "",      null: false
