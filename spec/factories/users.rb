@@ -15,7 +15,9 @@ FactoryGirl.define do
     admin       false
     employer    false
     employee    false
+    user_id     1
 
+    
     trait :employee do
     	goals "test"
     	admin       false

@@ -17,6 +17,8 @@ describe Experience do
   	it { should respond_to(:company_country) }
   	it { should respond_to(:supervisor) }
   	it { should respond_to(:supervisor_phone) }
+    it { should respond_to(:user_id) }
+    it { should respond_to(:experience_id) }
 
   	 describe "title is invalid" do
         it "should be invalid" do

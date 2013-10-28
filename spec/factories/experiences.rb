@@ -12,6 +12,8 @@
         company_country     "test"
         supervisor "test"
         supervisor_phone  "test"
+        user_id     1
+        experience_id     1
     end
 
   

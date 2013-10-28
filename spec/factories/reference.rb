@@ -6,6 +6,7 @@ FactoryGirl.define do
     phone_number "test"
     relationship "Boss of Bosses"
     yrsknown "3"
+    user_id     1
     
   end
 end

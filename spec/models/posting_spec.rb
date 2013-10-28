@@ -9,6 +9,8 @@ describe Posting do
   it { should respond_to( :title ) }
   it { should respond_to( :desc ) }
   it { should respond_to( :salary ) }
+  it { should respond_to(:user_id) }
+  it { should respond_to(:posting_id) }
 
 	 describe "when title is empty" do
 	 	before { posting.title  = "" }

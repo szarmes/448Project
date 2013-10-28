@@ -27,6 +27,7 @@ describe User do
   it { should respond_to(:company_address) }
   it { should respond_to(:employer) }
   it { should respond_to(:admin) }
+  it { should respond_to(:user_id) }
 
   describe "when email format is invalid" do
     it "should be invalid" do

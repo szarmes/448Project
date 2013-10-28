@@ -1,5 +1,10 @@
 class Skill < ActiveRecord::Base
 
-validates :label, presence: true
+	belongs_to :user
+	has_many :keywords
+	
+	validates :user_id, :skill_id, presence: true
+
+	validates :label, presence: true
  
 end

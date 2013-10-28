@@ -7,6 +7,8 @@
         desc "test"               
         exp 2
         exp_area    "test"
+        posting_id     1
+        requirement_id     1
     
         trait :mandatory do
             mandatory false

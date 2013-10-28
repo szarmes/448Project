@@ -14,6 +14,7 @@ let(:ref) { FactoryGirl.create(:reference)}
   it { should respond_to(:relationship) }
   it { should respond_to(:yrsknown) }
   it { should respond_to(:email) }
+  it { should respond_to(:user_id) }
 
 
 describe "when email format is invalid" do
