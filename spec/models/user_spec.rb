@@ -28,6 +28,10 @@ describe User do
   it { should respond_to(:employer) }
   it { should respond_to(:admin) }
   it { should respond_to(:user_id) }
+  it { should have_many (:skills) }
+  it { should have_many (:postings) }
+  it { should have_many (:references) }
+  it { should have_many (:experiences) }
 
   describe "when email format is invalid" do
     it "should be invalid" do

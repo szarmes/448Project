@@ -11,6 +11,8 @@ describe Posting do
   it { should respond_to( :salary ) }
   it { should respond_to(:user_id) }
   it { should respond_to(:posting_id) }
+  it { should have_many (:keywords) }
+  it { should belong_to (:user) }
 
 	 describe "when title is empty" do
 	 	before { posting.title  = "" }

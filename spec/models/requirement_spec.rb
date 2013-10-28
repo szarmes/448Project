@@ -14,6 +14,7 @@ describe Requirement do
   	it { should respond_to(:exp_area) }
     it { should respond_to(:posting_id) }
     it { should respond_to(:requirement_id) }
+    it { should belong_to (:posting) } 
   	
 
   	describe "mandatory is invalid" do

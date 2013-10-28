@@ -10,6 +10,8 @@ describe Skill do
   it { should respond_to(:desc) }
   it { should respond_to(:user_id) }
   it { should respond_to(:skill_id) }
+  it { should have_many (:keywords) }
+  it { should belong_to (:user) }
   	
 
   	describe "label is invalid" do
