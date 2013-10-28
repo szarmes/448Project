@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20131008164900) do
    end
 
    create_table "requirements", force: true do |t|
-    t.boolean  "mandatory?",          default: true,    null: false 
+    t.boolean  "mandatory",          default: true,    null: false 
     t.string   "degree"
     t.string   "educationLvl"
     t.string   "desc",                default: "",      null: false
