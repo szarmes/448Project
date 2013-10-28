@@ -22,4 +22,20 @@ describe Posting do
 	 	before { posting.desc = ""}
 	 	it { should_not be_valid }
 	 end
+   describe "keywords associations" do
+    before do
+      @keyword = FactoryGirl.build(:keyword, posting_id: posting.posting_id)
+      @keyword.save
+      @keyword1 = FactoryGirl.build(:keyword, posting_id: 5)
+      @keyword1.save
+    end
+    it "should be destroyed when posting is destroyed" do
+      Keyword.all.should include(@keyword1) 
+      Keyword.all.should include(@keyword)
+      posting.keywords.push(@keyword)
+      posting.destroy
+      Keyword.all.should_not include(@keyword)
+      Keyword.all.should include(@keyword1)
+    end
+  end
 end
