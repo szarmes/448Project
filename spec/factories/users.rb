@@ -12,12 +12,15 @@ FactoryGirl.define do
     country		"test"
    	gender		"test"
     birthday	"test"
-    admin       true
-    employer    true
-    employee    true
+    admin       false
+    employer    false
+    employee    false
 
     trait :employee do
     	goals "test"
+    	admin       false
+        employer    false
+        employee    true
     end
 
 
@@ -25,9 +28,15 @@ FactoryGirl.define do
     	company_name "test"
     	company_address "test"
     	field	"test"
+        admin       false
+        employer    true
+        employee    false
     end
 
     trait :admin do
+    	admin       true
+        employer    false
+        employee    false
     end
     
   end

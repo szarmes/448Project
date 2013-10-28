@@ -2,16 +2,13 @@ require 'spec_helper'
 
 describe User do
 	
-	let(:employee) { FactoryGirl.create(:user, :employee) }
-  let(:employer) { FactoryGirl.create(:user, :employer) }
-  let(:admin) { FactoryGirl.create(:user, :admin) }
+	let(:employee) { FactoryGirl.build(:user, :employee) }
+  let(:employer) { FactoryGirl.build(:user, :employer) }
+  let(:admin)    { FactoryGirl.build(:user, :admin) }
+  let(:user)     { FactoryGirl.create(:user) }
 
-  subject { employee }
+  subject{user}
   it { should be_valid }
-  before do
-    employee.admin = false
-    employee.employer = false
-  end 
   it { should respond_to(:username) }
   it { should respond_to(:fname) }
   it { should respond_to(:lname) }
@@ -31,34 +28,163 @@ describe User do
   it { should respond_to(:employer) }
   it { should respond_to(:admin) }
 
-  describe "checking if admin " do
-  	  it { should_not be_admin }
+  describe "when email format is invalid" do
+    it "should be invalid" do
+      addresses = %w[user@foo,com user_at_foo.org example.user@foo. foo@bar_baz.com foo@bar+baz.com]
+      addresses.each do |invalid_address|
+        user.email = invalid_address
+        expect(user).not_to be_valid
+      end
+    end
   end
-  describe "checking if empoyer " do
-      it { should_not be_employer }
+  describe "when email format is valid" do
+    it "should be valid" do
+      addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+      addresses.each do |valid_address|
+        user.email = valid_address
+        expect(user).to be_valid
+      end
+    end
   end
-
+  describe "when email address is already taken" do
+    before do
+      user_with_same_email = user.dup
+      user_with_same_email.email = user.email.upcase
+      user_with_same_email.save
+    end
+    it { should_not be_valid }
+  end
   describe "when username is not present" do
-    before { employee.username = " " }
+    before { user.username = " " }
+    it { should_not be_valid }
+  end
+  describe "when fname is not present" do
+    before { user.fname = " " }
+    it { should_not be_valid }
+  end
+  describe "when lname is not present" do
+    before { user.lname = " " }
     it { should_not be_valid }
   end
   describe "when email is not present" do
-    before { employee.email = " " }
+    before { user.email = " " }
     it { should_not be_valid }
   end
    describe "when password is not present" do
-    before { employee.password = " " }
+    before { user.password = " " }
     it { should_not be_valid }
   end
    describe "when password_confirmation is not present" do
-    before { employee.password_confirmation = " " }
+    before { user.password_confirmation = " " }
     it { should_not be_valid }
   end
   describe "when admin is not present" do
-    before { employee.admin = nil }
+    before { user.admin = nil }
     it { should_not be_valid }
   end
+  describe "when employer is not present" do
+    before { user.employer = nil }
+    it { should_not be_valid }
+  end
+  describe "when employee is not present" do
+    before { user.employer = nil }
+    it { should_not be_valid }
+  end
+
+  subject { employee }
   
-
-
+  describe "checking if admin " do
+	  it { should_not be_admin }
+  end
+  describe "checking if employer " do
+    it { should_not be_employer }
+  end
+  describe "checking if employee " do
+    it { should be_employee }
+  end
+  describe "company name should be empty" do
+    it "checks company name" do
+      employee.company_name.should eq ""
+    end
+  end
+  describe "company address should be empty" do
+    it "checks company address" do
+      employee.company_address.should eq ""
+    end
+  end
+  describe "field should be empty" do
+    it "checks field" do
+      employee.field.should eq ""
+    end
+  end
+  describe "employer checking if admin " do
+    it "checks admin" do
+      employer.admin.should eq false
+    end
+  end
+  describe "employer checking if employer " do
+    it "checks employer" do
+      employer.employer.should eq true
+    end
+  end
+  describe "employer checking if employee " do
+    it "checks employee" do
+      employer.employee.should eq false
+    end
+  end
+  describe "goals should be empty" do
+    it "checks company name" do
+      employer.goals.should eq ""
+    end
+  end
+  describe "company name should not be empty" do
+    it "checks company name" do
+      employer.company_name.should_not eq ""
+    end
+  end
+  describe "company address should not be empty" do
+    it "checks company address" do
+      employer.company_address.should_not eq ""
+    end
+  end
+  describe "field should not be empty" do
+    it "checks field" do
+      employer.field.should_not eq ""
+    end
+  end
+  describe "admin checking if admin " do
+    it "checks admin" do
+      admin.admin.should eq true
+    end
+  end
+  describe "admin checking if employer " do
+    it "checks employer" do
+      admin.employer.should eq false
+    end
+  end
+  describe "admin checking if employee " do
+    it "checks employee" do
+      admin.employee.should eq false
+    end
+  end
+  describe "goals should be empty" do
+    it "checks company name" do
+      admin.goals.should eq ""
+    end
+  end
+  describe "company name should be empty" do
+    it "checks company name" do
+      admin.company_name.should eq ""
+    end
+  end
+  describe "company address should be empty" do
+    it "checks company address" do
+      admin.company_address.should eq ""
+    end
+  end
+  describe "field should be empty" do
+    it "checks field" do
+      admin.field.should eq ""
+    end
+  end
 end
