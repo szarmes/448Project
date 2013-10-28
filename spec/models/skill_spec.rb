@@ -8,6 +8,8 @@ describe Skill do
 	it { should be_valid }
  	it { should respond_to(:label) }
   it { should respond_to(:desc) }
+  it { should respond_to(:user_id) }
+  it { should respond_to(:skill_id) }
   	
 
   	describe "label is invalid" do

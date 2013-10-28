@@ -3,6 +3,7 @@
 ActiveRecord::Schema.define(version: 20131008164900) do
 
   create_table "users", force: true do |t|
+    t.integer   "user_id",                                null: false
     t.string   "username",               default: "",    null: false
     t.string   "fname",                  default: "",    null: false
     t.string   "lname",                  default: "",    null: false
@@ -45,6 +46,8 @@ ActiveRecord::Schema.define(version: 20131008164900) do
   create_table "skills", force: true do |t|
     t.string   "label",                 default: "",      null: false
     t.string   "desc",                  default: "" 
+    t.integer   "user_id",                                null: false
+    t.integer   "skill_id",                                null: false
   end
 
    create_table "experiences", force: true do |t|
@@ -52,17 +55,16 @@ ActiveRecord::Schema.define(version: 20131008164900) do
     t.string   "desc",                 default: "",      null: false
     t.datetime "sdate",                null: false               
     t.datetime "fdate",                null: false
-<<<<<<< HEAD
     t.string   "company_name",          default: "",      null: false
-=======
     t.string   "company_name",         default: "",      null: false
->>>>>>> ab62c918c48c62f20f5aa9341797896704927236
     t.string   "company_address"
     t.string   "company_city"
     t.string   "company_province"
     t.string   "company_country"
     t.string   "supervisor"
     t.string   "supervisor_phone"
+    t.integer   "user_id",                                null: false
+    t.integer   "experience_id",                                null: false
    end
 
    create_table "references", force: true do |t|
@@ -72,28 +74,33 @@ ActiveRecord::Schema.define(version: 20131008164900) do
     t.string   "relationship",        default: "",      null: false      
     t.integer   "yrsknown"
     t.string   "email"   
+    t.integer   "user_id",                                null: false
    end
 
    create_table "requirements", force: true do |t|
-<<<<<<< HEAD
-    t.boolean  "mandatory?",          default: true,    null: false 
-=======
+
     t.boolean  "mandatory",          default: true,    null: false 
->>>>>>> ab62c918c48c62f20f5aa9341797896704927236
     t.string   "degree"
     t.string   "educationLvl"
     t.string   "desc",                default: "",      null: false
     t.integer  "exp"
     t.string   "exp_area"
+    t.integer   "posting_id",                                null: false
+    t.integer   "requirement_id",                                null: false
    end
 
    create_table "postings", force: true do |t|
     t.string   "title",               default: "",      null: false
     t.string   "desc",                default: "",      null: false
     t.integer  "salary"
+    t.integer   "user_id",                                null: false
+    t.integer   "posting_id",                                null: false
    end
 
    create_table "keywords", force: true do |t|
     t.string   "keyword",               default: "",      null: false
+    t.integer   "posting_id",                                null: false
+    t.integer   "skill_id",                                null: false
+    t.integer   "experience_id",                                null: false
    end
 end
