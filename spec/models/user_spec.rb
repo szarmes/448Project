@@ -47,12 +47,13 @@ describe User do
     end
   end
   describe "when email address is already taken" do
-    before do
-      user_with_same_email = user.dup
-      user_with_same_email.email = user.email.upcase
-      user_with_same_email.save
+    it "prevents duplicates" do
+      user1 = create(:user, email: 'unique@email.com')
+      user2 = build(:user, email: 'unique@email.com')
+
+      user1.should be_valid
+      user2.should_not be_valid
     end
-    it { should_not be_valid }
   end
   describe "when username is not present" do
     before { user.username = " " }
@@ -91,30 +92,39 @@ describe User do
     it { should_not be_valid }
   end
 
-  subject { employee }
-  
-  describe "checking if admin " do
-	  it { should_not be_admin }
+   describe "employee checking if admin " do
+    it "checks admin" do
+      employee.admin.should eq false
+    end
   end
-  describe "checking if employer " do
-    it { should_not be_employer }
+  describe "employee checking if employer " do
+    it "checks employer" do
+      employee.employer.should eq false
+    end
   end
-  describe "checking if employee " do
-    it { should be_employee }
+  describe "employee checking if employee " do
+    it "checks employee" do
+      employee.employee.should eq true
+    end
   end
-  describe "company name should be empty" do
+  describe "employee company name should be empty" do
     it "checks company name" do
       employee.company_name.should eq ""
     end
   end
-  describe "company address should be empty" do
+  describe "employee company address should be empty" do
     it "checks company address" do
       employee.company_address.should eq ""
     end
   end
-  describe "field should be empty" do
+  describe "employee field should be empty" do
     it "checks field" do
       employee.field.should eq ""
+    end
+  end
+  describe "employee goals should not be empty" do
+    it "checks field" do
+      employee.goals.should_not eq ""
     end
   end
   describe "employer checking if admin " do
@@ -132,22 +142,22 @@ describe User do
       employer.employee.should eq false
     end
   end
-  describe "goals should be empty" do
+  describe "employer goals should be empty" do
     it "checks company name" do
       employer.goals.should eq ""
     end
   end
-  describe "company name should not be empty" do
+  describe "employer company name should not be empty" do
     it "checks company name" do
       employer.company_name.should_not eq ""
     end
   end
-  describe "company address should not be empty" do
+  describe "employer company address should not be empty" do
     it "checks company address" do
       employer.company_address.should_not eq ""
     end
   end
-  describe "field should not be empty" do
+  describe "employer field should not be empty" do
     it "checks field" do
       employer.field.should_not eq ""
     end
@@ -167,22 +177,22 @@ describe User do
       admin.employee.should eq false
     end
   end
-  describe "goals should be empty" do
+  describe "admin goals should be empty" do
     it "checks company name" do
       admin.goals.should eq ""
     end
   end
-  describe "company name should be empty" do
+  describe "admin company name should be empty" do
     it "checks company name" do
       admin.company_name.should eq ""
     end
   end
-  describe "company address should be empty" do
+  describe "admin company address should be empty" do
     it "checks company address" do
       admin.company_address.should eq ""
     end
   end
-  describe "field should be empty" do
+  describe "admin field should be empty" do
     it "checks field" do
       admin.field.should eq ""
     end
