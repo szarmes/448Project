@@ -1,12 +1,10 @@
 require 'spec_helper'
 
 describe User do
-	
-	let(:employee) { FactoryGirl.build(:user, :employee) }
-  let(:employer) { FactoryGirl.build(:user, :employer) }
-  let(:admin)    { FactoryGirl.build(:user, :admin) }
-  let(:user)     { FactoryGirl.create(:user) }
-
+	  let(:employee) { FactoryGirl.build(:user, :employee) }
+    let(:employer) { FactoryGirl.build(:user, :employer) }
+    let(:admin)    { FactoryGirl.build(:user, :admin) }
+    let(:user)     { FactoryGirl.create(:user) }
   subject{user}
   it { should be_valid }
   it { should respond_to(:username) }
@@ -200,6 +198,74 @@ describe User do
   describe "admin field should be empty" do
     it "checks field" do
       admin.field.should eq ""
+    end
+  end
+  describe "skills associations" do
+    before do
+      @skill = FactoryGirl.create(:skill, user_id: employee.user_id)
+      @skill.save
+      @skill1 = FactoryGirl.create(:skill, user_id: 5)
+      @skill1.save
+      employee.save
+    end
+    it "should be destroyed when employee is destroyed" do
+      Skill.all.should include(@skill1) 
+      Skill.all.should include(@skill)
+      employee.skills.push(@skill)
+      employee.destroy
+      Skill.all.should_not include(@skill)
+      Skill.all.should include(@skill1)
+    end
+  end
+  describe "experiences associations" do
+    before do
+      @experience = FactoryGirl.build(:experience, user_id: employee.user_id)
+      @experience.save
+      @experience1 = FactoryGirl.build(:experience, user_id: 5)
+      @experience1.save
+      employee.save
+    end
+    it "should be destroyed when employee is destroyed" do
+      Experience.all.should include(@experience1) 
+      Experience.all.should include(@experience)
+      employee.experiences.push(@experience)
+      employee.destroy
+      Experience.all.should_not include(@experience)
+      Experience.all.should include(@experience1)
+    end
+  end
+  describe "references associations" do
+    before do
+      @reference = FactoryGirl.build(:reference, user_id: employee.user_id)
+      @reference.save
+      @reference1 = FactoryGirl.build(:reference, user_id: 5)
+      @reference1.save
+      employee.save
+    end
+    it "should be destroyed when employee is destroyed" do
+      Reference.all.should include(@reference1) 
+      Reference.all.should include(@reference)
+      employee.references.push(@reference)
+      employee.destroy
+      Reference.all.should_not include(@reference)
+      Reference.all.should include(@reference1)
+    end
+  end
+  describe "postings associations" do
+    before do
+      @posting = FactoryGirl.build(:posting, user_id: employer.user_id)
+      @posting.save
+      @posting1 = FactoryGirl.build(:posting, user_id: 5)
+      @posting1.save
+      employer.save
+    end
+    it "should be destroyed when employer is destroyed" do
+      Posting.all.should include(@posting1) 
+      Posting.all.should include(@posting)
+      employer.postings.push(@posting)
+      employer.destroy
+      Posting.all.should_not include(@posting)
+      Posting.all.should include(@posting1)
     end
   end
 end
