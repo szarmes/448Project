@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  after_create :do_setID
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :skills, dependent: :destroy
@@ -22,5 +25,15 @@ class User < ActiveRecord::Base
   validates :email, presence:   true,
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: true }
+
+
+  private
+    def do_setID
+      
+      newID = self.id
+      self.update_attributes(:user_id => newID)
+
+
+    end
  
 end

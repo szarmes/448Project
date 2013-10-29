@@ -2,11 +2,9 @@ First_Website::Application.routes.draw do
   devise_for :users
  
   #devise_scope :user do 
-<<<<<<< HEAD
-     root to: "static_pages#home"
-=======
+
     root to: 'static_pages#home'
->>>>>>> 9f8a5a42f44714167ebbec51674b9b76df710566
+
    # get 'signin' => 'devise/sessions#new', :as => :new_user_session
    # post 'signin' => 'devise/sessions#create', :as => :user_session
    # delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
