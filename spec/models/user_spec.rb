@@ -31,6 +31,14 @@ describe User do
   it { should have_many (:references) }
   it { should have_many (:experiences) }
 
+  describe "when user_id is set" do
+    it "should equal user.id" do
+      @user = FactoryGirl.create(:user)
+      @user.user_id.should eq @user.id
+      
+    end
+  end
+
   describe "when email format is invalid" do
     it "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo. foo@bar_baz.com foo@bar+baz.com]
