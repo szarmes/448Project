@@ -1,12 +1,12 @@
 First_Website::Application.routes.draw do
-#devise_for :users, :skip => [:sessions]
+  devise_for :users
  
   #devise_scope :user do 
- #   root to: 'static_pages#home'
- #   get 'signin' => 'devise/sessions#new', :as => :new_user_session
- # post 'signin' => 'devise/sessions#create', :as => :user_session
- # delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
- #   match '/sessions/user', to: 'devise/sessions#create', via: :post
+    root to: 'static_pages#home'
+   # get 'signin' => 'devise/sessions#new', :as => :new_user_session
+   # post 'signin' => 'devise/sessions#create', :as => :user_session
+   # delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
+   # match '/sessions/user', to: 'devise/sessions#create', via: :post
  # end
   
 

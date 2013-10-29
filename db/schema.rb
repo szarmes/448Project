@@ -3,7 +3,7 @@
 ActiveRecord::Schema.define(version: 20131008164900) do
 
   create_table "users", force: true do |t|
-    t.integer   "user_id",                                null: false
+    t.integer  "user_id",                default: :id,   null: false
     t.string   "username",               default: "",    null: false
     t.string   "fname",                  default: "",    null: false
     t.string   "lname",                  default: "",    null: false
