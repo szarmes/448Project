@@ -6,5 +6,14 @@ class Requirement < ActiveRecord::Base
         validates :desc, presence:  true
         validates_inclusion_of :mandatory, :in => [true, false]
   
- 
+ 		after_create :do_setID
+
+  private
+    def do_setID
+      
+      newID = self.id
+      self.update_attributes(:requirement_id => newID)
+
+
+    end
 end

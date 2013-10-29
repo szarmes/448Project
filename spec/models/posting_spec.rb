@@ -14,6 +14,14 @@ describe Posting do
   it { should have_many (:keywords) }
   it { should belong_to (:user) }
 
+  describe "when posting_id is set" do
+    it "should equal post.id" do
+      @post = FactoryGirl.create(:posting)
+      @post.posting_id.should eq @post.id
+      
+    end
+  end
+
 	 describe "when title is empty" do
 	 	before { posting.title  = "" }
 	 	it { should_not be_valid }

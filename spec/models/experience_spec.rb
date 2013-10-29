@@ -23,6 +23,14 @@ describe Experience do
     it { should belong_to (:user) }
     it { should have_many (:keywords) }
 
+    describe "when experience_id is set" do
+    it "should equal ex.id" do
+      @ex = FactoryGirl.create(:experience)
+      @ex.experience_id.should eq @ex.id
+      
+    end
+  end
+
   	 describe "title is invalid" do
         it "should be invalid" do
             exp.title=""

@@ -16,6 +16,13 @@ describe Requirement do
     it { should respond_to(:requirement_id) }
     it { should belong_to (:posting) } 
   	
+    describe "when requirement_id is set" do
+    it "should equal requirement.id" do
+      @requirement = FactoryGirl.create(:requirement)
+      @requirement.requirement_id.should eq @requirement.id
+      
+    end
+  end
 
   	describe "mandatory is invalid" do
         it "should be invalid" do

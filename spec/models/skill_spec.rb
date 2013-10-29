@@ -12,6 +12,14 @@ describe Skill do
   it { should respond_to(:skill_id) }
   it { should have_many (:keywords) }
   it { should belong_to (:user) }
+
+  describe "when skill_id is set" do
+    it "should equal skill.id" do
+      @skill = FactoryGirl.create(:skill)
+      @skill.skill_id.should eq @skill.id
+      
+    end
+  end
   	
 
   describe "label is invalid" do
