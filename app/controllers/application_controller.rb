@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+<<<<<<< HEAD
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
@@ -10,6 +11,8 @@ class ApplicationController < ActionController::Base
         u.permit :username, :email, :password, :password_confirmation, :fname, :lname, :user_id
       end
     end
+=======
+>>>>>>> 88931ed49ed8316ed6cdb18534bd58e8ecd130a4
   
    private
 
