@@ -3,6 +3,12 @@
 <%= form_for(@user, :url => { :action => "create" }) do |f| %>
   <%= devise_error_messages! %>
 
+<!--<div>
+  <%= radio_button_tag(:status, {employee: true} ) %>
+  <%= label_tag(:employee, "Looking for work") %>-->
+  <div><%= check_box_tag employer: true %>
+  <%= label_tag(:employer, "Looking to hire") %></div>
+  
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
