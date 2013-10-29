@@ -4,55 +4,64 @@
   <%= devise_error_messages! %>
 
   <p> Fields marked with * are required </p>
-  
-  <div><%= f.label "Email *" %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div class="row">
+  <div class="rform"><%= f.label "Email *" %><br />
+  <%= f.email_field :email, :autofocus => true %></div></div>
 
-  <div><%= f.label "Username *" %><br />
-  <%= f.text_field :username, :autofocus => true %></div>
+  <div class="row">
+  <div class="rform"><%= f.label "Username *" %><br />
+  <%= f.text_field :username, :autofocus => true %></div></div>
 
-  <div><%= f.label "Password *" %><br />
-  <%= f.password_field :password %></div>
 
-  <div><%= f.label "Password Confirmation *" %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div class="row">
+  <div class="rform"><%= f.label "Password *" %><br />
+  <%= f.password_field :password %></div></div>
 
-  <div><%= f.label "First Name *" %><br />
+  <div class="row">
+  <div class="rform"><%= f.label "Password Confirmation *" %><br />
+  <%= f.password_field :password_confirmation %></div></div>
+
+  <div class="row">
+  <div class="rform1"><%= f.label "First Name *" %><br />
   <%= f.text_field :fname, :autofocus => true %></div>
 
-  <div><%= f.label "Last Name *" %><br />
+  <div class="rform1"><%= f.label "Last Name *" %><br />
   <%= f.text_field :lname, :autofocus => true %></div>
+  </div>
 
-  <div><%= f.label "Phone Number" %><br />
-  <%= f.phone_field :phone_number, :autofocus => true %></div>
+  <div class="row">
+  <div class="rform1"><%= f.label "Phone Number" %><br />
+  <%= f.phone_field :phone_number, :autofocus => true %></div></div>
 
-  <div><%= f.label "City" %><br />
+  <div class="row">
+  <div class="rform1"><%= f.label "City" %><br />
   <%= f.text_field :city, :autofocus => true %></div>
 
-  <div><%= f.label "State/ province" %><br />
+  <div class="rform1"><%= f.label "State/ province" %><br />
   <%= f.text_field :province, :autofocus => true %></div>
 
-  <div><%= f.label "Country" %><br />
-  <%= f.text_field :country, :autofocus => true %></div>
+  <div class="rform1"><%= f.label "Country" %><br />
+  <%= f.text_field :country, :autofocus => true %></div></div>
 
-
+  <div class="row">
   <!-- GENDER CHECKBOX NOT WORKING -->
-  <div>
+  <div class="rform1">
+
     <%= f.radio_button :gender, "Male" %>
     <%= label_tag(:gender, "Male") %>
     <%= f.radio_button :gender, "Female" %>
     <%= label_tag :gender, "Female" %>
-  </div>
+  </div></div>
 
-   <div><%= f.label "Country" %><br />
-  <%= f.text_field :country, :autofocus => true %></div>
-
-  <div><%= f.label "Birthday" %><br />
-  <%= f.date_field :birthday, :autofocus => true %></div>
+  <div class="row">
+  <div class="rform1"><%= f.label "Birthday" %><br />
+  <%= f.date_field :birthday, :autofocus => true %></div></div>
 
  <!-- ADD EMPLOYER OPTION HERE and extra fields that come with it-->
-
-  <div><%= f.submit "Sign up" %></div>
+  <div class="row">
+  <div class="rformsubmit"><%= f.submit "Sign up", class: "btn btn-medium btn-primary" %></div></div>
 <% end %>
+  
+  <br/>
+  <%= render "devise/shared/links" %>
 
-<%= render "devise/shared/links" %>

@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   after_create :do_setID
 
+  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :skills, dependent: :destroy

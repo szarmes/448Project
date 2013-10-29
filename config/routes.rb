@@ -3,7 +3,7 @@ First_Website::Application.routes.draw do
  
   #devise_scope :user do 
 
-    root to: 'static_pages#home'
+  root to: 'static_pages#home'
 
    # get 'signin' => 'devise/sessions#new', :as => :new_user_session
    # post 'signin' => 'devise/sessions#create', :as => :user_session
