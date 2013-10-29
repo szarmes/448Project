@@ -62,6 +62,15 @@ describe User do
     before { user.username = " " }
     it { should_not be_valid }
   end
+  describe "when username address is already taken" do
+    it "prevents duplicates" do
+      user1 = create(:user, username: 'unique')
+      user2 = build(:user, username: 'unique')
+
+      user1.should be_valid
+      user2.should_not be_valid
+    end
+  end
   describe "when fname is not present" do
     before { user.fname = " " }
     it { should_not be_valid }
