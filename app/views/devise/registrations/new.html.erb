@@ -3,32 +3,54 @@
 <%= form_for(@user, :url => { :action => "create" }) do |f| %>
   <%= devise_error_messages! %>
 
-<!--<div>
-  <%= radio_button_tag(:status, {employee: true} ) %>
-  <%= label_tag(:employee, "Looking for work") %>-->
-  <div><%= check_box_tag employer: true %>
-  <%= label_tag(:employer, "Looking to hire") %></div>
+  <p> Fields marked with * are required </p>
   
-
-  <div><%= f.label :email %><br />
+  <div><%= f.label "Email *" %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :username %><br />
+  <div><%= f.label "Username *" %><br />
   <%= f.text_field :username, :autofocus => true %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label "Password *" %><br />
   <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label "Password Confirmation *" %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.label "First Name" %><br />
+  <div><%= f.label "First Name *" %><br />
   <%= f.text_field :fname, :autofocus => true %></div>
 
-  <div><%= f.label "Last Name" %><br />
+  <div><%= f.label "Last Name *" %><br />
   <%= f.text_field :lname, :autofocus => true %></div>
 
+  <div><%= f.label "Phone Number" %><br />
+  <%= f.phone_field :phone_number, :autofocus => true %></div>
 
+  <div><%= f.label "City" %><br />
+  <%= f.text_field :city, :autofocus => true %></div>
+
+  <div><%= f.label "State/ province" %><br />
+  <%= f.text_field :province, :autofocus => true %></div>
+
+  <div><%= f.label "Country" %><br />
+  <%= f.text_field :country, :autofocus => true %></div>
+
+
+  <!-- GENDER CHECKBOX NOT WORKING -->
+  <div>
+    <%= f.radio_button :gender, "Male" %>
+    <%= label_tag(:gender, "Male") %>
+    <%= f.radio_button :gender, "Female" %>
+    <%= label_tag :gender, "Female" %>
+  </div>
+
+   <div><%= f.label "Country" %><br />
+  <%= f.text_field :country, :autofocus => true %></div>
+
+  <div><%= f.label "Birthday" %><br />
+  <%= f.date_field :birthday, :autofocus => true %></div>
+
+ <!-- ADD EMPLOYER OPTION HERE and extra fields that come with it-->
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
