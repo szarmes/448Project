@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :references, dependent: :destroy
   has_many :postings, dependent: :destroy
   has_many :experiences, dependent: :destroy
+  has_many :projects, dependent: :destroy
 
 
   devise :database_authenticatable, :registerable,
