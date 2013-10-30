@@ -103,4 +103,12 @@ ActiveRecord::Schema.define(version: 20131008164900) do
     t.integer   "skill_id",                                null: false
     t.integer   "experience_id",                                null: false
    end
+
+   create_table "projects", force: true do |t|
+    t.string "name", null: false
+    t.string "desc"
+    t.integer "project_id",     null:  false
+    t.integer "user_id",                                null: false
+   end
+
 end
