@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
 
-<%= form_for(@user, :url => { :action => "create" }) do |f| %>
+<%= simple_form_for(@user, :url => { :action => "create" }) do |f| %>
   <%= devise_error_messages! %>
 
   <p> Fields marked with * are required </p>
@@ -44,20 +44,24 @@
   <%= f.text_field :country, :autofocus => true %></div></div>
 
   <div class="row">
-  <!-- GENDER CHECKBOX NOT WORKING -->
   <div class="rform1">
-
-    <%= f.radio_button :gender, "Male" %>
-    <%= label_tag(:gender, "Male") %>
-    <%= f.radio_button :gender, "Female" %>
-    <%= label_tag :gender, "Female" %>
+    <%= f.input :gender, collection: ['I am..', :Male, :Female, :Other],:default => 1 %>
   </div></div>
 
   <div class="row">
   <div class="rform1"><%= f.label "Birthday" %><br />
   <%= f.date_field :birthday, :autofocus => true %></div></div>
 
- <!-- ADD EMPLOYER OPTION HERE and extra fields that come with it-->
+ 
+
+
+  <div class="row">
+  <div class="rform1">
+    <%= f.input :employer, collection: [['Looking for work', false], ['Looking to hire',true]],:default => 1, label: "I am" %>
+  </div></div>
+
+
+
   <div class="row">
   <div class="rformsubmit"><%= f.submit "Sign up", class: "btn btn-medium btn-primary" %></div></div>
 <% end %>
