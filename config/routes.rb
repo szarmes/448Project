@@ -6,7 +6,7 @@ First_Website::Application.routes.draw do
   root to: 'static_pages#home'
 
   resources :skills
-  resources :expereiences
+  resources :experiences
    # get 'signin' => 'devise/sessions#new', :as => :new_user_session
    # post 'signin' => 'devise/sessions#create', :as => :user_session
    # delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
