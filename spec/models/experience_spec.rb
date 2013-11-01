@@ -49,12 +49,6 @@ describe Experience do
             expect(exp).to_not be_valid
         end
     end
-     describe "fdate is invalid" do
-        it "should be invalid" do
-            exp.fdate=""
-            expect(exp).to_not be_valid
-        end
-    end
      describe "company_name is invalid" do
         it "should be invalid" do
             exp.company_name=""

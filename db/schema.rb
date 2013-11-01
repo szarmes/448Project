@@ -54,9 +54,8 @@ ActiveRecord::Schema.define(version: 20131008164900) do
     t.string   "title",                default: "",      null: false
     t.string   "desc",                 default: "",      null: false
     t.datetime "sdate",                null: false               
-    t.datetime "fdate",                null: false
+    t.datetime "fdate"
     t.string   "company_name",          default: "",      null: false
-    t.string   "company_name",         default: "",      null: false
     t.string   "company_address"
     t.string   "company_city"
     t.string   "company_province"

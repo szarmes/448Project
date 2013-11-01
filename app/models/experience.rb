@@ -5,7 +5,7 @@ class Experience < ActiveRecord::Base
     has_many :keywords, dependent: :destroy
 
     validates :user_id, :experience_id, presence: true
-    validates :title, :desc, :sdate, :fdate, 
+    validates :title, :desc, :sdate,
                           :company_name, presence:  true
     
     after_create :do_setID
