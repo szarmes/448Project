@@ -107,7 +107,12 @@ ActiveRecord::Schema.define(version: 20131008164900) do
     t.string "name", null: false
     t.string "desc"
     t.integer "project_id",     null:  false
-    t.integer "user_id",                                null: false
+    t.integer "experience_id",                                null: false
    end
 
+   create_table "links", force: true do |t|
+    t.integer   "project_id", null: false
+    t.integer   "link_id", null: false
+    t.string    "url", null: false
+   end
 end
