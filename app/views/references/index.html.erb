@@ -1,0 +1,36 @@
+<h1> Add a Reference</h1>
+
+<%= simple_form_for @reference, :url => { :action => "create" } do |f| %>
+
+  <p> Fields marked with * are required </p>
+  
+  <div><%= f.label "First Name *" %> 
+  <%= f.text_field :fname, :autofocus => true %></div>
+
+  <div>
+  	<%= f.label "Last Name *" %>
+    <%= f.text_field :lname, :autofocus => true %>
+  </div>
+
+  <div>
+  	<%= f.label "Relationship *" %>
+    <%= f.text_field :relationship, :autofocus => true %>
+  </div>
+
+  <div>
+  	<%= f.label "Email" %>
+    <%= f.email_field :email, :autofocus => true %>
+  </div>
+  <div>
+    <%= f.label "Phone Number" %>
+    <%= f.text_field :phone_number, :autofocus => true %>
+  </div>
+  <div>
+    <%= f.input :yrsknown, :label => "Years Known", :autofocus => true %>
+  </div>
+
+
+
+ <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+
+<% end %>
