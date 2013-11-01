@@ -6,6 +6,12 @@
 	<div class ="welcome">
 		Welcome to Chewink!!
 	</div><br/><br/>
+	<% if user_signed_in? %>
+      <div class ="center">
+      <div class="row">
+  			<%= link_to 'Add a skill', '/skills', class: "btn btn-small btn-primary"  %>        
+   			<br/><br/><br/><br/></div></div>
+   	<% end %>
 	
       <%= render 'devise/menu/registration_items' %>
   </br>

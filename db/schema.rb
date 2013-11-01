@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20131008164900) do
   create_table "skills", force: true do |t|
     t.string   "label",                 default: "",      null: false
     t.string   "desc",                  default: "" 
-    t.integer   "user_id",                                null: false
-    t.integer   "skill_id",                                null: false
+    t.integer   "user_id",              default:0,                   null: false
+    t.integer   "skill_id",              default:0,                  null: false
   end
 
    create_table "experiences", force: true do |t|

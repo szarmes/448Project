@@ -1,0 +1,18 @@
+<h1> Add an Experience</h1>
+
+<%= simple_form_for @skill, :url => { :action => "create" } do |f| %>
+
+  <p> Fields marked with * are required </p>
+  
+  <div><%= f.label "Title *" %> 
+  E.g. "Programming with Java" <br />
+  <%= f.text_field :label, :autofocus => true %></div>
+
+  <div>
+  	<%= f.label "Description *" %>
+    <%= f.text_area :desc, :autofocus => true %>
+  </div>
+
+ <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+
+<% end %>
