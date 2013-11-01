@@ -29,7 +29,8 @@ describe ExperiencesController do
         flash[:success].should_not be_nil
       end
       it "should not have success flash if unable to save" do
-        post 'create', :experience => { "label" => "", "desc" => "content" }
+        post 'create', :experience => { "" => "title", "desc" => "content", 
+          "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }
         response.should redirect_to '/'
         flash[:error].should_not be_nil
       end
@@ -39,12 +40,14 @@ describe ExperiencesController do
         sign_in employer
       end
       it "should not be able to submit a experience through create" do
-        post 'create', :experience => { "label" => "title", "desc" => "content", "experience_id" => 0 }
+        post 'create', :experience => { "title" => "title", "desc" => "content", 
+          "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test"  }
         response.should redirect_to '/'
         flash[:error].should == "No access"
       end
       it "should have error flash if unable to save" do
-        post 'create', :experience => { "label" => "", "desc" => "content" }
+        post 'create', :experience => { "title" => "", "desc" => "content", 
+          "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test"  }
         response.should redirect_to '/'
         flash[:error].should_not be_nil
       end
