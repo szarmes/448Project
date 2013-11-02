@@ -10,7 +10,7 @@ class PostingsController < ApplicationController
 
   def create
 
-  	if(user_signed_in? && !current_user.employer)
+  	if(user_signed_in? && current_user.employer)
   		@posting = Posting.new(posting_params)
   		@posting.user_id = current_user.user_id
   		if(@posting.save)
@@ -32,7 +32,6 @@ class PostingsController < ApplicationController
   private
     
     def posting_params
-        params.require(:posting).permit(:title, :desc, :posting_id, :sdate, :fdate, :company_name,
-        :company_address, :company_address, :company_city, :company_country, :supervisor, :supervisor_phone)
+        params.require(:posting).permit(:title, :desc, :posting_id, :salary)
     end
 end

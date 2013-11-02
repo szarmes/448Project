@@ -1,0 +1,29 @@
+<h1> Add an Posting</h1>
+
+<%= simple_form_for @posting, :url => { :action => "create" } do |f| %>
+
+  <p> Fields marked with * are required </p>
+  
+  <div><%= f.label "Title *" %> 
+  E.g. "Programming with Java" <br />
+  <%= f.text_field :title, :autofocus => true %></div>
+
+  <div>
+  	<%= f.label "Description/Responsibilities *" %>
+    <%= f.text_area :desc, :autofocus => true %>
+  </div>
+
+  <div>
+  	<%= f.label "Salary" %>
+    <%= f.field :salary, :autofocus => true %>
+  </div>
+
+   <div>
+  	<%= f.hidden_field :posting_id, :value => 0 %>
+    
+  </div>
+
+
+ <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+
+<% end %>
