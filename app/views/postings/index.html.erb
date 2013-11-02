@@ -1,4 +1,4 @@
-<h1> Add an Posting</h1>
+<h1> Add a Posting</h1>
 
 <%= simple_form_for @posting, :url => { :action => "create" } do |f| %>
 
@@ -14,7 +14,6 @@
   </div>
 
   <div>
-  	<%= f.label "Salary" %>
     <%= f.input :salary, :autofocus => true %>
   </div>
 

@@ -1,4 +1,3 @@
-<% provide(:title, 'Home') %>
 <!DOCTYPE html>
 <html>
 <body class = "portfolio">
@@ -6,30 +5,7 @@
 	<div class ="welcome">
 		Welcome to Chewink!!
 	</div><br/><br/>
-	<% if user_signed_in? && !@user.employer? %>
-    <div class ="center">
-      <div class="row">
-  			<%= link_to 'Add a skill', '/skills', class: "btn btn-small btn-primary"  %>      
-   			<br/><br/></div>
-      <div class="row">
-        <%= link_to 'Add an experience', '/experiences', class: "btn btn-small btn-primary"  %>      
-        <br/><br/></div>
-      <div class="row">
-        <%= link_to 'Add a reference', '/references', class: "btn btn-small btn-primary"  %>      
-        <br/><br/></div>
-    </div>
-  <% elsif user_signed_in? %>
-    <div class ="center">
-      <div class="row">
-        <%= link_to 'Add a posting', '/postings', class: "btn btn-small btn-primary"  %>      
-      <br/><br/></div>
-    </div>
-  <% end %>
-	
-      <%= render 'devise/menu/registration_items' %>
-  </br>
-      <%= render 'devise/menu/login_items' %>
-  	</div>
+</div>
 </body>
 </html>
 

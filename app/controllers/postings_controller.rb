@@ -2,6 +2,7 @@ class PostingsController < ApplicationController
 
   def index
   	@posting = Posting.new
+    @user = current_user
   end
 
   def show

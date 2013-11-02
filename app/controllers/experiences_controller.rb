@@ -2,6 +2,7 @@ class ExperiencesController < ApplicationController
 
   def index
   	@experience = Experience.new
+    @user = current_user
   end
 
   def show

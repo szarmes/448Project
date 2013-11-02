@@ -4,6 +4,22 @@
       <%= link_to "Chewink", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
+        	<% if user_signed_in? %>
+        	  <% if @user.employer? %>
+        	    <li> <%= link_to "Postings", postings_path, id: "brand" %> </li>
+        	    <li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand" %> </li>
+        	    <li> <%= link_to'Sign Out', destroy_user_session_path, :method => :delete, id:"brand" %>  </li> 
+        	  <% else %>
+        	  	<li> <%= link_to "Skills", skills_path, id: "brand" %> </li>
+        	  	<li> <%= link_to "Experiences", experiences_path, id: "brand" %> </li>
+        	  	<li> <%= link_to "References", references_path, id: "brand" %> </li>
+        	  	<li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand" %> </li>
+        	    <li><%= link_to'Sign Out', destroy_user_session_path, :method => :delete, id:"brand" %>  </li> 
+        	  <% end %>
+        	<% else %>
+        		<li><%= link_to "Sign In", new_user_session_path, id: "brand" %></li>
+        		<li><%= link_to "Sign Up", new_user_registration_path, id: "brand" %></li>
+        	<% end %>
         </ul>
       </nav>
     </div>
