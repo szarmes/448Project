@@ -11,7 +11,14 @@ class ApplicationController < ActionController::Base
         :employee, :employer, :phone_number, :city, :province,  :gender,
         :country, :birthday, :goals, :company_name, :company_address, :field
       end
+      devise_parameter_sanitizer.for(:account_update) do |u|
+        u.permit :current_password, :username, :email, :password, :password_confirmation, :fname, :lname, :user_id, 
+        :employee, :employer, :phone_number, :city, :province,  :gender,
+        :country, :birthday, :goals, :company_name, :company_address, :field
+      end
+
     end
+
 
   
    private

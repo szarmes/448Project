@@ -19,8 +19,7 @@ class User < ActiveRecord::Base
   validates :user_id, presence: true
   validates  :username, uniqueness: true
 
-  validates :username, :fname, :lname, :password, 
-            :password_confirmation, presence:  true
+  validates :username, :fname, :lname, presence:  true
   
   validates_inclusion_of :employee, :employer, :admin, :in => [true, false]
   

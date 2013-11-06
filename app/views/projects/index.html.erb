@@ -1,0 +1,23 @@
+<h1> Add a Project</h1>
+
+<%= simple_form_for @project, :url => { :action => "create" } do |f| %>
+
+  <p> Fields marked with * are required </p>
+  
+  <div><%= f.label "Title of Project*" %> 
+  <%= f.text_field :name, :autofocus => true %></div>
+
+  <div>
+  	<%= f.label "Description *" %>
+    <%= f.text_area :desc, :autofocus => true %>
+  </div>
+
+  <!--  This form will be called from a link_to
+  on the experience page,  in order to pass in experience_id.
+  When viewing each project, there should be also be a link_to
+  to add "links"
+          -->
+
+ <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+
+<% end %>
