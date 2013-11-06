@@ -12,6 +12,9 @@
     <%= f.text_area :desc, :autofocus => true %>
   </div>
 
+  <%= f.hidden_field :experience_id, :value => @expID %>
+  <%= f.hidden_field :project_id, :value => 0%>
+
   <!--  This form will be called from a link_to
   on the experience page,  in order to pass in experience_id.
   When viewing each project, there should be also be a link_to
