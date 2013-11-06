@@ -67,4 +67,38 @@ describe SkillsController do
       end
     end
   end
+  describe "#update" do
+    describe "employee signed in" do
+      before do
+        sign_in employee
+        test.save
+      end
+      it "should be able to update a skill through edit" do
+        post 'update', :skill => { "label" => "newtitle", "desc" => "newcontent", "skill_id" => 0 }, :id => 1
+        response.should redirect_to '/skills'
+        flash[:success].should_not be_nil
+      end
+      it "should not have success flash if unable to update" do
+        post 'update', :skill => { "label" => "", "desc" => "content" }, :id => 1
+        response.should redirect_to '/skills'
+        flash[:error].should_not be_nil
+      end
+    end
+    describe "employer signed in" do
+      before do
+        sign_in employer
+        test.save
+      end
+      it "should not be able to update a skill through edit" do
+        post 'update', :skill => { "label" => "newtitle", "desc" => "newcontent", "skill_id" => 0 }, :id => 1
+        response.should redirect_to '/skills'
+        flash[:error].should == "No access"
+      end
+      it "should have error flash if unable to save" do
+        post 'update', :skill => { "label" => "", "desc" => "content" }, :id => 1
+        response.should redirect_to '/skills'
+        flash[:error].should_not be_nil
+      end
+    end
+  end
 end

@@ -13,13 +13,18 @@ class SkillsController < ApplicationController
 
   def update
     @skill = Skill.find(params[:id])
-    if @skill.update_attributes(skill_params)
-      @skill.save
-      flash[:success] = "Changes saved"
-      redirect_to '/skills'         
+    if (user_signed_in? && current_user.user_id == @skill.user_id && !current_user.employer)
+      if @skill.update_attributes(skill_params)
+        @skill.save
+        flash[:success] = "Changes saved"
+        redirect_to '/skills'         
+      else
+        flash[:error] = "Changes not saved."
+        redirect_to '/skills'                       
+      end
     else
-      flash[:error] = "Changes not saved."
-      redirect_to '/skills'                       
+      flash[:error] = "No access"
+      redirect_to '/skills'  
     end
   end
 
@@ -30,7 +35,7 @@ class SkillsController < ApplicationController
 
   def destroy
     @skill = Skill.find(params[:id])
-    if (user_signed_in? && current_user.user_id = @skill.user_id && !@current_user.employer?)
+    if (user_signed_in? && current_user.user_id == @skill.user_id && !current_user.employer)
       @skill.destroy
       flash[:success] = "Skill Removed."
     else
