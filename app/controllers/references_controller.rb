@@ -2,6 +2,7 @@ class ReferencesController < ApplicationController
 
   def index
   	@reference = Reference.new
+    @user = current_user
   end
 
   def show

@@ -2,16 +2,13 @@ First_Website::Application.routes.draw do
   devise_for :users
  
   #devise_scope :user do 
-    #get '/personal_info/:id', to: 'registrations#personal', as: :personal
-    #put 'personal_info/:id', to: 'registrations#update', :as => :update_personal
-  #end
 
   root to: 'static_pages#home'
 
   resources :skills
   resources :experiences
   resources :references
-  resources :projects
+  resources :postings
    # get 'signin' => 'devise/sessions#new', :as => :new_user_session
    # post 'signin' => 'devise/sessions#create', :as => :user_session
    # delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
