@@ -1,0 +1,47 @@
+<head>
+</head>
+  <body>
+    <table>
+      <tr>
+        <td style = "max-width:12em"><p><%= experiences.title %></p></td>
+        <td></td><td></td><td></td>
+        <% if !experiences.nil? %>
+          <% if experiences.user_id == @userID %>
+            <td><%= link_to "Edit this Experience", edit_experience_path(experiences.experience_id), class: "btn btn-small btn-info"%></td>
+            <td><%= link_to "Delete this Experience", experiences, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %></td>
+            <% end %>
+          <% end %>
+      </tr>
+      <tr>
+        <td style = "max-width:12em"><p><%= experiences.desc %></p></td>
+      </tr>
+      <tr>
+        <td style = "max-width:12em"><p><%= experiences.company_name %></p></td>
+      </tr>
+      <tr>
+        <td style = "max-width:12em"><p>Start Date:</td><td><%= experiences.sdate.strftime("%b-%d-%Y") %></p></td>
+        <% if !experiences.fdate.nil? %>
+          <td style = "max-width:12em"><p>End Date :</td><td><%= experiences.fdate.strftime("%b-%d-%Y") %></p></td>
+        <% end %>
+      </tr>
+      <tr>
+        <% if !experiences.company_city.nil? %>
+          <td style = "max-width:12em"><p><%= experiences.company_city %></p></td>
+        <% end %>
+        <% if !experiences.company_province.nil? %>
+          <td style = "max-width:12em"><p><%= experiences.company_province %></p></td>
+        <% end %>
+        <% if !experiences.company_address.nil? %>
+          <td style = "max-width:12em"><p><%= experiences.company_address %></p></td>
+        <% end %>
+      </tr>
+      <tr>
+        <% if !experiences.supervisor.nil? %>
+          <td style = "max-width:12em"><p><%= experiences.supervisor %></p></td>
+        <% end %>
+        <% if !experiences.supervisor_phone.nil? %>
+          <td style = "max-width:12em"><p><%= experiences.supervisor_phone %></p></td>
+        <% end %>
+      </tr>
+    </table>
+ </body>

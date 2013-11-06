@@ -39,13 +39,8 @@
   </div>
 
    <div>
-  	<%= f.label "Company Province/State" %>
+  	<%= f.label "Company Province/" %>
     <%= f.text_field :company_province, :autofocus => true %>
-  </div>
-
-   <div>
-  	<%= f.label "Company City" %>
-    <%= f.text_field :company_city, :autofocus => true %>
   </div>
 
    <div>
@@ -66,3 +61,8 @@
  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 
 <% end %>
+
+<h1>All Experiences</h1>
+  <% if !@experiences.nil? %>
+    <%= render partial: 'shared/experiences', collection: @experiences %>
+  <% end %>

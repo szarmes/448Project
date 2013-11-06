@@ -1,0 +1,57 @@
+<h1> Edit this Experience</h1>
+
+<%= simple_form_for @experience, :html => { :method => :put} do |f| %>
+
+  <p> Fields marked with * are required </p>
+  
+  <div><%= f.label "Title *" %> 
+  E.g. "Programming with Java" <br />
+  <%= f.text_field :title, :autofocus => true, :default => @experience.title %></div>
+
+  <div>
+  	<%= f.label "Description/Responsibilities *" %>
+    <%= f.text_area :desc, :autofocus => true, :default => @experience.desc %>
+  </div>
+
+  <div>
+  	<%= f.label "Company Name*" %>
+    <%= f.text_field :company_name, :autofocus => true, :default => @experience.company_name %>
+  </div>
+
+  <div>
+  	<%= f.label "Starting Date *" %>
+    <%= f.date_field :sdate, :autofocus => true, :default => @experience.sdate %>
+  </div>
+  <div>
+  	<%= f.label "Finish Date" %>
+    <%= f.date_field :fdate, :autofocus => true, :default => @experience.fdate %>
+  </div>
+
+ 
+   <div>
+  	<%= f.label "Company Address" %>
+    <%= f.text_field :company_address, :autofocus => true, :default => @experience.company_address %>
+  </div>
+
+   <div>
+  	<%= f.label "Company City" %>
+    <%= f.text_field :company_city, :autofocus => true, :default => @experience.company_city %>
+  </div>
+
+   <div>
+  	<%= f.label "Company Province" %>
+    <%= f.text_field :company_province, :autofocus => true, :default => @experience.company_province %>
+  </div>
+
+   <div>
+  	<%= f.label "Supervisor" %>
+    <%= f.text_field :supervisor, :autofocus => true, :default => @experience.supervisor %>
+  </div>
+   <div>
+  	<%= f.label "Supervisor Phone Number" %>
+    <%= f.text_field :supervisor_phone, :autofocus => true, :default => @experience.supervisor_phone %>
+  </div>
+
+ <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+
+<% end %>
