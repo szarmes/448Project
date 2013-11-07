@@ -39,6 +39,12 @@
   </div>
 
    <div>
+    <%= f.label "Company Country" %>
+    <%= f.text_field :company_country, :autofocus => true, :default => @experience.company_country %>
+  </div>
+
+
+   <div>
   	<%= f.label "Company Province" %>
     <%= f.text_field :company_province, :autofocus => true, :default => @experience.company_province %>
   </div>
