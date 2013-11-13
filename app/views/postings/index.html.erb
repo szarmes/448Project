@@ -26,3 +26,8 @@
  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 
 <% end %>
+
+<h1>All Postings</h1>
+  <% if !@postings.nil? %>
+    <%= render partial: 'shared/postings', collection: @postings %>
+  <% end %>

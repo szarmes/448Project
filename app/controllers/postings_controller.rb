@@ -3,6 +3,8 @@ class PostingsController < ApplicationController
   def index
   	@posting = Posting.new
     @user = current_user
+    @userID = @user.user_id
+    @postings = Posting.where(:user_id => current_user.user_id).paginate(page: params[:page])
   end
 
   def show
@@ -16,10 +18,10 @@ class PostingsController < ApplicationController
   		@posting.user_id = current_user.user_id
   		if(@posting.save)
   			flash[:success] = "Posting created!"
-        	redirect_to root_path
+        	redirect_to '/postings'
         else
   			flash[:error] = "Fill in all required fields"
-        	redirect_to root_path
+        	redirect_to '/postings'
     end
   	else
   		flash[:error] = "No access"
@@ -56,7 +58,7 @@ class PostingsController < ApplicationController
     @posting = Posting.find(params[:id])
     if (user_signed_in? && current_user.user_id == @posting.user_id && current_user.employer)
       @posting.destroy
-      flash[:success] = "Skill Removed."
+      flash[:success] = "Posting Removed."
     else
       flash[:error] = "No access"
     end
