@@ -1,0 +1,37 @@
+<head>
+</head>
+  <body>
+    <table>
+      <tr>
+        <td style = "width:12em"><p><%= references.fname %></p></td>
+        <td style = "width:12em"><p><%= references.lname %></p></td>
+        <td style = "width:12em"></td>
+        <% if !references.nil? %>
+          <% if references.user_id == @userID %>
+            <td><%= link_to "Edit this Reference", edit_reference_path(references.id), class: "btn btn-small btn-info"%></td>
+            <td><%= link_to "Delete this Reference", references, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %></td>
+            <% end %>
+          <% end %>
+      </tr>
+      <tr>
+        <td style = "width:12em"><p><%= references.relationship %></p></td>
+      </tr>
+      <tr>
+        <% if !references.email.nil? %>
+          <td style = "width:12em"><p><%= references.email %></p></td>
+        <% else %>
+          <td style = "width:12em"></td>
+        <% end %>
+        <% if !references.phone_number.nil? %>
+          <td style = "width:12em"><p><%= number_to_phone(references.phone_number) %></p></td>
+        <% else %>
+          <td style = "width:12em"></td>
+        <% end %>
+        <% if !references.yrsknown.nil? %>
+          <td style = "width:12em"><p>Known for <%= references.yrsknown %> years</p></td>
+        <% else %>
+          <td style = "width:12em"></td>
+        <% end %>
+      </tr>
+    </table>
+ </body>
