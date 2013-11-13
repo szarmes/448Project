@@ -20,12 +20,14 @@ describe ExperiencesController do
         post 'create', :experience => { "title" => "title", "desc" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }
         response.should redirect_to '/experiences'
+        Experience.find_by(:title => "title").should_not be_nil
         flash[:success].should_not be_nil
       end
       it "should not have success flash if unable to save" do
         post 'create', :experience => { "title" => "", "desc" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }
         response.should redirect_to '/experiences'
+         Experience.find_by(:title => "title").should be_nil
         flash[:error].should_not be_nil
       end
     end
@@ -37,12 +39,14 @@ describe ExperiencesController do
         post 'create', :experience => { "title" => "title", "desc" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }
         response.should redirect_to '/'
+        Experience.find_by(:title => "title").should be_nil
         flash[:error].should == "No access"
       end
       it "should have error flash if unable to save" do
         post 'create', :experience => { "title" => "", "desc" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }
         response.should redirect_to '/'
+        Experience.find_by(:title => "title").should be_nil
         flash[:error].should_not be_nil
       end
     end
@@ -55,6 +59,7 @@ describe ExperiencesController do
       end
       it "delete a experience through destroy" do
         post 'destroy', :id => 1
+        Experience.find_by(:id => 1).should be_nil
         response.should redirect_to '/experiences'
         flash[:success].should_not be_nil
       end
@@ -66,6 +71,7 @@ describe ExperiencesController do
       end
       it "should not be able to delete a experience" do
         post 'destroy', :id => 1
+         Experience.find_by(:id => 1).should_not be_nil
         response.should redirect_to '/experiences'
         flash[:error].should == "No access"
       end
@@ -81,12 +87,15 @@ describe ExperiencesController do
         post 'update', :experience => { "title" => "title", "desc" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }, :id => 1
         response.should redirect_to '/experiences'
+        Experience.find_by(:title => "title").should_not be_nil
+        Experience.find_by(:title => "test").should be_nil
         flash[:success].should_not be_nil
       end
       it "should not have success flash if unable to update" do
         post 'update', :experience => { "title" => "", "desc" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }, :id => 1
         response.should redirect_to '/experiences'
+        Experience.find_by(:title => "test").should_not be_nil
         flash[:error].should_not be_nil
       end
     end
@@ -99,12 +108,15 @@ describe ExperiencesController do
         post 'update', :experience => { "title" => "title", "desc" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }, :id => 1
         response.should redirect_to '/experiences'
+        Experience.find_by(:title => "test").should_not be_nil
+        Experience.find_by(:title => "title").should be_nil
         flash[:error].should == "No access"
       end
       it "should have error flash if unable to save" do
         post 'update', :experience => { "title" => "", "desc" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }, :id => 1
         response.should redirect_to '/experiences'
+        Experience.find_by(:title => "test").should_not be_nil
         flash[:error].should_not be_nil
       end
     end

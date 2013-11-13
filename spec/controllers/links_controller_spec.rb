@@ -1,11 +1,12 @@
 require 'spec_helper'
 
-describe ProjectsController do
+describe LinksController do
 
   let(:employee) { create(:user, :employee) }
   let(:employer) { create(:user, :employer) }
-  let(:test) { create(:project) }
-  let(:test1) { create(:experience) }
+  let(:test) { create(:link) }
+  let(:test1) { create(:project) }
+  let(:test2) { create(:experience) }
   
   describe "GET #index" do
     it "renders index projects page" do
@@ -24,18 +25,18 @@ describe ProjectsController do
       before do
         sign_in employee
       end
-      it "should be able to submit a projcet through create" do
-        post 'create', :project => { "name" => "title", "desc" => "content", 
-          "experience_id" => 1, "project_id" => 1 }
-        Project.find_by(:name => "title").should_not be_nil
+      it "should be able to submit a link through create" do
+        post 'create', :link => { "url" => "www.com",
+          "link_id" => 1, "project_id" => 1 }
+        Link.find_by(:url => "www.com").should_not be_nil
         response.should redirect_to '/experiences'
         flash[:success].should_not be_nil
       end
       it "should not have success flash if unable to save" do
-        post 'create', :project => { "" => "test", "desc" => "content", 
-          "experience_id" => 1, "project_id" => 2 }
-        Project.find_by(:name => "title").should be_nil
-        response.should redirect_to '/projects'
+        post 'create', :link => { "url" => "",
+          "link_id" => 1, "project_id" => 1 }
+        Link.find_by(:url => "www.com").should be_nil
+        response.should redirect_to '/links'
         flash[:error].should_not be_nil
       end
     end
@@ -43,17 +44,17 @@ describe ProjectsController do
       before do
         sign_in employer
       end
-      it "should not be able to submit a project through create" do
-        post 'create', :project => { "name" => "title", "desc" => "content", 
-          "experience_id" => 1, "project_id" => 1 }
-        Project.find_by(:name => "title").should be_nil
+      it "should not be able to submit a link through create" do
+        post 'create', :link => { "url" => "www.com",
+          "link_id" => 1, "project_id" => 1 }
+        Link.find_by(:url => "www.com").should be_nil
         response.should redirect_to '/'
         flash[:error].should == "No access"
       end
       it "should have error flash if unable to save" do
-        post 'create', :project => { "name" => "", "desc" => "content", 
-          "experience_id" => 1, "project_id" => 1 }
-        Project.find_by(:name => "title").should be_nil 
+        post 'create', :link => { "url" => "",
+          "link_id" => 1, "project_id" => 1 }
+        Link.find_by(:url => "www.com").should be_nil
         response.should redirect_to '/'
         flash[:error].should_not be_nil
       end
@@ -64,10 +65,11 @@ describe ProjectsController do
         sign_in employee
         test.save
         test1.save
+        test2.save
       end
-      it "delete a project through destroy" do
+      it "delete a link through destroy" do
         post 'destroy', :id => 1
-        Project.find_by(:id => 1).should be_nil
+        Link.find_by(:url => "test url").should be_nil
         response.should redirect_to '/projects'
         flash[:success].should_not be_nil
       end
@@ -77,10 +79,11 @@ describe ProjectsController do
         sign_in employer
         test.save
         test1.save
+        test2.save
       end
-      it "should not be able to delete a project" do
+      it "should not be able to delete a link" do
         post 'destroy', :id => 1
-        Project.find_by(:id => 1).should_not be_nil
+        Link.find_by(:url => "test url").should_not be_nil
         response.should redirect_to '/projects'
         flash[:error].should == "No access"
       end
@@ -92,18 +95,20 @@ describe ProjectsController do
         sign_in employee
         test.save
         test1.save
+        test2.save
       end
-      it "should be able to update a project through edit" do
-       post 'update', :project => { "name" => "title", "desc" => "content", 
-          "experience_id" => 1, "project_id" => 1 }, :id => 1
-        Project.find_by(:name => "title").should_not be_nil
+      it "should be able to update a link through edit" do
+       post 'update', :link => { "url" => "www.com",
+          "link_id" => 1, "project_id" => 1 }, :id => 1
+        Link.find_by(:url => "www.com").should_not be_nil
+        Link.find_by(:url => "test url").should be_nil
         response.should redirect_to '/projects'
         flash[:success].should_not be_nil
       end
       it "should not have success flash if unable to update" do
-        post 'update', :project => { "name" => "", "desc" => "content", 
-          "experience_id" => 1, "project_id" => 0 }, :id => 1
-        Project.find_by(:name => "title").should be_nil
+        post 'update', :link => { "url" => "",
+          "link_id" => 1, "project_id" => 1 }, :id => 1
+        Link.find_by(:url => "test url").should_not be_nil
         response.should redirect_to '/projects'
         flash[:error].should_not be_nil
       end
@@ -113,18 +118,19 @@ describe ProjectsController do
         sign_in employer
         test.save
         test1.save
+        test2.save
       end
-      it "should not be able to update a project through edit" do
-         post 'update', :project => { "name" => "title", "desc" => "content", 
-          "experience_id" => 1, "project_id" => 1 }, :id => 1
-        Project.find_by(:name => "title").should be_nil
+      it "should not be able to update a link through edit" do
+         post 'update', :link => { "url" => "www.com",
+          "link_id" => 1, "project_id" => 1 }, :id => 1
+        Link.find_by(:url => "test url").should_not be_nil
         response.should redirect_to '/projects'
         flash[:error].should == "No access"
       end
       it "should have error flash if unable to save" do
-        post 'update', :project => { "name" => "", "desc" => "content", 
-          "experience_id" => 1, "project_id" => 1 }, :id => 1
-        Project.find_by(:name => "test Name").should_not be_nil
+        post 'update', :link => { "url" => "",
+          "link_id" => 1, "project_id" => 1 }, :id => 1
+        Link.find_by(:url => "test url").should_not be_nil
         response.should redirect_to '/projects'
         flash[:error].should_not be_nil
       end
