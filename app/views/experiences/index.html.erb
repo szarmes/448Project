@@ -66,8 +66,7 @@
  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 
 <% end %>
-
-<h1>All Experiences</h1>
   <% if !@experiences.nil? %>
+    <h1>All Experiences</h1>
     <%= render partial: 'shared/experiences', collection: @experiences %>
   <% end %>

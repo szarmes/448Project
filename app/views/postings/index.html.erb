@@ -27,7 +27,7 @@
 
 <% end %>
 
-<h1>All Postings</h1>
   <% if !@postings.nil? %>
+    <h1>All Postings</h1>
     <%= render partial: 'shared/postings', collection: @postings %>
   <% end %>

@@ -1,0 +1,38 @@
+<h1> Edit this Requirement</h1>
+
+<%= simple_form_for @requirement, :html => { :method => :put} do |f| %>
+
+  <p> Fields marked with * are required </p>
+  
+  <div>
+  <%= f.input :mandatory, collection: [['Mandatory', true], ['Optional',false]], :default => @requirement.mandatory, label: "This requirement is... *"%>
+  </div>  
+  <div>
+    <%= f.label "Description *" %>
+    <%= f.text_area :desc, :autofocus => true, :default => @requirement.desc %>
+  </div>
+
+  <div>
+    <%= f.label "Degree" %>
+    <%= f.text_area :degree, :autofocus => true, :default => @requirement.degree %>
+  </div>
+
+  <div>
+    <%= f.label "Education level" %>
+    <%= f.text_area :educationLvl, :autofocus => true, :default => @requirement.educationLvl %>
+  </div>
+
+  <div>
+    <%= f.label "Experience field" %>
+    <%= f.text_area :exp_area, :autofocus => true, :default => @requirement.exp_area %>
+  </div>
+
+  <div>
+    <%= f.label "Years of Experience" %>
+    <%= f.input :exp, :autofocus => true, :default => @requirement.exp %>
+  </div>
+
+
+ <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+
+<% end %>

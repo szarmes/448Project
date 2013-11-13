@@ -1,0 +1,51 @@
+<head>
+</head>
+<body>
+  <table>
+    <tr>
+ 		  <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+      <td style = "max-width:12em">
+        <p>
+          <% if  requirements.mandatory %>
+            Mandatory
+          <% else %>
+            Optional
+          <% end %>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+      <td style = "max-width:12em"><p><%= requirements.desc %></p></td>
+      <td style = "width:12em"></td>
+        <td><%= link_to "Edit this Requirement", edit_requirement_path(requirements.id), class: "btn btn-small btn-info"%></td>
+        <td><%= link_to "Delete this Requirement", requirements, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %></td>
+    </tr>
+    <tr>
+      <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+      <td style = "max-width:12em">
+        <% if !requirements.degree.nil? %>
+        <p>Degree: <%= requirements.degree %></p>
+        <% end %>
+      </td>
+      <td style = "max-width:12em">
+        <% if !requirements.educationLvl.nil? %>
+        <p>Education Level: <%= requirements.educationLvl %></p>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+      <td style = "max-width:12em">
+        <% if !requirements.exp_area.nil? %>
+          <p><%= requirements.exp_area %></p>
+        <% end %>
+      </td>
+      <td style = "max-width:12em">
+        <% if !requirements.exp.nil? %>
+          <p>Years of Experience: <%= requirements.exp %></p>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+<body>

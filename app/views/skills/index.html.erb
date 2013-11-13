@@ -16,7 +16,7 @@
  <%= f.submit "Submit",:label => "Submit", class: "btn btn-large btn-primary" %>
 
 <% end %>
-<h1>All Skills</h1>
 	<% if !@skills.nil? %>
+    <h1>All Skills</h1>
 		<%= render partial: 'shared/skills', collection: @skills %>
 	<% end %>

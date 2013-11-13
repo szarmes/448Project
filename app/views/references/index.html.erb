@@ -34,8 +34,7 @@
  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 
 <% end %>
-
-<h1>All References</h1>
   <% if !@references.nil? %>
+    <h1>All References</h1>
     <%= render partial: 'shared/references', collection: @references %>
   <% end %>

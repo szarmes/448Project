@@ -11,6 +11,7 @@ First_Website::Application.routes.draw do
   resources :postings
   resources :projects
   resources :links
+  resources :requirements
    # get 'signin' => 'devise/sessions#new', :as => :new_user_session
    # post 'signin' => 'devise/sessions#create', :as => :user_session
    # delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
