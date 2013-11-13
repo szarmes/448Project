@@ -19,23 +19,23 @@ describe ProjectsController do
     end
   end
   describe "POST #create" do
-    #describe "employee signed in" do
-      #before do
-        #sign_in employee
-      #end
-      #it "should be able to submit a projcet through create" do
-      #  post 'create', :project => { "name" => "title", "desc" => "content", 
-      #    "experience_id" => 1, "project_id" => 1 }
-      #  response.should redirect_to '/'
-      #  flash[:success].should_not be_nil
-      #end
-      #it "should not have success flash if unable to save" do
-      #  post 'create', :project => { "" => "test", "desc" => "content", 
-      #    "experience_id" => 1, "project_id" => 2 }
-      #  response.should redirect_to '/'
-      #  flash[:error].should_not be_nil
-      #end
-    #end
+    describe "employee signed in" do
+      before do
+        sign_in employee
+      end
+      it "should be able to submit a projcet through create" do
+        post 'create', :project => { "name" => "title", "desc" => "content", 
+          "experience_id" => 1, "project_id" => 1 }
+        response.should redirect_to '/experiences'
+        flash[:success].should_not be_nil
+      end
+      it "should not have success flash if unable to save" do
+        post 'create', :project => { "" => "test", "desc" => "content", 
+          "experience_id" => 1, "project_id" => 2 }
+        response.should redirect_to '/projects'
+        flash[:error].should_not be_nil
+      end
+    end
     describe "employer signed in" do
       before do
         sign_in employer

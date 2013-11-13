@@ -30,6 +30,40 @@ class PostingsController < ApplicationController
   	
   end
 
+  def update
+    @posting = Posting.find(params[:id])
+    if (user_signed_in? && current_user.user_id == @posting.user_id && current_user.employer)
+      if @posting.update_attributes(posting_params)
+        @posting.save
+        flash[:success] = "Changes saved"
+        redirect_to '/postings'         
+      else
+        flash[:error] = "Changes not saved."
+        redirect_to '/postings'                       
+      end
+    else
+      flash[:error] = "No access"
+      redirect_to '/postings'  
+    end
+  end
+
+  def edit
+    @posting = Posting.find(params[:id])
+    @user = current_user
+  end
+
+  def destroy
+    @posting = Posting.find(params[:id])
+    if (user_signed_in? && current_user.user_id == @posting.user_id && current_user.employer)
+      @posting.destroy
+      flash[:success] = "Skill Removed."
+    else
+      flash[:error] = "No access"
+    end
+    redirect_to '/postings'
+
+  end
+
   private
     
     def posting_params

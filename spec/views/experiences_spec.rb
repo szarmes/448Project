@@ -5,7 +5,7 @@ describe "experiences view"do
 
 
 	let(:user) { create_logged_in_user }
-	let(:exp) {FactoryGirl.create(:experience)}
+	let(:exp)  { FactoryGirl.create(:experience) }
 	
 	describe "experiences form test" do
 		
@@ -58,13 +58,11 @@ describe "experiences view"do
 		
 	end
 
-=begin
+
 	describe "experiences partial test" do
 
 		before do
-
-			render_views
-
+			render :partial => "shared/experiences.html.erb", :locals => {:experiences => exp}
 		end
 		it "should have exp Title" do 
 			visit experiences_path(user)
@@ -80,11 +78,11 @@ describe "experiences view"do
 		end
 			it "should have exp Starting Date *" do 
 			visit experiences_path(user)
-			expect(page).to have_content('2013-02-27 14:14:22 +0200')
+			expect(page).to have_content
 		end
 		it "should have exp Finish Date" do 
 			visit experiences_path(user)
-			expect(page).to have_content('2012-02-27 14:14:22 +0200')
+			expect(page).to have_content
 		end
 			it "should have exp Company Address" do 
 			visit experiences_path(user)
@@ -110,8 +108,5 @@ describe "experiences view"do
 			visit experiences_path(user)
 			expect(page).to have_content('test8')
 		end
-		
 	end
-=end
-
 end

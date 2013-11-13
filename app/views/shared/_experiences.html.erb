@@ -26,6 +26,9 @@
         <% end %>
       </tr>
       <tr>
+        <% if !experiences.company_country.nil? %>
+          <td style = "max-width:12em"><p><%= experiences.company_country %></p></td>
+        <% end %>
         <% if !experiences.company_city.nil? %>
           <td style = "max-width:12em"><p><%= experiences.company_city %></p></td>
         <% end %>
