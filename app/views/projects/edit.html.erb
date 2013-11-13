@@ -1,0 +1,17 @@
+<h1> Edit Project</h1>
+
+<%= simple_form_for @project, :html => { :method => :put} do |f| %>
+
+  <p> Fields marked with * are required </p>
+  
+  <div><%= f.label "Title of Project*" %> 
+  <%= f.text_field :name, :default => @project.name %></div>
+
+  <div>
+  	<%= f.label "Description *" %>
+    <%= f.text_area :desc, :default => @project.desc %>
+  </div>
+  
+ <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+
+<% end %>

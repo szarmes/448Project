@@ -49,7 +49,7 @@
     <% @projects = Project.where(:experience_id => experiences.experience_id).paginate(page: params[:page]) %>
 
     <% if !@projects.nil? %>
-    <p> Projects for this experience</p>
+    <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Projects for this experience</p>
     <%= render partial: 'shared/projects', collection: @projects %>
   <% end %>
  </body>

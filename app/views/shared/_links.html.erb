@@ -1,0 +1,14 @@
+<head>
+</head>
+  <body>
+    <table>
+      <tr>
+ 		<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+        <td style = "max-width:12em"><p><%= links.url %></p></td>
+        <tr></tr>
+        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+        <td><%= link_to "Edit this Link", edit_link_path(links.id), class: "btn btn-small btn-info"%></td>
+        <td><%= link_to "Delete this Link", links, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %></td>
+       
+    </table>
+ </body>

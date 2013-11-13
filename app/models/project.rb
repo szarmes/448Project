@@ -7,5 +7,14 @@ class Project < ActiveRecord::Base
     
 
     validates :name, :project_id, :experience_id, presence: true
+
+    private
+    def do_setID
+      
+      newID = self.id
+      self.update_attributes(:project_id => newID)
+
+
+    end
   
 end

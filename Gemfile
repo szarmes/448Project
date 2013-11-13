@@ -11,6 +11,8 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'paperclip'
 gem 'devise'
 gem 'simple_form'
+gem 'twitter-bootstrap-rails'
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

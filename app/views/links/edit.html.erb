@@ -1,0 +1,12 @@
+<h1>Edit Link</h1>
+
+<%= simple_form_for @link, :html => { :method => :put} do |f| %>
+
+  <p> Fields marked with * are required </p>
+  
+  <div><%= f.label "URL *" %> 
+  <%= f.text_field :url, :default => @link.url %></div>
+  
+ <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+
+<% end %>

@@ -3,9 +3,22 @@
   <body>
     <table>
       <tr>
+ 		<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
         <td style = "max-width:12em"><p>Name: <%= projects.name %></p></td>
         <tr></tr>
+        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
         <td style = "max-width:12em"><p>Description: <%= projects.desc %></p></td>
+
+         <td><%= link_to "Edit this Project", edit_project_path(projects.id), class: "btn btn-small btn-info"%></td>
+        <td><%= link_to "Delete this Project", projects, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %></td>
+        <td><%= link_to "Add a Link", links_path(:projID => projects.project_id), class: "btn btn-small btn-primary" %></td>
        
     </table>
+
+    <% @links = Link.where(:project_id => projects.project_id).paginate(page: params[:page]) %>
+
+    <% if !@links.nil? %>
+    <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Links for this Project</p>
+    <%= render partial: 'shared/links', collection: @links %>
+    <% end %>
  </body>
