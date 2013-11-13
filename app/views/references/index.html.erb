@@ -8,17 +8,17 @@
   <%= f.text_field :fname, :autofocus => true %></div>
 
   <div>
-  	<%= f.label "Last Name *" %>
+    <%= f.label "Last Name *" %>
     <%= f.text_field :lname, :autofocus => true %>
   </div>
 
   <div>
-  	<%= f.label "Relationship *" %>
+    <%= f.label "Relationship *" %>
     <%= f.text_field :relationship, :autofocus => true %>
   </div>
 
   <div>
-  	<%= f.label "Email" %>
+    <%= f.label "Email" %>
     <%= f.email_field :email, :autofocus => true %>
   </div>
   <div>
@@ -34,3 +34,8 @@
  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 
 <% end %>
+
+<h1>All References</h1>
+  <% if !@references.nil? %>
+    <%= render partial: 'shared/references', collection: @references %>
+  <% end %>
