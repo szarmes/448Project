@@ -1,0 +1,14 @@
+<head>
+</head>
+  <body>
+    <table>
+      <tr>
+ 		<td></td>
+ 		<% if profilelinks.is_image == true %>
+        <td style = "max-width:12em"><p> <%= image_tag(profilelinks.url) %></p></td>
+        <% else %>
+        <td style = "max-width:12em"><p><a href = <%=profilelinks.url%> target = "_blank" ><%=profilelinks.url%></a></p></td>
+        <% end %>
+      </tr>
+    </table>
+ </body>

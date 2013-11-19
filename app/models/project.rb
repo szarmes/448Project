@@ -8,6 +8,7 @@ class Project < ActiveRecord::Base
 
     validates :name, :project_id, :experience_id, presence: true
 
+    after_create :do_setID
     private
     def do_setID
       

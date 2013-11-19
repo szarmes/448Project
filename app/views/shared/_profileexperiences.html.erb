@@ -1,0 +1,31 @@
+<head>
+</head>
+  <body>
+    <table>
+      <tr>
+        <td ><p style ="font-weight:bold;font-size:24px"><%= link_to profileexperiences.title, experience_path(profileexperiences), :style => "color:black;" %></p></td>
+      </tr>
+      <tr>
+        <td>
+        <table>
+          <tr>
+        <td style = "max-width:12em"><p><%= profileexperiences.company_name %></p></td><tr><tr>
+         <td style = "max-width:12em"><p><%= profileexperiences.sdate.strftime("%b-%d-%Y") %> &nbsp-&nbsp </p></td>
+         <% if !profileexperiences.fdate.nil? %>
+          <td style = "max-width:12em"><p><%= profileexperiences.fdate.strftime("%b-%d-%Y") %></p></td>
+          <% else %>
+          <td style = "max-width:12em"><p>present</p></td>
+        <% end %>
+      </tr>
+    </table>
+  </td>
+      </tr>
+    </table>
+
+    <% @projects = Project.where(:experience_id => profileexperiences.experience_id).paginate(page: params[:page]) %>
+
+    <% if !@projects.empty? %>
+    <p style = "font-weight:bold;">Projects linked to this experience</p>
+    <%= render partial: 'shared/profileprojects', collection: @projects %>
+    <% end %>
+ </body>

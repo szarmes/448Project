@@ -1,0 +1,43 @@
+<% if  @owner.employer?%>
+    <h1> <%=@owner.company_name %></h1>
+    <% if !@postings.nil? %>
+        <p style ="font-weight:bold; font-size:32px;">Postings</p>
+        <%= render partial: 'shared/profilepostings', collection: @postings %>
+    <% end %>
+
+
+<% else %>
+
+<h1> <%=@owner.fname %> <%=@owner.lname %> </h1>
+
+<table style = "width: 100%;">
+	<tr>
+		<td style = "width:65%; vertical-align:top; ">
+			<% if !@experiences.nil? %>
+				<p style ="font-weight:bold; font-size:32px;">
+          		Experience</p>
+    		<%= render partial: 'shared/profileexperiences', collection: @experiences %>
+    		<% end %>
+    	</td>
+    	<td style = "width:35%; vertical-align:top;">
+    		<% if !@skills.nil? %>
+				<p style ="font-weight:bold; font-size:32px;">
+          		Skills</p>
+    		<%= render partial: 'shared/profileskills', collection: @skills %>
+    		<% end %>
+
+
+    	</td>
+    </tr>
+    <tr>
+        <td style = "vertical-align:top; ">
+            <% if !@references.nil? %>
+                <p style ="font-weight:bold; font-size:32px;">
+                References</p>
+            <%= render partial: 'shared/profilereferences', collection: @references %>
+            <% end %>
+        </td>
+    </tr>
+</table>
+
+<% end %>

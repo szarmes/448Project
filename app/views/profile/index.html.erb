@@ -1,0 +1,5 @@
+<h1> <%=@owner.fname %> <%=@owner.lname %> </h1>
+
+<% if !@experiences.nil? %>
+    <%= render partial: 'shared/profileexperiences', collection: @experiences %>
+<% end %>

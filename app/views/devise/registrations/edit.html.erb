@@ -83,7 +83,32 @@
     <%= f.input :employer, collection: [['Looking for work', false], ['Looking to hire',true]], :default => 1, label: "I am" , :input_html => {id: "employer_select",  onchange: "myFunction()"} %>
   </div></div>
 
-
+  <%if @user.employer?%>
+  <div id= 'employee_form', style = "display: none">
+    <div class="row">
+      <div class="rform1"><%= f.label "Goals" %><br />
+        <%= f.text_field :goals, :autofocus => true %>
+      </div>
+    </div>
+  </div>
+  <div id= 'employer_form'>
+    <div class="row">
+      <div class="rform1"><%= f.label "Company Name" %><br />
+        <%= f.text_field :company_name, :autofocus => true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="rform1"><%= f.label "Company Address" %><br />
+        <%= f.text_field :company_address, :autofocus => true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="rform1"><%= f.label "Field" %><br />
+        <%= f.text_field :field, :autofocus => true %>
+      </div>
+    </div>
+  </div>
+  <%else%>
   <div id= 'employee_form'>
     <div class="row">
       <div class="rform1"><%= f.label "Goals" %><br />
@@ -108,6 +133,7 @@
       </div>
     </div>
   </div>
+  <%end%>
 
 
   <div class="row">

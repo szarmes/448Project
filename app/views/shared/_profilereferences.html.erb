@@ -1,0 +1,38 @@
+<head>
+</head>
+  <body>
+    <table>
+      <tr>
+        <table>
+          <tr>
+            <td><p><%= profilereferences.fname %></p></td>
+            <td><p><%= profilereferences.lname %></p></td>
+          </tr>
+        </table>
+      </tr>
+      <tr>
+        <td style = "max-width:12em"><p><%= profilereferences.relationship %></p></td>
+      </tr>
+      <tr>
+        <% if !profilereferences.email.nil? %>
+          <td style = "max-width:12em"><p><%= profilereferences.email %></p></td>
+        <% else %>
+          <td style = "max-width:12em"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <% if !profilereferences.phone_number.nil? %>
+          <td style = "max-width:12em"><p><%= number_to_phone(profilereferences.phone_number) %></p></td>
+        <% else %>
+          <td style = "max-width:12em"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <% if !profilereferences.yrsknown.nil? %>
+          <td style = "max-width:12em"><p>Known for <%= profilereferences.yrsknown %> years</p></td>
+        <% else %>
+          <td style = "max-width:12em"></td>
+        <% end %>
+      </tr>
+    </table>
+ </body>
