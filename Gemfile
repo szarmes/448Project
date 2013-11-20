@@ -11,9 +11,9 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'paperclip'
 gem 'devise'
 gem 'simple_form'
-gem 'twitter-bootstrap-rails'
-gem "less-rails"
-gem "therubyracer"
+#gem 'twitter-bootstrap-rails'
+#gem "less-rails"
+#gem "therubyracer"
 
 
 group :development, :test do
