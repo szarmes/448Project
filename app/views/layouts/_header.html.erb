@@ -1,13 +1,13 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "Chewink", root_path, id: "logo" %>
+      <%= link_to "JobCannon", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
              <li style = "margin-bottom:0px;">
                 <%= form_tag("/search", method: "get") do %>
                 
-                <div style = "height:10px; padding-top: 6px;" ><%= text_field_tag(:q)%> </div></li>
+                <div style = "width:150px;height:10px; padding-top: 6px;" ><%= text_field_tag(:q)%> </div></li>
             <li>
                 <div style = "height:10px; padding-top: 3px;" >
                     <%= submit_tag("Search",class: "btn btn-small btn-primary") %> </div>
