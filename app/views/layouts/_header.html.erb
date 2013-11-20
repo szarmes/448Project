@@ -4,7 +4,18 @@
       <%= link_to "Chewink", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
+             <li style = "margin-bottom:0px;">
+                <%= form_tag("/search", method: "get") do %>
+                
+                <div style = "height:10px; padding-top: 6px;" ><%= text_field_tag(:q)%> </div></li>
+            <li>
+                <div style = "height:10px; padding-top: 3px;" >
+                    <%= submit_tag("Search",class: "btn btn-small btn-primary") %> </div>
+            <% end %>
+             
+            </li>
         	<% if user_signed_in? %>
+                <li> <%= link_to "Profile", profile_path(@user), id: "brand" %> </li>
         	  <% if @user.employer? %>
         	    <li> <%= link_to "Postings", postings_path, id: "brand" %> </li>
         	    <li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand" %> </li>

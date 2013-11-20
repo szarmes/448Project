@@ -1,3 +1,17 @@
-<h1> <%= @posting.label %> </h1>
-        
-    <h2><%= @posting.title %> </h2>
+<head>
+</head>
+  <body>
+    <table>
+      <tr>
+        <td style = "width:12em;font-weight:bold;font-size:24px"><p><%= @posting.title %></p></td>
+      </tr>
+      <tr>
+        <td style = "max-width:12em"><p><%= @posting.desc %></p></td>
+      </tr>
+      <tr>
+        <% if !@posting.salary.nil? %>
+          <td style = "max-width:12em"><p><%= number_to_currency(@posting.salary) %></p></td>
+        <% end %>
+      </tr>
+    </table>
+ </body>

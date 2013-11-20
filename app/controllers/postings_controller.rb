@@ -8,6 +8,8 @@ class PostingsController < ApplicationController
   end
 
   def show
+    @posting = Posting.find(params[:id])
+    @user = current_user
 
   end
 

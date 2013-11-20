@@ -13,6 +13,8 @@ First_Website::Application.routes.draw do
   resources :links
   resources :requirements
   resources :profile
+
+  match '/search', to: 'search#search', via: 'get'
    # get 'signin' => 'devise/sessions#new', :as => :new_user_session
    # post 'signin' => 'devise/sessions#create', :as => :user_session
    # delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session

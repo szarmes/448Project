@@ -1,0 +1,21 @@
+
+<table>
+	<tr style = "vertical-align:center;">
+		<td>
+			<p style = "font-size:24px;"> 
+			<%= link_to results.title, posting_path(results), :style => "color:black;" %>
+			</p>
+		</td>
+		<td style = "width:50px;"></td>
+		<td>
+			<% @poster = User.find_by(user_id: results.user_id) %>
+			<p style = "font-size:16px; display:inline;vertical-align:center;"> by </p>
+		</td>
+		<td style = "width:50px;"></td>
+		<td>
+			<p style = "font-size:24px;display:inline;vertical-align:center;"> 
+			<%= link_to @poster.company_name, profile_path(@poster), :style => "color:black;" %>
+			</p>
+		</td>
+	</tr>
+</table>
