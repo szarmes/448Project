@@ -1,5 +1,9 @@
 <% if  @owner.employer?%>
     <h1> <%=@owner.company_name %></h1>
+    <% if !@owner.company_address.nil? %>
+        <h2> <%=@owner.company_address %></h2>
+    <% end %>
+
     <% if !@postings.nil? %>
         <p style ="font-weight:bold; font-size:32px;">Postings</p>
         <%= render partial: 'shared/profilepostings', collection: @postings %>
