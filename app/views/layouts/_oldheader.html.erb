@@ -1,0 +1,38 @@
+<!--<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "Jobcannon", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+             <li style = "margin-bottom:0px;">
+                <%= form_tag("/search", method: "get") do %>
+                
+                <div style = "height:10px; padding-top: 6px;" ><%= text_field_tag(:q)%> </div></li>
+            <li>
+                <div style = "height:10px; padding-top: 3px;" >
+                    <%= submit_tag("Search",class: "btn btn-small btn-primary") %> </div>
+            <% end %>
+             
+            </li>
+        	<% if user_signed_in? %>
+                <li> <%= link_to "Profile", profile_path(@user), id: "brand" %> </li>
+        	  <% if @user.employer? %>
+        	    <li> <%= link_to "Postings", postings_path, id: "brand" %> </li>
+        	    <li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand" %> </li>
+        	    <li> <%= link_to'Sign Out', destroy_user_session_path, :method => :delete, id:"brand" %>  </li> 
+        	  <% else %>
+        	  	<li> <%= link_to "Skills", skills_path, id: "brand" %> </li>
+        	  	<li> <%= link_to "Experiences", experiences_path, id: "brand" %> </li>
+        	  	<li> <%= link_to "References", references_path, id: "brand" %> </li>
+        	  	<li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand" %> </li>
+        	    <li><%= link_to'Sign Out', destroy_user_session_path, :method => :delete, id:"brand" %>  </li> 
+        	  <% end %>
+        	<% else %>
+        		<li><%= link_to "Sign In", new_user_session_path, id: "brand" %></li>
+        		<li><%= link_to "Sign Up", new_user_registration_path, id: "brand" %></li>
+        	<% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header> -->

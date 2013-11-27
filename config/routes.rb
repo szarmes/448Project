@@ -1,5 +1,7 @@
 First_Website::Application.routes.draw do
-  devise_for :users
+  resources :authentications
+
+  devise_for :users, :controllers => { :registrations => 'registrations' }
  
   #devise_scope :user do 
 
@@ -13,8 +15,12 @@ First_Website::Application.routes.draw do
   resources :links
   resources :requirements
   resources :profile
-
+  
   match '/search', to: 'search#search', via: 'get'
+    
+  match '/auth/:provider/callback', to: 'authentications#create', via: 'get'
+  resources :authentications
+
    # get 'signin' => 'devise/sessions#new', :as => :new_user_session
    # post 'signin' => 'devise/sessions#create', :as => :user_session
    # delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session

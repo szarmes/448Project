@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   after_create :do_setID
 
+   has_many :authentications, dependent: :destroy
+
   
 
   # Include default devise modules. Others available are:
@@ -28,6 +30,14 @@ class User < ActiveRecord::Base
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: true }
 
+  def apply_omniauth(omniauth)
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+  end
+
+  def password_required?
+    (authentications.empty? || !password.blank?) && super
+  end
+
 
   private
     def do_setID
@@ -37,5 +47,6 @@ class User < ActiveRecord::Base
 
 
     end
+
  
 end

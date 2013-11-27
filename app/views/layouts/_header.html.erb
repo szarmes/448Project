@@ -1,38 +1,51 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to "Jobcannon", root_path, id: "logo" %>
-      <nav>
-        <ul class="nav pull-right">
-             <li style = "margin-bottom:0px;">
-                <%= form_tag("/search", method: "get") do %>
-                
-                <div style = "height:10px; padding-top: 6px;" ><%= text_field_tag(:q)%> </div></li>
-            <li>
-                <div style = "height:10px; padding-top: 3px;" >
-                    <%= submit_tag("Search",class: "btn btn-small btn-primary") %> </div>
-            <% end %>
-             
-            </li>
-        	<% if user_signed_in? %>
-                <li> <%= link_to "Profile", profile_path(@user), id: "brand" %> </li>
-        	  <% if @user.employer? %>
-        	    <li> <%= link_to "Postings", postings_path, id: "brand" %> </li>
-        	    <li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand" %> </li>
-        	    <li> <%= link_to'Sign Out', destroy_user_session_path, :method => :delete, id:"brand" %>  </li> 
-        	  <% else %>
-        	  	<li> <%= link_to "Skills", skills_path, id: "brand" %> </li>
-        	  	<li> <%= link_to "Experiences", experiences_path, id: "brand" %> </li>
-        	  	<li> <%= link_to "References", references_path, id: "brand" %> </li>
-        	  	<li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand" %> </li>
-        	    <li><%= link_to'Sign Out', destroy_user_session_path, :method => :delete, id:"brand" %>  </li> 
-        	  <% end %>
-        	<% else %>
-        		<li><%= link_to "Sign In", new_user_session_path, id: "brand" %></li>
-        		<li><%= link_to "Sign Up", new_user_registration_path, id: "brand" %></li>
-        	<% end %>
-        </ul>
-      </nav>
-    </div>
+<nav class="navbar navbar-default" role="navigation" >
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header" style = "background-color:black;">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
   </div>
-</header>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style = "background-color:black;">
+    <ul class="nav pull-left">
+        <li><%= link_to "Jobcannon", root_path, id: "logo",  style:"text-shadow:none;" %></li>
+    </ul>
+    <ul class="nav pull-right">
+            <li style = "margin-bottom:0px;">
+                <%= form_tag("/search", method: "get") do %>
+                <div style = "height:10px; padding-top: 6px;" >
+                    <%= text_field_tag(:q)%> 
+                </div>
+            </li>
+            <li>
+                <div style = "height:10px; padding-top: 0px;" >
+                    <%= submit_tag("Search",class: "btn btn-small btn-primary") %> 
+                    <% end %>
+                </div>
+            </li>
+            <% if user_signed_in? %>
+                <li> <%= link_to "Profile", profile_path(@user), id: "brand",  style:"text-shadow:none;" %> </li>
+              <% if @user.employer? %>
+                <li> <%= link_to "Postings", postings_path, id: "brand",  style:"text-shadow:none;" %> </li>
+                <li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand",  style:"text-shadow:none;" %> </li>
+                <li> <%= link_to'Sign Out', destroy_user_session_path, :method => :delete, id:"brand" %>  </li> 
+              <% else %>
+                <li> <%= link_to "Skills", skills_path, id: "brand",  style:"text-shadow:none;" %> </li>
+                <li> <%= link_to "Experiences", experiences_path, id: "brand",  style:"text-shadow:none;" %> </li>
+                <li> <%= link_to "References", references_path, id: "brand",  style:"text-shadow:none;" %> </li>
+                <li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand",  style:"text-shadow:none;" %> </li>
+                <li><%= link_to'Sign Out', destroy_user_session_path, :method => :delete, id:"brand" %>  </li> 
+              <% end %>
+            <% else %>
+                <li><%= link_to "Sign In", new_user_session_path, id: "brand",  style:"text-shadow:none;"%></li>
+                <li><%= link_to "Sign Up", new_user_registration_path, id: "brand",  style:"text-shadow:none;" %></li>
+            <% end %>
+        </ul>
+   
+  </div><!-- /.navbar-collapse -->
+</nav>
+

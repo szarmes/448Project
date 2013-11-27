@@ -15,6 +15,11 @@ ul.hmenu li {
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$grayLight: #eaeaea;
+$gray: grey;
+$grayDarker: grey;
+$grayLighter: grey;
+$blue: blue;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -29,7 +34,7 @@ html {
 }
 
 body {
-  padding-top: 60px;
+  
 }
 
 section {
@@ -170,6 +175,12 @@ body.portfolio{
 
 /* header */
 
+#testnav{
+  
+  background-color:black;
+  width:100%;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -188,7 +199,7 @@ body.portfolio{
 #brand {
   color: #FFFFFF;
   &:hover {
-    color: white;
+    color: #54B5D6;
     text-decoration: none;
   }
 }
