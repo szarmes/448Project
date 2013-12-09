@@ -109,6 +109,10 @@
     </div>
   </div>
 
+  <%= f.hidden_field :uid, :value => params[:uid] if !params[:uid].nil? %>
+
+  <%= f.hidden_field :provider, :value => params[:provider] if !params[:provider].nil?  %>
+
 
   <div class="row">
   <div class="rformsubmit"><%= f.submit "Sign up", class: "btn btn-medium btn-primary" %></div></div>

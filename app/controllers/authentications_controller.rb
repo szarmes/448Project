@@ -64,7 +64,7 @@ def create
     else
       session[:omniauth] = omniauth.except('extra')
       redirect_to new_user_registration_url(:fname => omniauth.info.first_name, :lname =>  omniauth.info.last_name,
-        :email => omniauth.info.email)
+        :email => omniauth.info.email, :uid => omniauth['uid'], :provider =>omniauth['provider'])
     end
   end
 end
