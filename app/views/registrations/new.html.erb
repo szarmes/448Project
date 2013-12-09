@@ -23,16 +23,16 @@
 <h2>Sign up</h2>
 
 <%= simple_form_for(@user, :url => { :action => "create" }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= devise_error_messages! if request.original_url=='http://localhost:3000/users' %>
 
   <p> Fields marked with * are required </p>
   <div class="row">
   <div class="rform"><%= f.label "Email *" %><br />
-  <%= f.email_field :email, :autofocus => true %></div></div>
+  <%= f.email_field :email, :value => params[:email] %></div></div>
 
   <div class="row">
   <div class="rform"><%= f.label "Username *" %><br />
-  <%= f.text_field :username, :autofocus => true %></div></div>
+  <%= f.text_field :username %></div></div>
 
   <% if @user.password_required? %>
   <div class="row">
@@ -46,25 +46,25 @@
 
   <div class="row">
   <div class="rform1"><%= f.label "First Name *" %><br />
-  <%= f.text_field :fname, :autofocus => true %></div>
+  <%= f.text_field :fname, :value => params[:fname] %></div>
 
   <div class="rform1"><%= f.label "Last Name *" %><br />
-  <%= f.text_field :lname, :autofocus => true %></div>
+  <%= f.text_field :lname, :value => params[:lname] %></div>
   </div>
 
   <div class="row">
   <div class="rform1"><%= f.label "Phone Number" %><br />
-  <%= f.phone_field :phone_number, :autofocus => true %></div></div>
+  <%= f.phone_field :phone_number %></div></div>
 
   <div class="row">
   <div class="rform1"><%= f.label "City" %><br />
-  <%= f.text_field :city, :autofocus => true %></div>
+  <%= f.text_field :city %></div>
 
   <div class="rform1"><%= f.label "State/ province" %><br />
-  <%= f.text_field :province, :autofocus => true %></div>
+  <%= f.text_field :province %></div>
 
   <div class="rform1"><%= f.label "Country" %><br />
-  <%= f.text_field :country, :autofocus => true %></div></div>
+  <%= f.text_field :country %></div></div>
 
   <div class="row">
   <div class="rform1">
@@ -73,7 +73,7 @@
 
   <div class="row">
   <div class="rform1"><%= f.label "Birthday" %><br />
-  <%= f.date_field :birthday, :autofocus => true %></div></div>
+  <%= f.date_field :birthday %></div></div>
 
  
 
@@ -87,24 +87,24 @@
   <div id= 'employee_form'>
     <div class="row">
       <div class="rform1"><%= f.label "Goals" %><br />
-        <%= f.text_field :goals, :autofocus => true %>
+        <%= f.text_field :goals %>
       </div>
     </div>
   </div>
   <div id= 'employer_form', style = "display: none">
     <div class="row">
       <div class="rform1"><%= f.label "Company Name" %><br />
-        <%= f.text_field :company_name, :autofocus => true %>
+        <%= f.text_field :company_name %>
       </div>
     </div>
     <div class="row">
       <div class="rform1"><%= f.label "Company Address" %><br />
-        <%= f.text_field :company_address, :autofocus => true %>
+        <%= f.text_field :company_address %>
       </div>
     </div>
     <div class="row">
       <div class="rform1"><%= f.label "Field" %><br />
-        <%= f.text_field :field, :autofocus => true %>
+        <%= f.text_field :field %>
       </div>
     </div>
   </div>

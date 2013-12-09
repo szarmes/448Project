@@ -53,17 +53,17 @@ def create
     current_user.uid = omniauth['uid']
     current_user.provider = omniauth['provider']
     current_user.save
-    flash[:notice] = "Authentication successful."
-    redirect_to authentications_url
+    flash[:notice] = "Authentication successful! You can now log in with Facebook."
+    redirect_to edit_user_registration_path(current_user)
   else
     user = User.new
-    user.apply_omniauth(omniauth)
     if user.save
       flash[:notice] = "Signed in successfully."
       sign_in_and_redirect(:user, user)
     else
       session[:omniauth] = omniauth.except('extra')
-      redirect_to new_user_registration_url
+      redirect_to new_user_registration_url(:fname => omniauth.info.first_name, :lname =>  omniauth.info.last_name,
+        :email => omniauth.info.email)
     end
   end
 end
