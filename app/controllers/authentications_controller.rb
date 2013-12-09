@@ -45,7 +45,7 @@ def create
   if authentication
     @user = User.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     flash[:notice] = "Signed in successfully."
-    sign_in_and_redirect(@user, authentication.user)
+    sign_in_and_redirect(@user) #, authentication.user
   elsif user_signed_in?
     current_user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
     @t = Authentication.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
