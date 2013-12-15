@@ -23,7 +23,7 @@
     </table>
     <% @requirements = Requirement.where(:posting_id => postings.posting_id).paginate(page: params[:page]) %>
 
-    <% if !@requirements.nil? %>
+    <% if !@requirements.empty? %>
     <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Requirements for this posting</p>
     <%= render partial: 'shared/requirements', collection: @requirements %>
   <% end %>

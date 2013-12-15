@@ -17,7 +17,7 @@
 
     <% @links = Link.where(:project_id => projects.project_id).paginate(page: params[:page]) %>
 
-    <% if !@links.nil? %>
+    <% if !@links.empty? %>
     <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Links for this Project</p>
     <%= render partial: 'shared/links', collection: @links %>
     <% end %>
