@@ -17,7 +17,7 @@ describe "StaticPages" do
   describe "Home page" do
 
     before { visit root_path }
-    let(:title)    { 'Jobcannon' }
+    let(:title)    { 'Job Cannon' }
     let(:content) { 'Welcome' }
 
     it_should_behave_like "all static pages"

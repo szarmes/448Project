@@ -28,15 +28,3 @@ module First_Website
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)  
   end
 end
-
-
-#DUNCAN THIS SHIT IS BROKEN FOR EVERYONE THAT ISN"T YOU ALSO YOUR TESTS FOR AUTHENTICATION ALL FAIL FIX THIS SHIT :)
-#ActionDispatch::Callbacks.after do
-  # Reload the factories
-      #return unless (Rails.env.development? || Rails.env.test?)
-
-      #unless FactoryGirl.factories.blank? # first init will load factories, this should only run on subsequent reloads
-        #FactoryGirl.factories.clear
-        #FactoryGirl.find_definitions
-      #end
-    #end
