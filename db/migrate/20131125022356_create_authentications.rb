@@ -13,7 +13,7 @@ class CreateAuthentications < ActiveRecord::Migration
 
   create_table :experiences do |t|
     t.string   :title,            default: "", null: false
-    t.string   :desc,             default: "", null: false
+    t.string   :description,             default: "", null: false
     t.datetime :sdate,                         null: false
     t.datetime :fdate
     t.string   :company_name,     default: "", null: false
@@ -42,7 +42,7 @@ class CreateAuthentications < ActiveRecord::Migration
 
   create_table :postings do |t|
     t.string  :title,      default: "", null: false
-    t.string  :desc,       default: "", null: false
+    t.string  :description,       default: "", null: false
     t.integer :salary
     t.integer :user_id,                 null: false
     t.integer :posting_id,              null: false
@@ -50,7 +50,7 @@ class CreateAuthentications < ActiveRecord::Migration
 
   create_table :projects do |t|
     t.string  :name,          null: false
-    t.string  :desc
+    t.string  :description
     t.integer :project_id,    null: false
     t.integer :experience_id, null: false
   end
@@ -69,7 +69,7 @@ class CreateAuthentications < ActiveRecord::Migration
     t.boolean :mandatory,      default: true, null: false
     t.string  :degree
     t.string  :educationLvl
-    t.string  :desc,           default: "",   null: false
+    t.string  :description,           default: "",   null: false
     t.integer :exp
     t.string  :exp_area
     t.integer :posting_id,                    null: false
@@ -78,7 +78,7 @@ class CreateAuthentications < ActiveRecord::Migration
 
   create_table :skills do |t|
     t.string  :label,    default: "", null: false
-    t.string  :desc,     default: ""
+    t.string  :description,     default: ""
     t.integer :user_id,  default: 0,  null: false
     t.integer :skill_id, default: 0,  null: false
   end

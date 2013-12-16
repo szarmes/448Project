@@ -7,7 +7,7 @@ describe Project do
 
   it { should be_valid }
   it { should respond_to(:name) }
-  it { should respond_to(:desc) }
+  it { should respond_to(:description) }
   it { should respond_to(:project_id) }
   it { should respond_to(:experience_id) }
 
@@ -18,7 +18,7 @@ describe Project do
   end
 
   describe "when desc is not present" do
-    before { project.desc = ""}
+    before { project.description = ""}
     it { should be_valid }
   end
 

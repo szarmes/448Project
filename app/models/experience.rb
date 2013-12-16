@@ -7,7 +7,7 @@ class Experience < ActiveRecord::Base
 
     validates :user_id, :experience_id, presence: true
 
-    validates :title, :desc, :sdate,
+    validates :title, :description, :sdate,
                           :company_name, presence:  true
     
     after_create :do_setID

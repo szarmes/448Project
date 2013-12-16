@@ -7,7 +7,7 @@ describe Skill do
 	subject{skill}
 	it { should be_valid }
  	it { should respond_to(:label) }
-  it { should respond_to(:desc) }
+  it { should respond_to(:description) }
   it { should respond_to(:user_id) }
   it { should respond_to(:skill_id) }
   it { should have_many (:keywords) }

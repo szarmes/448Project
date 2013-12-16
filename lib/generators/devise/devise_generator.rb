@@ -11,7 +11,7 @@ module Devise
 
       hook_for :orm
 
-      class_option :routes, :desc => "Generate routes", :type => :boolean, :default => true
+      class_option :routes, :description => "Generate routes", :type => :boolean, :default => true
 
       def add_devise_routes
         devise_route  = "devise_for :#{plural_name}"

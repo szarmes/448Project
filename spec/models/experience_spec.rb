@@ -8,7 +8,7 @@ describe Experience do
 	subject{exp}
 	  it { should be_valid }
    	it { should respond_to(:title) }
-  	it { should respond_to(:desc) }
+  	it { should respond_to(:description) }
   	it { should respond_to(:sdate) }
   	it { should respond_to(:fdate) }
   	it { should respond_to(:company_name) }
@@ -39,7 +39,7 @@ describe Experience do
     end
      describe "desc is invalid" do
         it "should be invalid" do
-            exp.desc=""
+            exp.description=""
             expect(exp).to_not be_valid
         end
     end

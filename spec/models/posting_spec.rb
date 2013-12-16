@@ -7,7 +7,7 @@ describe Posting do
 
   it { should be_valid }
   it { should respond_to( :title ) }
-  it { should respond_to( :desc ) }
+  it { should respond_to( :description ) }
   it { should respond_to( :salary ) }
   it { should respond_to(:user_id) }
   it { should respond_to(:posting_id) }
@@ -27,7 +27,7 @@ describe Posting do
 	 	it { should_not be_valid }
 	 end
 	 describe "when desc is empty" do 
-	 	before { posting.desc = ""}
+	 	before { posting.description = ""}
 	 	it { should_not be_valid }
 	 end
    describe "keywords associations" do

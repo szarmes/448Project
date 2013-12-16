@@ -5,7 +5,7 @@ class Posting < ActiveRecord::Base
   has_many :keywords, dependent: :destroy
 
   validates :user_id, :posting_id, presence: true
-  validates :title, :desc, presence: true
+  validates :title, :description, presence: true
 
   after_create :do_setID
 
@@ -16,9 +16,9 @@ class Posting < ActiveRecord::Base
     query_obj
   end
 
-  def self.descsearch(input)
+  def self.descriptionsearch(input)
     query_obj = Posting.all
-    query_obj = query_obj.where('desc like ?', "%#{input}%") unless input.blank?
+    query_obj = query_obj.where('description like ?', "%#{input}%") unless input.blank?
     query_obj
   end
 

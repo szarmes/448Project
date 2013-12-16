@@ -69,6 +69,6 @@ class RequirementsController < ApplicationController
   private
     
     def requirement_params
-        params.require(:requirement).permit(:mandatory, :degree, :educationLvl, :desc, :exp, :exp_area, :posting_id, :requirement_id)
+        params.require(:requirement).permit(:mandatory, :degree, :educationLvl, :description, :exp, :exp_area, :posting_id, :requirement_id)
     end
 end
