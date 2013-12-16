@@ -9,6 +9,9 @@ class ExperiencesController < ApplicationController
 
   def show
 
+    @experience = Experience.find(params[:id])
+    @user = current_user
+
   end
 
   def update

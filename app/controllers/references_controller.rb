@@ -9,6 +9,9 @@ class ReferencesController < ApplicationController
 
   def show
 
+    @reference = Reference.find(params[:id])
+    @user = current_user
+
   end
 
   def create

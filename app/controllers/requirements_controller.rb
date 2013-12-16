@@ -8,6 +8,9 @@ class RequirementsController < ApplicationController
 
   def show
 
+    @requirement = Requirement.find(params[:id])
+    @user = current_user
+
   end
 
   def create

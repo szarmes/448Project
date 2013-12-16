@@ -9,6 +9,9 @@ class SkillsController < ApplicationController
 
   def show
 
+    @skill = Skill.find(params[:id])
+    @user = current_user
+
   end
 
   def update
