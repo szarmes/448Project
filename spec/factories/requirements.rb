@@ -4,7 +4,7 @@
         mandatory  true
         degree  "test"
         educationLvl "test"
-        desc "test"               
+        description "test"               
         exp 2
         exp_area    "test"
         posting_id     1

@@ -2,7 +2,7 @@
 
     factory :experience do
         title "test"
-        desc   "test1"
+        description   "test1"
         sdate   "2013-02-27 14:14:22 +0200"                         
         fdate   "2012-02-27 14:14:22 +0200"              
         company_name    "test2"          
