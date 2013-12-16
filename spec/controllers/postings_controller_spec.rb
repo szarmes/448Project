@@ -18,14 +18,14 @@ describe PostingsController do
         sign_in employer
       end
       it "should be able to submit a posting through create" do
-        post 'create', :posting => { "title" => "title", "desc" => "content", 
+        post 'create', :posting => { "title" => "title", "description" => "content", 
           "posting_id" => 0}
         response.should redirect_to '/postings'
         Posting.find_by(:title => "title").should_not be_nil
         flash[:success].should_not be_nil
       end
       it "should not have success flash if unable to save" do
-        post 'create', :posting => { "title" => "", "desc" => "content", 
+        post 'create', :posting => { "title" => "", "description" => "content", 
           "posting_id" => 0}
         Posting.find_by(:title => "newtitle").should be_nil
         response.should redirect_to '/postings'
@@ -37,14 +37,14 @@ describe PostingsController do
         sign_in employee
       end
       it "should not be able to submit a posting through create" do
-        post 'create', :posting => { "title" => "title", "desc" => "content", 
+        post 'create', :posting => { "title" => "title", "description" => "content", 
           "posting_id" => 0 }
         Posting.find_by(:title => "title").should be_nil
         response.should redirect_to '/'
         flash[:error].should == "No access"
       end
       it "should have error flash if unable to save" do
-        post 'create', :posting => { "title" => "", "desc" => "content", 
+        post 'create', :posting => { "title" => "", "description" => "content", 
           "posting_id" => 0 }
         Posting.find_by(:title => "title").should be_nil
         response.should redirect_to '/'
@@ -85,14 +85,14 @@ describe PostingsController do
         test.save
       end
       it "should be able to update a skill through edit" do
-        post 'update', :posting => { "title" => "newtitle", "desc" => "newcontent", "posting_id" => 0 }, :id => 1
+        post 'update', :posting => { "title" => "newtitle", "description" => "newcontent", "posting_id" => 0 }, :id => 1
         response.should redirect_to '/postings'
         Posting.find_by(:title => "newtitle").should_not be_nil
         Posting.find_by(:title => "testTitle").should be_nil
         flash[:success].should_not be_nil
       end
       it "should not have success flash if unable to update" do
-        post 'update', :posting => { "title" => "", "desc" => "content", "posting_id" => 0 }, :id => 1
+        post 'update', :posting => { "title" => "", "description" => "content", "posting_id" => 0 }, :id => 1
         response.should redirect_to '/postings'
         flash[:error].should_not be_nil
       end
@@ -103,13 +103,13 @@ describe PostingsController do
         test.save
       end
       it "should not be able to update a skill through edit" do
-        post 'update', :skill => { "title" => "newtitle", "desc" => "newcontent", "posting_id" => 0 }, :id => 1
+        post 'update', :skill => { "title" => "newtitle", "description" => "newcontent", "posting_id" => 0 }, :id => 1
         response.should redirect_to '/postings'
         Posting.find_by(:title => "newtitle").should be_nil
         flash[:error].should == "No access"
       end
       it "should have error flash if unable to save" do
-        post 'update', :skill => { "label" => "", "desc" => "content" }, :id => 1
+        post 'update', :skill => { "label" => "", "description" => "content" }, :id => 1
         response.should redirect_to '/postings'
         flash[:error].should_not be_nil
       end

@@ -26,14 +26,14 @@ describe RequirementsController do
       end
       it "should be able to submit a projcet through create" do
         post 'create', :requirement => { "mandatory" => true, "degree" => "test", "educationLvl" => "test",
-        "desc" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
+        "description" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
         Requirement.find_by(:degree => "test").should_not be_nil
         response.should redirect_to '/postings'
         flash[:success].should_not be_nil
       end
       it "should not have success flash if unable to save" do
         post 'create', :requirement => { "mandatory" => nil, "degree" => "test", "educationLvl" => "test",
-        "desc" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
+        "description" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
         Requirement.find_by(:degree => "test").should be_nil
         response.should redirect_to '/requirements'
         flash[:error].should_not be_nil
@@ -45,14 +45,14 @@ describe RequirementsController do
       end
       it "should not be able to submit a requirement through create" do
         post 'create', :requirement => { "mandatory" => true, "degree" => "test", "educationLvl" => "test",
-        "desc" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
+        "description" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
         Requirement.find_by(:degree => "test").should be_nil
         response.should redirect_to '/'
         flash[:error].should == "No access"
       end
       it "should have error flash if unable to save" do
         post 'create', :requirement => { "mandatory" => true, "degree" => "test", "educationLvl" => "test",
-        "desc" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
+        "description" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
         Requirement.find_by(:degree => "test").should be_nil 
         response.should redirect_to '/'
         flash[:error].should_not be_nil
@@ -95,14 +95,14 @@ describe RequirementsController do
       end
       it "should be able to update a requirement through edit" do
        post 'create', :requirement => { "mandatory" => true, "degree" => "test2", "educationLvl" => "test",
-        "desc" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
+        "description" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
         Requirement.find_by(:degree => "test2").should_not be_nil
         response.should redirect_to '/postings'
         flash[:success].should_not be_nil
       end
       it "should not have success flash if unable to update" do
         post 'create', :requirement => { "mandatory" => nil, "degree" => "test2", "educationLvl" => "test",
-        "desc" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
+        "description" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
         Requirement.find_by(:degree => "test2").should be_nil
         Requirement.find_by(:degree => "test").should_not be_nil
         response.should redirect_to '/requirements'
@@ -117,7 +117,7 @@ describe RequirementsController do
       end
       it "should not be able to update a requirement through edit" do
         post 'create', :requirement => { "mandatory" => true, "degree" => "test2", "educationLvl" => "test",
-        "desc" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
+        "description" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
         Requirement.find_by(:degree => "test2").should be_nil
         Requirement.find_by(:degree => "test").should_not be_nil
         response.should redirect_to '/'
@@ -125,7 +125,7 @@ describe RequirementsController do
       end
       it "should have error flash if unable to save" do
         post 'create', :requirement => { "mandatory" => nil, "degree" => "test2", "educationLvl" => "test",
-        "desc" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
+        "description" => "test", "exp" => 2, "exp_area" => "test", "posting_id" => 1, "requirement_id" => 1}
         Requirement.find_by(:degree => "test2").should be_nil
         Requirement.find_by(:degree => "test").should_not be_nil
         response.should redirect_to '/'

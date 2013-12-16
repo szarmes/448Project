@@ -17,14 +17,14 @@ describe ExperiencesController do
         sign_in employee
       end
       it "should be able to submit a experience through create" do
-        post 'create', :experience => { "title" => "title", "desc" => "content", 
+        post 'create', :experience => { "title" => "title", "description" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }
         response.should redirect_to '/experiences'
         Experience.find_by(:title => "title").should_not be_nil
         flash[:success].should_not be_nil
       end
       it "should not have success flash if unable to save" do
-        post 'create', :experience => { "title" => "", "desc" => "content", 
+        post 'create', :experience => { "title" => "", "description" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }
         response.should redirect_to '/experiences'
          Experience.find_by(:title => "title").should be_nil
@@ -36,14 +36,14 @@ describe ExperiencesController do
         sign_in employer
       end
       it "should not be able to submit a experience through create" do
-        post 'create', :experience => { "title" => "title", "desc" => "content", 
+        post 'create', :experience => { "title" => "title", "description" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }
         response.should redirect_to '/'
         Experience.find_by(:title => "title").should be_nil
         flash[:error].should == "No access"
       end
       it "should have error flash if unable to save" do
-        post 'create', :experience => { "title" => "", "desc" => "content", 
+        post 'create', :experience => { "title" => "", "description" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }
         response.should redirect_to '/'
         Experience.find_by(:title => "title").should be_nil
@@ -84,7 +84,7 @@ describe ExperiencesController do
         test.save
       end
       it "should be able to update a experience through edit" do
-        post 'update', :experience => { "title" => "title", "desc" => "content", 
+        post 'update', :experience => { "title" => "title", "description" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }, :id => 1
         response.should redirect_to '/experiences'
         Experience.find_by(:title => "title").should_not be_nil
@@ -92,7 +92,7 @@ describe ExperiencesController do
         flash[:success].should_not be_nil
       end
       it "should not have success flash if unable to update" do
-        post 'update', :experience => { "title" => "", "desc" => "content", 
+        post 'update', :experience => { "title" => "", "description" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }, :id => 1
         response.should redirect_to '/experiences'
         Experience.find_by(:title => "test").should_not be_nil
@@ -105,7 +105,7 @@ describe ExperiencesController do
         test.save
       end
       it "should not be able to update a experience through edit" do
-        post 'update', :experience => { "title" => "title", "desc" => "content", 
+        post 'update', :experience => { "title" => "title", "description" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }, :id => 1
         response.should redirect_to '/experiences'
         Experience.find_by(:title => "test").should_not be_nil
@@ -113,7 +113,7 @@ describe ExperiencesController do
         flash[:error].should == "No access"
       end
       it "should have error flash if unable to save" do
-        post 'update', :experience => { "title" => "", "desc" => "content", 
+        post 'update', :experience => { "title" => "", "description" => "content", 
           "experience_id" => 0, "sdate" => DateTime.now, "company_name" => "company test" }, :id => 1
         response.should redirect_to '/experiences'
         Experience.find_by(:title => "test").should_not be_nil
