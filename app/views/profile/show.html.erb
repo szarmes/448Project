@@ -1,3 +1,193 @@
+<style =  "text/css">
+
+.pic{
+    border: 0.2em solid grey;
+    padding: 0.5em;
+}
+
+#more{
+
+    color: black;
+
+}
+
+#more:hover{
+
+    background-color: #08C;
+}
+#minititle{
+
+    font-size: 20px;
+    line-height: 1em;
+}
+
+#description{
+
+    font-size: 15px;
+    margin-bottom: 1em;
+    padding-left: 1em;
+}
+
+#title{
+    padding-left: 0.5em;
+    font-size: 3em;
+    font-weight: 900;
+    line-height:90%;
+
+}
+
+#cmtBox{
+
+    border:0.2em;
+    border-style: solid;
+    border-color: black;
+    border-radius: 0.2em;
+    padding-left: 0.8em;
+    width: 165%;
+    height: 10em;
+    float: left;
+    font-size: 1.3em;
+    padding-top: 0.5em;
+    border-radius: 10px;
+}
+
+#cmt{
+
+    padding-left: 0.5em;
+    font-size: 1.7em;
+    font-weight: 900;
+    line-height:90%;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    width:7em;
+    margin-top: 0.2em;
+
+
+    display: block;
+    border-radius: 2px 2px 0 0;
+    font-family: 'Lily Script One', helveti;
+    cursor: pointer;
+    border-radius: 10px;
+    background: #08C;
+    color: white;
+
+
+}
+
+#package{
+
+    width: 65%;
+    float:left;
+    padding-left: 0.6em;
+    padding-top: 1em;
+    border: 0em;
+    border-style: solid;
+    border-color: black;
+    margin-left: -8em;
+}
+
+#tabs{
+
+    padding-top: 1em;
+    height: 22em;
+    padding-left: 0em;
+    
+
+}
+
+#format{
+
+    vertical-align: top;
+}
+
+#cap{
+    border-radius: 1em;
+    border-top: 0em solid grey;
+    border-left: 0em solid grey;
+    border-right: 0em solid grey;
+    
+}
+
+.tabs input[type=radio] {
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+      }
+      .tabs {
+        width: 650px;
+        float: left;
+        list-style: none;
+        position: relative;
+        padding: 0;
+        margin: 50px auto;
+        margin-top: 0px;
+      }
+      .tabs li{
+        float: left;
+      }
+      .tabs label {
+          display: block;
+          padding: 10px 20px;
+          border-radius: 2px 2px 0 0;
+          color: #08C;
+          font-size: 24px;
+          font-weight: normal;
+          font-family: 'Lily Script One', helveti;
+          background: rgba(255,255,255,0.2);
+          cursor: pointer;
+          position: relative;
+          top: 3px;
+
+          border-radius: 10px;
+          -webkit-transition: all 0.2s ease-in-out;
+          -moz-transition: all 0.2s ease-in-out;
+          -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+      }
+      .tabs label:hover {
+        background: rgba(255,255,255,0.5);
+        top: 0;
+      }
+       
+      [id^=tab]:checked + label {
+        background: #08C;
+        color: white;
+        top: 0;
+      }
+       
+      [id^=tab]:checked ~ [id^=tab-content] {
+          display: block;
+      }
+      .tab-content{
+        z-index: 2;
+        display: none;
+        text-align: left;
+        width: 90%;
+        font-size: 20px;
+        line-height: 200%;
+        padding-top: 10px;
+        background: #08C;
+        padding: 15px;
+        color: white;
+        position: absolute;
+        top: 43px;
+        left: 0;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+
+body, html {
+          height: 100%;
+          margin: 0;
+          -webkit-font-smoothing: antialiased;
+          font-weight: 100;
+         /*background: #aadfeb;*/
+          background: white;
+          font-family: helvetica;
+      }
+</style>
+
 <% if  @owner.employer?%>
     <h1> <%=@owner.company_name %></h1>
     <% if !@owner.company_address.nil? %>
@@ -12,36 +202,257 @@
 
 <% else %>
 
-<h1> <%=@owner.fname %> <%=@owner.lname %> </h1>
+    <div border = 0 style ="margin-left: 5.5em" >
+        <div class = "row" height = 30px style = "padding-left: 1.5em;">
+            <div class = "col-lg-4" style =" border-right: 0.2em solid grey;" >
+                <div>
+                    <%= image_tag('king.jpeg', :class => "pic") %>
+                 </div>
+            </div>
+            <div class = "col-lg-8" style = "margin-top: 3em;">
+                <p id = "title"> <%= @owner.fname%> <%= @owner.lname%> </p>
+                <p id = "title"> <%= @owner.city%> <%= @owner.province%> </p>
+                <p id = "title"> <%= @owner.email%></p>
+            </div>
+        </div>
+        <div style = "padding-left: 1.5em;">
+        <div class ="row" id = "cap" style = "padding-left: 0em;">
+            <div class = "col-lg-7" style = "margin-bottom: 4em;">
+              <table border = 0 id = "format">
+                  <tr>
+                      <td style = "vertical-align: top;">
+                          <div id="tabs">
+                              <ul class="tabs">
+                                  <li>
+                                    <input type="radio" checked name="tabs" id="tab1">
+                                    <label for="tab1">Skills</label>
+                                    <div id="tab-content1" class="tab-content animated fadeIn">
+                                      <% @array = @skills.to_a %>
+                                      <% if @array.size == 3 %>  
 
-<table style = "width: 100%;">
-	<tr>
-		<td style = "width:65%; vertical-align:top; ">
-			<% if !@experiences.nil? %>
-				<p style ="font-weight:bold; font-size:32px;">
-          		Experience</p>
-    		<%= render partial: 'shared/profileexperiences', collection: @experiences %>
-    		<% end %>
-    	</td>
-    	<td style = "width:35%; vertical-align:top;">
-    		<% if !@skills.nil? %>
-				<p style ="font-weight:bold; font-size:32px;">
-          		Skills</p>
-    		<%= render partial: 'shared/profileskills', collection: @skills %>
-    		<% end %>
+                                          <% @temp = @array.at(0) %>
+                                          <% @temp2 = @array.at(1) %>
+                                          <% @temp3 = @array.at(2) %>
+                                          
+                                         <p id = "minititle" >  
+                                                <%= @temp.label %>
+                                            </p>
+                                            <p id = "description">
+                                                <%= @temp.desc %> 
+                                            </p>
+
+                                             <p id = "minititle" >  
+                                                <%= @temp2.label %>
+                                            </p>
+                                            <p id = "description">
+                                                <%= @temp2.desc %> 
+                                            </p>
+
+                                             <p id = "minititle" >  
+                                                <%= @temp3.label %>
+                                            </p>
+                                            <p id = "description">
+                                                <%= @temp3.desc %> 
+                                            </p>
+
+                                     <% elsif @array.size ==2%>
+
+                                          
+                                          <% @temp = @array.at(0) %>                                        
+                                          
+                                          <% @temp2 = @array.at(1) %>
+                                          
+                                           <p id = "minititle" >  
+                                                <%= @temp.label %>
+                                            </p>
+                                            <p id = "description">
+                                                <%= @temp.desc %> 
+                                            </p>
+
+                                             <p id = "minititle" >  
+                                                <%= @temp2.label %>
+                                            </p>
+                                            <p id = "description">
+                                                <%= @temp2.desc %> 
+                                            </p>  
+
+                                      <% elsif @array.size ==1%>
+                        
+                                          <% @temp = @array.at(0) %>
+                                          
+                                           <p id = "minititle" >  
+                                                <%= @temp.label %>
+                                            </p>
+                                            <p id = "description">
+                                                <%= @temp.desc %> 
+                                            </p>                                                                                
+
+                                      <%end%>
+
+                                       <%= link_to "More ->",skills_path, :id => "more"%>
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <input type="radio" name="tabs" id="tab2">
+                                    <label for="tab2">Experiences</label>
+                                    <div id="tab-content2" class="tab-content animated fadeIn">
+                                    <% @array = @experiences.to_a %>
+                                      <% if @array.size == 3 %>  
 
 
-    	</td>
-    </tr>
-    <tr>
-        <td style = "vertical-align:top; ">
-            <% if !@references.nil? %>
-                <p style ="font-weight:bold; font-size:32px;">
-                References</p>
-            <%= render partial: 'shared/profilereferences', collection: @references %>
-            <% end %>
-        </td>
-    </tr>
-</table>
+                                      
+                                         
+                                          <% @temp = @array.at(0) %>
+                                         
+                                          
+                                          <% @temp2 = @array.at(1) %>                                          
+                                          <% @temp3 = @array.at(2) %>
+                                          
+                                          <p id = "minititle" >  
+                                                <%= @temp.title %>
+                                            </p>
+                                        <p id = "description">
+                                            <%= @temp.desc %> 
+                                        </p>
+
+                                         <p id = "minititle" >  
+                                            <%= @temp2.title %>
+                                        </p>
+                                        <p id = "description">
+                                            <%= @temp2.desc %> 
+                                        </p>
+                                         
+                                         <p id = "minititle" >  
+                                            <%= @temp3.title %>
+                                        </p>
+                                        <p id = "description">
+                                            <%= @temp3.desc %> 
+                                        </p>
+
+                                     <% elsif @array.size ==2%>
+
+                                          <% @temp1 = @array.at(0) %>
+                                          <% @temp2 = @array.at(1) %>
+                                          
+                                           <p id = "minititle" >  
+                                                <%= @temp.title %>
+                                            </p>
+                                            <p id = "description">
+                                                <%= @temp.desc %> 
+                                            </p>
+
+                                             <p id = "minititle" >  
+                                                <%= @temp1.title %>
+                                            </p>
+                                            <p id = "description">
+                                                <%= @temp2.desc %> 
+                                            </p>                                                                
+
+
+                                      <% elsif @array.size ==1%>
+                                            
+                                            <% @temp = @array.at(0)%>
+                                                                                  
+                                            <p id = "minititle" >  
+                                                <%= @temp.title %>
+                                            </p>
+                                            <p id = "description">
+                                                <%= @temp.desc %> 
+                                            </p>
+                            
+                                      <%end%>
+                                       <%= link_to "More ->",experiences_path, :id=>"more"%>
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <input type="radio" name="tabs" id="tab3">
+                                    <label for="tab3">References</label>
+                                    <div id="tab-content3" class="tab-content animated fadeIn">
+                                      
+                                        <% @array = @references.to_a %>
+                                      <% if @array.size == 3 %>                                        
+                                         
+                                          <% @temp = @array.at(0)%>                                                                               
+                                          <% @temp2 = @array.at(1) %>                                          
+                                          <% @temp3 = @array.at(2) %>
+                                          
+                                          <p id = "minititle" >  
+                                                <%= @temp.title %>
+                                            </p>
+                                        <p id = "description">
+                                            <%= @temp.desc %> 
+                                        </p>
+
+                                         <p id = "minititle" >  
+                                            <%= @temp2.title %>
+                                        </p>
+                                        <p id = "description">
+                                            <%= @temp2.desc %> 
+                                        </p>
+                                         
+                                         <p id = "minititle" >  
+                                            <%= @temp3.title %>
+                                        </p>
+                                        <p id = "description">
+                                            <%= @temp3.desc %> 
+                                        </p>
+
+                                     <% elsif @array.size ==2%>
+
+                                          <% @temp1 = @array.at(0) %>
+                                          <% @temp2 = @array.at(1) %>
+                                          
+                                           <p id = "minititle" >  
+                                                <%= @temp.title %>
+                                            </p>
+                                            <p id = "description">
+                                                <%= @temp.desc %> 
+                                            </p>
+
+                                             <p id = "minititle" >  
+                                                <%= @temp1.title %>
+                                            </p>
+                                            <p id = "description">
+                                                <%= @temp2.desc %> 
+                                            </p>                                                                
+
+                                      <% elsif @array.size ==1%>
+                                            
+                                            <% @temp = @array.at(0)%>
+                                                                                  
+                                            <p id = "minititle" >  
+                                                <%= @temp.title %>
+                                            </p>
+                                            <p id = "description">
+                                                <%= @temp.desc %> 
+                                            </p>
+                            
+                                      <%end%>
+
+
+                                       <%= link_to "More ->",references_path, :id => "more" %>
+                                    </div>
+                                  </li>
+                               </ul>
+
+                          </div>
+                      </td>
+                  </tr>
+              </table>
+            </div>
+            <div class = "col-lg-5" style = "height: 20em; vertical-align: top;">
+
+                <div id="package">
+                     <label id = "cmt">
+                        Comment box
+                    </label>
+                    <p id="cmtBox"> 
+                        This is what i can do for you 
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
 
 <% end %>
