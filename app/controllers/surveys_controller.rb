@@ -16,58 +16,85 @@ class SurveysController < ApplicationController
 			@survey.user_id = @user.user_id
 			@survey.save
 			if(@survey.question1 == 1)
-				$skill1 = Skill.new()
-				$skill1.label = "Leadership"
-				$skill1.user_id = @user.user_id
-				$skill1.save
-			else
-				$skill1 = Skill.new()
-				$skill1.label = "Taking Instruction"
-				$skill1.user_id = @user.user_id
-				$skill1.save
+				@test = Skill.where(label: "Leadership", user_id: @user.user_id)
+				if(@test.empty?)
+					$skill1 = Skill.new()
+					$skill1.label = "Leadership"
+					$skill1.user_id = @user.user_id
+					$skill1.save
+				end
+			elsif (@survey.question1 == 2)
+				@test = Skill.where(label: "Taking Instruction", user_id: @user.user_id)
+				if(@test.empty? || @test.nil?)
+					$skill1 = Skill.new()
+					$skill1.label = "Taking Instruction"
+					$skill1.user_id = @user.user_id
+					$skill1.save
+				end
 			end
 			if(@survey.question2 == 1)
-				$skill2 = Skill.new()
-				$skill2.label = "Teamwork"
-				$skill2.user_id = @user.user_id
-				$skill2.save
-			else
-				$skill2 = Skill.new()
-				$skill2.label = "Working Independently"
-				$skill2.user_id = @user.user_id
-				$skill2.save
+				@test = Skill.where(label: "Teamwork", user_id: @user.user_id)
+				if(@test.empty? || @test.nil?)
+					$skill2 = Skill.new()
+					$skill2.label = "Teamwork"
+					$skill2.user_id = @user.user_id
+					$skill2.save
+				end
+			elsif (@survey.question2 == 2)
+				@test = Skill.where(label: "Working Independently", user_id: @user.user_id)
+				if(@test.empty? || @test.nil?)
+					$skill2 = Skill.new()
+					$skill2.label = "Working Independently"
+					$skill2.user_id = @user.user_id
+					$skill2.save
+				end
 			end
 			if(@survey.question3 == 1)
-				$skill3 = Skill.new()
-				$skill3.label = "First aid Training"
-				$skill3.user_id = @user.user_id
-				$skill3.save
-			else
-				$skill3 = Skill.new()
-				$skill3.label = "Willingness to learn"
-				$skill3.user_id = @user.user_id
-				$skill3.save
+				@test = Skill.where(label: "First aid Training", user_id: @user.user_id)
+				if(@test.empty? || @test.nil?)
+					$skill3 = Skill.new()
+					$skill3.label = "First aid Training"
+					$skill3.user_id = @user.user_id
+					$skill3.save
+				end
+			elsif (@survey.question3 == 2)
+				@test = Skill.where(label: "Willingness to learn", user_id: @user.user_id)
+				if(@test.empty? || @test.nil?)
+					$skill3 = Skill.new()
+					$skill3.label = "Willingness to learn"
+					$skill3.user_id = @user.user_id
+					$skill3.save
+				end
 			end
 			if(@survey.question4 == 1)
-				$skill4 = Skill.new()
-				$skill4.label = "Challenge seeker"
-				$skill4.user_id = @user.user_id
-				$skill4.save
-			else
-				$skill4 = Skill.new()
-				$skill4.label = "Focused"
-				$skill4.user_id = @user.user_id
-				$skill4.save
+				@test = Skill.where(label: "Challenge seeker", user_id: @user.user_id)
+				if(@test.empty? || @test.nil?)
+					$skill4 = Skill.new()
+					$skill4.label = "Challenge seeker"
+					$skill4.user_id = @user.user_id
+					$skill4.save
+				end
+			elsif (@survey.question4 == 2)
+				@test = Skill.where(label: "Focused", user_id: @user.user_id)
+				if(@test.empty? || @test.nil?)
+					$skill4 = Skill.new()
+					$skill4.label = "Focused"
+					$skill4.user_id = @user.user_id
+					$skill4.save
+				end
 			end
 			if(@survey.question5 == 1)
-				$skill5 = Skill.new()
-				$skill5.label = "Multilingual"
-				$skill5.user_id = @user.user_id
-				$skill5.save
+				@test = Skill.where(label: "Multilingual", user_id: @user.user_id)
+				if(@test.empty? || @test.nil?)
+					$skill5 = Skill.new()
+					$skill5.label = "Multilingual"
+					$skill5.user_id = @user.user_id
+					$skill5.save
+				end
 			end
 		end
 		@survey.destroy
-		@anssurvey = Survey.new()
+		@anssurvey = Survey.new
 	end
 
 	def add
@@ -90,6 +117,7 @@ class SurveysController < ApplicationController
 		if(@anssurvey.question5 == 1)
 			$skill5.destroy
 		end
+		$skill1 = $skill2 = $skill3 = $skill4 = $skill5 = nil
 		redirect_to root_path
 	end
 
