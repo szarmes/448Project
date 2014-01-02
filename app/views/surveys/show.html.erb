@@ -1,0 +1,31 @@
+This is a quick survey to see is you may have missed some skills that you have that you don't even know about!  Take a couple minutes to answer the question below.
+
+<%= simple_form_for @survey, :url => { :action => "create" } do |f| %>
+	<h1>Have you ever had to tell people what to do?</h1>
+	<p>Yes</p>
+		<%= f.radio_button :question1, 1%>
+	<p>No</p>
+		<%= f.radio_button :question1, 2%>
+	<h1>Have you ever played team sports?</h1>
+	<p>Yes</p>
+		<%= f.radio_button :question2, 1%>
+	<p>No</p>
+		<%= f.radio_button :question2, 2%>
+	<h1>Do you have first aid ceritfication?</h1>
+	<p>Yes</p>
+		<%= f.radio_button :question3, 1%>
+	<p>No</p>
+		<%= f.radio_button :question3, 2%>
+	<h1>Do you enjoy puzzles?</h1>
+	<p>Yes</p>
+		<%= f.radio_button :question4, 1%>
+	<p>No</p>
+		<%= f.radio_button :question4, 2%>
+	<h1>Do you speak any other languages?</h1>
+	<p>Yes</p>
+		<%= f.radio_button :question5, 1%>
+	<p>No</p>
+		<%= f.radio_button :question5, 2%>
+
+	<%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+<% end %>

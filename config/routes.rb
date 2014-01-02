@@ -15,8 +15,10 @@ First_Website::Application.routes.draw do
   resources :links
   resources :requirements
   resources :profile
+  resources :surveys
   
   match '/search', to: 'search#search', via: 'get'
+  match '/results', to: 'surveys#add', via: 'post'
     
   match '/auth/:provider/callback', to: 'authentications#create', via: 'get'
   resources :authentications
