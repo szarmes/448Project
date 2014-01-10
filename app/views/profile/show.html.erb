@@ -33,6 +33,16 @@
     font-size: 3em;
     font-weight: 900;
     line-height:90%;
+    display: inline;
+
+}
+
+#title2{
+    font-size: 3em;
+    font-weight: 900;
+    line-height:90%;
+    color: grey;
+    display:inline;
 
 }
 
@@ -105,6 +115,7 @@
     border-top: 0em solid grey;
     border-left: 0em solid grey;
     border-right: 0em solid grey;
+    margin-bottom: -9em;
     
 }
 
@@ -121,6 +132,7 @@
         padding: 0;
         margin: 50px auto;
         margin-top: 0px;
+        margin-right: 0px;
       }
       .tabs li{
         float: left;
@@ -189,17 +201,32 @@ body, html {
 </style>
 
 <% if  @owner.employer?%>
-    <h1> <%=@owner.company_name %></h1>
-    <% if !@owner.company_address.nil? %>
-        <h2> <%=@owner.company_address %></h2>
-    <% end %>
+      <div border = 0 style ="margin-left: 5.5em" >
+        <div class = "row" height = 30px style = "padding-left: 1.5em;">
+            <div class = "col-lg-4" style =" border-right: 0.2em solid grey;" >
+                <div>
+                    <%= image_tag('king.jpeg', :class => "pic") %>
+                 </div>
+            </div>
+            <div class = "col-lg-8" style = "margin-top: 1em;">
+                <p id = "title"> <%= @owner.fname %> <%= @owner.lname %><p id = "title2"></p> </p>
+                <p id = "title"> Hiring At <p id = "title2"> <%= @owner.company_name %></p> </p>
+                <p id = "title"> Contact <p id = "title2"> 888 556 3600</p> </p>
+                <p id = "title"> or email <p id = "title2">securityOffice@gmail.ca</p></p>
+            </div>
+        </div>
+         <%= render partial: 'shared/profilepostings', collection: @postings %>
+         
+      </div>
+    
 
-    <% if !@postings.nil? %>
-        <p style ="font-weight:bold; font-size:32px;">Postings</p>
-        <%= render partial: 'shared/profilepostings', collection: @postings %>
-    <% end %>
 
 
+
+
+
+
+    <!-- -------------------------------------------------------------------------------- -->
 <% else %>
 
     <div border = 0 style ="margin-left: 5.5em" >
@@ -228,7 +255,7 @@ body, html {
                                     <label for="tab1">Skills</label>
                                     <div id="tab-content1" class="tab-content animated fadeIn">
                                       <% @array = @skills.to_a %>
-                                      <% if @array.size == 3 %>  
+                                      <% if @array.size >= 3 %>  
 
                                           <% @temp = @array.at(0) %>
                                           <% @temp2 = @array.at(1) %>
@@ -238,22 +265,25 @@ body, html {
                                                 <%= @temp.label %>
                                             </p>
                                             <p id = "description">
-                                                <%= @temp.desc %> 
+                                                <%= @temp.description %> 
                                             </p>
 
                                              <p id = "minititle" >  
                                                 <%= @temp2.label %>
                                             </p>
                                             <p id = "description">
-                                                <%= @temp2.desc %> 
+                                                <%= @temp2.description %> 
                                             </p>
 
                                              <p id = "minititle" >  
                                                 <%= @temp3.label %>
                                             </p>
                                             <p id = "description">
-                                                <%= @temp3.desc %> 
+                                                <%= @temp3.description %> 
                                             </p>
+
+
+                                       <%= link_to "More ->",skills_path, :id => "more"%>
 
                                      <% elsif @array.size ==2%>
 
@@ -266,14 +296,14 @@ body, html {
                                                 <%= @temp.label %>
                                             </p>
                                             <p id = "description">
-                                                <%= @temp.desc %> 
+                                                <%= @temp.description %> 
                                             </p>
 
                                              <p id = "minititle" >  
                                                 <%= @temp2.label %>
                                             </p>
                                             <p id = "description">
-                                                <%= @temp2.desc %> 
+                                                <%= @temp2.description %> 
                                             </p>  
 
                                       <% elsif @array.size ==1%>
@@ -284,12 +314,11 @@ body, html {
                                                 <%= @temp.label %>
                                             </p>
                                             <p id = "description">
-                                                <%= @temp.desc %> 
+                                                <%= @temp.description %> 
                                             </p>                                                                                
 
                                       <%end%>
 
-                                       <%= link_to "More ->",skills_path, :id => "more"%>
                                     </div>
                                   </li>
                                   <li>
@@ -297,7 +326,7 @@ body, html {
                                     <label for="tab2">Experiences</label>
                                     <div id="tab-content2" class="tab-content animated fadeIn">
                                     <% @array = @experiences.to_a %>
-                                      <% if @array.size == 3 %>  
+                                      <% if @array.size >= 3 %>  
 
 
                                       
@@ -328,6 +357,7 @@ body, html {
                                         <p id = "description">
                                             <%= @temp3.desc %> 
                                         </p>
+                                        <%= link_to "More ->",experiences_path, :id=>"more"%>
 
                                      <% elsif @array.size ==2%>
 
@@ -361,7 +391,7 @@ body, html {
                                             </p>
                             
                                       <%end%>
-                                       <%= link_to "More ->",experiences_path, :id=>"more"%>
+                                       
                                     </div>
                                   </li>
                                   <li>
@@ -370,7 +400,7 @@ body, html {
                                     <div id="tab-content3" class="tab-content animated fadeIn">
                                       
                                         <% @array = @references.to_a %>
-                                      <% if @array.size == 3 %>                                        
+                                      <% if @array.size >= 3 %>                                        
                                          
                                           <% @temp = @array.at(0)%>                                                                               
                                           <% @temp2 = @array.at(1) %>                                          
@@ -396,7 +426,7 @@ body, html {
                                         <p id = "description">
                                             <%= @temp3.desc %> 
                                         </p>
-
+                                        <%= link_to "More ->",references_path, :id => "more" %>
                                      <% elsif @array.size ==2%>
 
                                           <% @temp1 = @array.at(0) %>
@@ -428,9 +458,7 @@ body, html {
                                             </p>
                             
                                       <%end%>
-
-
-                                       <%= link_to "More ->",references_path, :id => "more" %>
+                                       
                                     </div>
                                   </li>
                                </ul>

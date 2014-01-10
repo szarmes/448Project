@@ -6,6 +6,7 @@ class ProfileController < ApplicationController
     @owner = User.find(params[:id])
     if(@owner.employer?)
       @postings = Posting.where(:user_id => @owner.user_id).paginate(page: params[:page])
+      @pp = 0
     else
       @experiences = Experience.where(:user_id => @owner.user_id).paginate(page: params[:page])
       @skills = Skill.where(:user_id => @owner.user_id).paginate(page: params[:page])
