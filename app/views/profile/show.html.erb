@@ -341,21 +341,21 @@ body, html {
                                                 <%= @temp.title %>
                                             </p>
                                         <p id = "description">
-                                            <%= @temp.desc %> 
+                                            <%= @temp.description %> 
                                         </p>
 
                                          <p id = "minititle" >  
                                             <%= @temp2.title %>
                                         </p>
                                         <p id = "description">
-                                            <%= @temp2.desc %> 
+                                            <%= @temp2.description %> 
                                         </p>
                                          
                                          <p id = "minititle" >  
                                             <%= @temp3.title %>
                                         </p>
                                         <p id = "description">
-                                            <%= @temp3.desc %> 
+                                            <%= @temp3.description %> 
                                         </p>
                                         <%= link_to "More ->",experiences_path, :id=>"more"%>
 
@@ -368,14 +368,14 @@ body, html {
                                                 <%= @temp.title %>
                                             </p>
                                             <p id = "description">
-                                                <%= @temp.desc %> 
+                                                <%= @temp.description %> 
                                             </p>
 
                                              <p id = "minititle" >  
                                                 <%= @temp1.title %>
                                             </p>
                                             <p id = "description">
-                                                <%= @temp2.desc %> 
+                                                <%= @temp2.description %> 
                                             </p>                                                                
 
 
@@ -387,7 +387,7 @@ body, html {
                                                 <%= @temp.title %>
                                             </p>
                                             <p id = "description">
-                                                <%= @temp.desc %> 
+                                                <%= @temp.description %> 
                                             </p>
                             
                                       <%end%>
@@ -410,21 +410,21 @@ body, html {
                                                 <%= @temp.title %>
                                             </p>
                                         <p id = "description">
-                                            <%= @temp.desc %> 
+                                            <%= @temp.description %> 
                                         </p>
 
                                          <p id = "minititle" >  
                                             <%= @temp2.title %>
                                         </p>
                                         <p id = "description">
-                                            <%= @temp2.desc %> 
+                                            <%= @temp2.description %> 
                                         </p>
                                          
                                          <p id = "minititle" >  
                                             <%= @temp3.title %>
                                         </p>
                                         <p id = "description">
-                                            <%= @temp3.desc %> 
+                                            <%= @temp3.description %> 
                                         </p>
                                         <%= link_to "More ->",references_path, :id => "more" %>
                                      <% elsif @array.size ==2%>
@@ -433,17 +433,17 @@ body, html {
                                           <% @temp2 = @array.at(1) %>
                                           
                                            <p id = "minititle" >  
-                                                <%= @temp.title %>
+                                                <%= @temp.title %> 
                                             </p>
                                             <p id = "description">
-                                                <%= @temp.desc %> 
+                                                <%= @temp.description %> 
                                             </p>
 
                                              <p id = "minititle" >  
                                                 <%= @temp1.title %>
                                             </p>
                                             <p id = "description">
-                                                <%= @temp2.desc %> 
+                                                <%= @temp2.description %> 
                                             </p>                                                                
 
                                       <% elsif @array.size ==1%>
@@ -454,7 +454,7 @@ body, html {
                                                 <%= @temp.title %>
                                             </p>
                                             <p id = "description">
-                                                <%= @temp.desc %> 
+                                                <%= @temp.description %> 
                                             </p>
                             
                                       <%end%>

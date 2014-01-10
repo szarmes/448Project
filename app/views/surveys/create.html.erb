@@ -1,0 +1,41 @@
+Based on your answers to the survery, we think that the following skills may apply to you. Would you like to remove any of these skills?
+
+<%= simple_form_for @anssurvey, :url => { :action => "add" } do |f| %>
+	<%if !$skill1.nil? %>
+		<h1><%= $skill1.label %></h1>
+		<p>Yes</p>
+			<%= f.radio_button :question1, 1%>
+		<p>No</p>
+			<%= f.radio_button :question1, 2%>
+	<% end %>
+	<%if !$skill2.nil? %>
+		<h1><%= $skill2.label %></h1>
+		<p>Yes</p>
+			<%= f.radio_button :question2, 1%>
+		<p>No</p>
+			<%= f.radio_button :question2, 2%>
+	<% end %>
+	<%if !$skill3.nil? %>
+		<h1><%= $skill3.label %></h1>
+		<p>Yes</p>
+			<%= f.radio_button :question3, 1%>
+		<p>No</p>
+			<%= f.radio_button :question3, 2%>
+	<% end %>
+	<%if !$skill4.nil? %>
+		<h1><%= $skill4.label %></h1>
+		<p>Yes</p>
+			<%= f.radio_button :question4, 1%>
+		<p>No</p>
+			<%= f.radio_button :question4, 2%>
+	<% end %>
+	<%if !$skill5.nil? %>
+		<h1><%= $skill5.label %></h1>
+		<p>Yes</p>
+			<%= f.radio_button :question5, 1%>
+		<p>No</p>
+			<%= f.radio_button :question5, 2%>
+	<% end %>
+
+	<%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+<% end %>
