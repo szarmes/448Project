@@ -2,18 +2,19 @@ First_Website::Application.routes.draw do
   resources :authentications
 
   devise_for :users, :controllers => { :registrations => 'registrations' }
- 
+  
   #devise_scope :user do 
 
   root to: 'static_pages#home'
 
-  resources :skills
+  resources :skills do 
+    get :autocomplete_skill_label, :on => :collection
+  end
   resources :experiences
   resources :references
   resources :postings
   resources :projects
   resources :links
-  resources :requirements
   resources :profile
   resources :surveys
   

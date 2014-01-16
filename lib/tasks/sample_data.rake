@@ -1,6 +1,3 @@
-
-
-
 namespace :db do
   desc "Fill database with Hardcoded Users"
   task populate: :environment do

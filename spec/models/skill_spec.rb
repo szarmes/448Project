@@ -10,6 +10,8 @@ describe Skill do
   it { should respond_to(:description) }
   it { should respond_to(:user_id) }
   it { should respond_to(:skill_id) }
+  it { should respond_to(:posting_id) }
+  it { should respond_to(:mandatory) }
   it { should have_many (:keywords) }
   it { should belong_to (:user) }
 

@@ -1,4 +1,5 @@
 class SkillsController < ApplicationController
+  autocomplete :skill, :label, :full => true
 
   def index
   	@skill = Skill.new

@@ -4,12 +4,10 @@
 
   <p> Fields marked with * are required </p>
   
-  <div><%= f.label "Title *" %> 
-  E.g. "Programming with Java" <br />
-  <%= f.text_field :label, :autofocus => true %></div>
+  <div> 
+  <%= f.autocomplete_field :label, autocomplete_skill_label_skills_path, :default => @skill.label, :autofocus => true%></div>
 
   <div>
-  	<%= f.label "Description *" %>
     <%= f.text_area :description, :autofocus => true %>
   </div>
 

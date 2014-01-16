@@ -6,7 +6,7 @@
   
   <div><%= f.label "Title *" %> 
   E.g. "Programming with Java" <br />
-  <%= f.text_field :label, :autofocus => true, :default => @skill.label %></div>
+  <%= f.autocomplete_field :label, autocomplete_skill_label_skills_path, :default => @skill.label%></div>
 
   <div>
   	<%= f.label "Description *" %>
