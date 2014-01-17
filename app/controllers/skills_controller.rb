@@ -29,9 +29,12 @@ class SkillsController < ApplicationController
 
   def reccomend
     @user = current_user
-    @userskills = Skill.where(user_id: @user.user_id)
-    @postings = find_postings(@userskills)
-    @postings = sort_postings(@postings)
+    if @user.employer?
+    else
+      @userskills = Skill.where(user_id: @user.user_id)
+      @postings = find_postings(@userskills)
+      @postings = sort_postings(@postings)
+    end
 
     
     
