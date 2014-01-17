@@ -39,13 +39,6 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.integer  "experience_id",                 null: false
   end
 
-  create_table "keywords", force: true do |t|
-    t.string  "keyword",       default: "", null: false
-    t.integer "posting_id",                 null: false
-    t.integer "skill_id",                   null: false
-    t.integer "experience_id",              null: false
-  end
-
   create_table "links", force: true do |t|
     t.integer "project_id", null: false
     t.integer "link_id",    null: false
@@ -57,7 +50,7 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.string  "description", default: "", null: false
     t.integer "salary"
     t.integer "user_id",                  null: false
-    t.integer "posting_id",               null: false
+    t.integer "posting_id",  default: 0,  null: false
   end
 
   create_table "projects", force: true do |t|
@@ -77,22 +70,22 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.integer "user_id",                   null: false
   end
 
-  create_table "requirements", force: true do |t|
-    t.boolean "mandatory",      default: true, null: false
-    t.string  "degree"
-    t.string  "educationLvl"
-    t.string  "description",    default: "",   null: false
-    t.integer "exp"
-    t.string  "exp_area"
-    t.integer "posting_id",                    null: false
-    t.integer "requirement_id",                null: false
+  create_table "fields", force: true do |t|
+    t.integer "field_id", defalut: 0, null: false
+    t.text    "description"
+  end
+  
+  create_table "skilllabels", force: true do |t|
+    t.integer "skilllabel_id",   default: 0,  null: false
+    t.string "label",       default: "", null: false
   end
 
   create_table "skills", force: true do |t|
-    t.string  "label",       default: "", null: false
-    t.string  "description", default: ""
-    t.integer "user_id",     default: 0,  null: false
     t.integer "skill_id",    default: 0,  null: false
+    t.string  "label",       default: "", null: false
+    t.integer "user_id",    default: 0,  null: false
+    t.integer "posting_id"
+    t.boolean "mandatory"
   end
 
   create_table "surveys", force: true do |t|

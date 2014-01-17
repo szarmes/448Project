@@ -2,18 +2,19 @@ First_Website::Application.routes.draw do
   resources :authentications
 
   devise_for :users, :controllers => { :registrations => 'registrations' }
- 
+  
   #devise_scope :user do 
 
   root to: 'static_pages#home'
 
-  resources :skills
+  resources :skills do 
+    get :autocomplete_skilllabel_label, :on => :collection
+  end
   resources :experiences
   resources :references
   resources :postings
   resources :projects
   resources :links
-  resources :requirements
   resources :profile
   resources :surveys
   resources :friendships
@@ -21,6 +22,7 @@ First_Website::Application.routes.draw do
   match '/search', to: 'search#search', via: 'get'
   match '/findfriend', to: 'friendships#findfriend', via: 'get'
   match '/results', to: 'surveys#add', via: 'post'
+  match '/reccomended', to: 'skills#reccomend', via:'get'
     
   match '/auth/:provider/callback', to: 'authentications#create', via: 'get'
   resources :authentications

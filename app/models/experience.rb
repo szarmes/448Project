@@ -2,7 +2,6 @@ class Experience < ActiveRecord::Base
 
 
     belongs_to :user
-    has_many :keywords, dependent: :destroy
     has_many :projects, dependent: :destroy
 
     validates :user_id, :experience_id, presence: true

@@ -8,7 +8,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
-gem 'paperclip'
+#gem 'paperclip'
 gem 'devise'
 gem 'simple_form'
 gem "therubyracer"
@@ -16,6 +16,8 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquery-autocomplete'
+gem 'jquery-rails', '2.3.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -33,13 +35,11 @@ group :test do
   gem 'growl', '1.0.3'
   gem 'factory_girl_rails', '4.2.1'
   gem "shoulda-matchers"
-
 end
 
 gem 'sass-rails', '4.0.0'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.0'
-gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 

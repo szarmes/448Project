@@ -5,7 +5,10 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style = "background-color:black;">
     <ul class="nav pull-left">
+    	<% if user_signed_in?%>
         <li><%= link_to "Survey", survey_path(@user), id: "brand",  style:"text-shadow:none;" %></li>
+        <li><%= link_to "Reccomended", {controller: "skills", action: "reccomend"}, id: "brand",  style:"text-shadow:none;" %></li>
+        <% end %>
     </ul>
     <% if user_signed_in? and !Friendship.find_by(receiver_id: @user.user_id, accepted: false).nil? %>
     <ul class="nav pull-left">
