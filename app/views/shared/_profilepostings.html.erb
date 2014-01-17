@@ -1,14 +1,92 @@
 <head>
+
+
 </head>
+
+<style>
+      #jobtitle{
+
+      	padding-left: 0.5em;
+    font-size: 1.7em;
+    font-weight: 900;
+    line-height:90%;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    margin-top: 0.2em;
+
+
+    display: block;
+    border-radius: 2px 2px 0 0;
+    font-family: 'Lily Script One', helveti;
+    border-radius: 10px;
+    background: #08C;
+    color: black;
+
+
+      }
+
+</style>
+
+<script type="text/javascript">
+
+function makebtn(){
+
+
+}
+
+
+</script>
   <body>
     
-<table style = "width: 100%;">
-  <tr style = "vertical-align:center;">
-    <td style = "max-width: 100%;">
-      <p style = "font-size:24px;"> 
-      <%= link_to profilepostings.title, posting_path(profilepostings), :style => "color:black;" %>
-      </p>
-    </td>
-  </tr>
-</table>
+<div style = "padding-left: 1.5em; border: 0em solid black">
+        <div class ="row" id = "cap" style = "margin-bottom: 1em; border: 0em solid black; height: 18em">
+            <div class = "col-lg-7" style = "margin-bottom: 1em;">
+             
+            	<table border = 0 style = "margin-top: 1em">
+            		<tr>
+            			<td>
+            				<div id = "jobtitle" style = "width: 7em">
+              					Job: <%= profilepostings.title%>
+          					</div>
+        				</td>
+        				<td>
+        					
+    					</td>
+					</tr>
+					<tr>
+						<td>
+							<div id = "jobtitle" style = "color:white; width: 9em;">
+								Job Description
+							</div>
+						</td>
+						<td>
+							<div name = "button[]" id = "jobtitle" style = "color: white; width: 11em; cursor: pointer;" onClick = "load">
+								Requirments Button
+							</div>
+						</td>
+					</tr>
+            	</table>
+
+            	<div id = "jobtitle" style = "color:white; width: 85%; margin-bottom: 4em;">
+            		<%= profilepostings.description %>
+        		</div>
+
+            </div>
+            <div class = "col-lg-5" style = "height: 20em; vertical-align: top;">
+
+                <div id="package">
+                     <label id = "cmt">
+                        Specifications
+                    </label>
+                    <p id="cmtBox"> 
+                    	<% if !profilepostings.salary.nil? %>
+                    		salary: $<%= profilepostings.salary %> per year
+                		<%end%>
+
+                        Employer Message (not needed)
+                    </p>
+                </div>
+            </div>
+        </div>
+     </div>
  </body>
