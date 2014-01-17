@@ -1,5 +1,5 @@
 class SkillsController < ApplicationController
-  autocomplete :skill, :label, :full => true
+  autocomplete :skilllabel, :label, :full => true
 
   def index
   	@skill = Skill.new
@@ -15,31 +15,9 @@ class SkillsController < ApplicationController
 
   end
 
-  def update
-    @skill = Skill.find(params[:id])
-    if (user_signed_in? && current_user.user_id == @skill.user_id && !current_user.employer)
-      if @skill.update_attributes(skill_params)
-        @skill.save
-        flash[:success] = "Changes saved"
-        redirect_to '/skills'         
-      else
-        flash[:error] = "Changes not saved."
-        redirect_to '/skills'                       
-      end
-    else
-      flash[:error] = "No access"
-      redirect_to '/skills'  
-    end
-  end
-
-  def edit
-    @skill = Skill.find(params[:id])
-    @user = current_user
-  end
-
   def destroy
     @skill = Skill.find(params[:id])
-    if (user_signed_in? && current_user.user_id == @skill.user_id && !current_user.employer)
+    if (user_signed_in? && current_user.user_id == @skill.user_id)
       @skill.destroy
       flash[:success] = "Skill Removed."
     else
@@ -49,11 +27,25 @@ class SkillsController < ApplicationController
 
   end
 
-  def create
+  def reccomend
+    @user = current_user
+    @userskills = Skill.where(user_id: @user.user_id)
+    @postings = find_postings(@userskills)
+    @postings = sort_postings(@postings)
 
-  	if(user_signed_in? && !current_user.employer)
+    
+    
+  end
+
+  def create
+  	if(user_signed_in?)
   		@skill = Skill.new(skill_params)
-  		@skill.user_id = current_user.user_id
+      @skill.user_id = current_user.user_id
+      if(Skilllabel.find_by(label: @skill.label).nil?)
+        @skilllabel = Skilllabel.new
+        @skilllabel.label = @skill.label
+        @skilllabel.save
+      end
   		if(@skill.save)
   			flash[:success] = "Skill created!"
       	redirect_to "/skills"
@@ -70,8 +62,40 @@ class SkillsController < ApplicationController
   end
 
   private
-    
+    def find_postings(userskills)
+      postings = Posting.where(posting_id: 0)
+      p userskills
+      userskills.each do |us|
+        @label = us.label
+        @jobskills = Skill.where(label: @label)
+        @jobskills.each do |js|
+          if !js.posting_id.nil?
+            postings.push(Posting.find_by(posting_id: js.posting_id))
+          end
+        end
+      end
+      p postings
+      return postings
+    end
+
+    def sort_postings(postings)
+      @hash = {0 => 0}
+      postings.each do |p|
+        if @hash[p.posting_id].nil?
+          @hash.merge!({p.posting_id => 1})
+        else
+          @hash[p.posting_id] = @hash[p.posting_id] + 1
+        end
+      end
+      postings.clear
+      @hash = Hash[@hash.sort_by{|k, v| v}.reverse]
+      @hash.each_key do |key|
+        postings.push(Posting.find_by(posting_id: key))
+      end
+      return postings
+    end
+
     def skill_params
-        params.require(:skill).permit(:label, :description, :skill_id)
+        params.require(:skill).permit(:label, :posting_id, :skill_id, :mandatory)
     end
 end

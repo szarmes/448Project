@@ -1,6 +1,7 @@
 <head>
 </head>
   <body>
+    <% if !postings.nil? %>
     <table>
       <tr>
         <td style = "width:12em"><p><%= postings.title %></p></td>
@@ -8,7 +9,7 @@
           <% if postings.user_id == @userID %>
             <td><%= link_to "Edit this Posting", edit_posting_path(postings.posting_id), class: "btn btn-small btn-info"%></td>
             <td><%= link_to "Delete this Posting", postings, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %></td>
-            <td><%= link_to "Add a Requirement", requirements_path(:expID => postings.posting_id), class: "btn btn-small btn-primary" %></td>
+            <td><%= link_to "Add a Requirement", skills_path(:postID => postings.posting_id), class: "btn btn-small btn-primary" %></td>
             <% end %>
           <% end %>
       </tr>
@@ -21,4 +22,5 @@
         <% end %>
       </tr>
     </table>
+    <% end %>
  </body>

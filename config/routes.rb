@@ -8,7 +8,7 @@ First_Website::Application.routes.draw do
   root to: 'static_pages#home'
 
   resources :skills do 
-    get :autocomplete_skill_label, :on => :collection
+    get :autocomplete_skilllabel_label, :on => :collection
   end
   resources :experiences
   resources :references
@@ -20,6 +20,7 @@ First_Website::Application.routes.draw do
   
   match '/search', to: 'search#search', via: 'get'
   match '/results', to: 'surveys#add', via: 'post'
+  match '/reccomended', to: 'skills#reccomend', via:'get'
     
   match '/auth/:provider/callback', to: 'authentications#create', via: 'get'
   resources :authentications
