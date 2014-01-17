@@ -95,14 +95,14 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.integer "skill_id",    default: 0,  null: false
   end
 
-  create_table "surveys" , force: true do |t|
-    t.integer  "user_id",     default: 0,  null: false
-    t.integer  "survey_id",     default: 0,  null: false
-    t.integer  "question1"
-    t.integer  "question2" 
-    t.integer  "question3"
-    t.integer  "question4"
-    t.integer  "question5"
+  create_table "surveys", force: true do |t|
+    t.integer "user_id",   default: 0, null: false
+    t.integer "survey_id", default: 0, null: false
+    t.integer "question1"
+    t.integer "question2"
+    t.integer "question3"
+    t.integer "question4"
+    t.integer "question5"
   end
 
   create_table "users", force: true do |t|
@@ -140,5 +140,16 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.string   "uid"
     t.string   "provider"
   end
+
+
+  create_table "friendships", force: true do |t|
+    t.integer "friendship_id", default: 0, null: false
+    t.integer "sender_id",  null: false
+    t.integer "receiver_id",  null: false
+    t.datetime "sent_at", null: false
+    t.boolean "accepted", default: false, null: false
+    t.datetime "accepted_at"
+  end
+
 
 end

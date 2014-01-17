@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
 
   after_create :do_setID
 
-   has_many :authentications, dependent: :destroy
+  has_many :authentications, dependent: :destroy
+  has_many :friendships, dependent: :destroy
 
   
 
@@ -37,6 +38,11 @@ class User < ActiveRecord::Base
   def password_required?
     (authentications.empty? || !password.blank?) && super
   end
+
+  def self.findbyemail(input)
+    query_obj = User.where('email like ?', "%#{input}%") unless input.blank?
+  end
+
 
 
   private

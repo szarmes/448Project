@@ -1,0 +1,14 @@
+
+<% if !@results.nil? %>
+	<%= render partial: 'shared/findfriend', collection: @results %>
+
+<%else%>
+	<p> Sorry, unable to find friend. Search again? </p>
+<% end %>
+<%= form_tag("/findfriend", method: "get") do %>
+        <div style = "max-width:500px;">
+        	<p>Find people via email address</p>
+        	<%= email_field_tag(:q)%> 
+        </div>
+        <%= submit_tag("Find Friend",class: "btn btn-small btn-primary") %> 
+    <% end %>

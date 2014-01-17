@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SurveyController do
+describe SurveysController do
 
   let(:employee) { create(:user, :employee) }
   let(:employer) { create(:user, :employer) }

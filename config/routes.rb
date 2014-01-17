@@ -16,12 +16,20 @@ First_Website::Application.routes.draw do
   resources :requirements
   resources :profile
   resources :surveys
+  resources :friendships
   
   match '/search', to: 'search#search', via: 'get'
+  match '/findfriend', to: 'friendships#findfriend', via: 'get'
   match '/results', to: 'surveys#add', via: 'post'
     
   match '/auth/:provider/callback', to: 'authentications#create', via: 'get'
   resources :authentications
+
+  get  'addfriend', to: 'friendships#addfriend'
+  get  'accept', to: 'friendships#accept'
+  get  'decline', to: 'friendships#decline'
+  get 'network', to: 'friendships#index'
+
 
    # get 'signin' => 'devise/sessions#new', :as => :new_user_session
    # post 'signin' => 'devise/sessions#create', :as => :user_session
