@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.string  "relationship", default: "", null: false
     t.integer "yrsknown"
     t.string  "email"
+    t.integer  "reference_id", default: 0, null: false
     t.integer "user_id",                   null: false
   end
 

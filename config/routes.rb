@@ -23,6 +23,8 @@ First_Website::Application.routes.draw do
   match '/findfriend', to: 'friendships#findfriend', via: 'get'
   match '/results', to: 'surveys#add', via: 'post'
   match '/reccomended', to: 'skills#reccomend', via:'get'
+  match '/details', to: 'experiences#details', via: 'get'
+  match '/one_ref', to: 'references#one_ref', via: 'get'
     
   match '/auth/:provider/callback', to: 'authentications#create', via: 'get'
   resources :authentications

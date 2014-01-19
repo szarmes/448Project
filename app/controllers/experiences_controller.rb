@@ -66,7 +66,12 @@ class ExperiencesController < ApplicationController
 
   	end
 
+  
   	
+  end
+  def details
+    @user = current_user
+    @details = Experience.find(params[:id])
   end
 
   private

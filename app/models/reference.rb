@@ -16,5 +16,16 @@ class Reference < ActiveRecord::Base
   
 
   #validates_inclusion_of :email, :in => [/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i]
+
+  after_create :do_setID
+
+  private
+    def do_setID
+      
+      newID = self.id
+      self.update_attributes(:reference_id => newID)
+
+
+    end
  
 end
