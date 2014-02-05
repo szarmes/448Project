@@ -2,7 +2,7 @@
   <style type="text/css">
     
     .tab_header{
-      background: #3399ff; 
+      /*background: #70B8FF; */
       width: 7.5em; 
       height: 2em;
       border-top-left-radius:12px; 
@@ -17,14 +17,6 @@
       cursor: pointer;
     }
 
-    .content{
-       border: solid #E6813E 5px;
-       position: relative; 
-       top: -5.5em; 
-       background: white;
-       line-height: 30px;
-      padding-left: 5px;
-    }
     #more{
     color: blue;
 
@@ -38,8 +30,9 @@
     }
 
     .pic{
-      border-right:0.2em solid grey;
+      border-right:0em solid grey;
       padding-right: 3em;
+      padding-bottom: 1em;
 
     }
 
@@ -49,7 +42,7 @@
 
     #cmtBox{
 
-    border: solid #E6813E 5px;
+    /*border: solid #3399FF 5px;*/
     padding-left: 0.8em;
     width: 100%;
     height: 10em;
@@ -66,6 +59,17 @@
 
 }
 
+.content{
+
+  margin-top: 1em;
+  background-color: #E6E6E6;
+  border-radius: 5px;
+  padding-left: 0.5em;
+  padding-top: 0.5em;
+  height:8em;
+
+}
+
 
   </style>
 
@@ -73,30 +77,34 @@
 
     function swap(n){
       
-      $("#skill").css("background-color", "#3399ff");
-      $("#exp").css("background-color", "#3399ff"); 
-      $("#ref").css("background-color", "#3399ff");
+      /*$("#skill").css("background-color", "#70B8FF");
+      $("#exp").css("background-color", "#70B8FF"); 
+      $("#ref").css("background-color", "#70B8FF");*/
       $("#skill_text").hide();
       $("#exp_text").hide();
       $("#ref_text").hide();
 
       if (n==0){
-        $("#skill").css("background-color", "#E6813E");
+        /*$("#skill").css("background-color", "#3399FF");*/
         $("#skill_text").show();
       }
       else if (n==1)
       {
-        $("#exp").css("background-color", "#E6813E");
+        /*$("#exp").css("background-color", "#3399FF");*/
         $("#exp_text").show();
       }
       else
       {
-        $("#ref").css("background-color", "#E6813E");
+        /*$("#ref").css("background-color", "#3399FF");*/
         $("#ref_text").show();
       }  
      
-
     }
+
+    $('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
 
   </script>
 </head>
@@ -109,7 +117,7 @@
         <div class = "row" height = 30px style = "padding-left: 1.5em;">
             <div class = "col-lg-4" style ="" >
                 <div>
-                    <%= image_tag('king.jpeg', :class => "pic") %>
+                    <%= image_tag('prof.jpeg', :class => "pic") %>
                  </div>
             </div>
             <div class = "col-lg-8" style = "">
@@ -121,14 +129,14 @@
                     Contact: <%= @owner.phone_number %>
                   <% end %>
                 </p>
-                <p id = "title"> 
+                <p id = "title" style = "font-size: 3em"> 
                   <% if(!@owner.email.empty?) %>
                     <%= @owner.email %>
                   <% end %>
                 </p>
             </div>
         </div>
-        
+
          <%= render partial: 'shared/profilepostings', collection: @postings %>
          
       </div>
@@ -136,16 +144,19 @@
     <!-- -------------------------------------------------------------------------------- -->
 <% else %>
 
-  <div class = "row" height = 30px style = "padding-left: 1.5em;">
+  <div class = "row" height = 30px style = "">
+
+      <div class = "col-lg-1">
+      </div>
       <div class = "col-lg-4" style ="" >
           <div style = "">
-              <%= image_tag('king.jpeg', :class => "pic") %>
+              <%= image_tag('prof.jpeg', :class => "pic") %>
            </div>
       </div>
-      <div class = "col-lg-8" style = "">
+      <div class = "col-lg-5" style = "">
           <p id = "title"> <%= @owner.fname%> <%= @owner.lname%> </p>
           <p id = "title"> <%= @owner.city%> <%= @owner.province%> </p>
-          <p id = "title"> <%= @owner.email%></p>
+          <p id = "title" style = "font-size: 3em"> <%= @owner.email%></p>
       </div>
   </div>
 
@@ -154,27 +165,28 @@
 
     <div class = "col-lg-5" style = "height: 20em; vertical-align: top;">
 
-         <p class = "tab_header" style = "background:#E6813E">
-            About me
-        </p>
-        <p id="cmtBox" style = "position:relative; top: -0.8em"> 
-            This is what i can do for you 
-        </p>
+         
+          <ul class="nav nav-tabs">
+            <li class = "active"><a href="#do" data-toggle="tab">About Me</a></li>
+          </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade in active content" id="do"> This is what i can do for you</div>
         
       </div>
+    </div>
+
+
     <div class = "col-lg-5">
-      <div id = "skill" class = "tab_header" style = "background: #E6813E;" onclick = "swap(0)" >
-        Skills
-      </div>
-      <div  id = "exp" class = "tab_header" style = "left: 7.5em; top: -2em" onclick= "swap(1)">
-        Experiences
-      </div>
-      <div id = "ref" style = "left: 15em; top: -4em;" class = "tab_header" onclick= "swap(2)">
-        References
-      </div>
+      <ul class="nav nav-tabs">
+        <li class = "active"><a href="#skills" data-toggle="tab">Skills</a></li>
+        <li><a href="#exp" data-toggle="tab">Expereances</a></li>
+        <li><a href="#ref" data-toggle="tab">Refferences</a></li>
+      </ul>
 
 
-        <div id = "skill_text" style = "display: inherit;" class = "content">
+      <div class="tab-content">
+        <div class="tab-pane fade in active content" id="skills" style = ""> 
           <% @array = @skills.to_a %>
           <% if(@array.empty?) %>
             No Skills added yet
@@ -195,9 +207,8 @@
             <% end %>
           <%end%>
         </div>
-
-        <div id = "exp_text" style = "display: none;" class = "content">
-          <% @array = @experiences.to_a %>
+        <div class="tab-pane fade content" id="exp">
+            <% @array = @experiences.to_a %>
           <% if(@array.empty?) %>
             No Experiences added yet
           <%else %>
@@ -213,11 +224,12 @@
               <%= link_to "More",skills_path, :id => "more"%>
             <% end %>
           <%end%>
+
+
+
         </div>
-
-
-        <div id = "ref_text" style = "display: none;" class = "content">
-           <% @array = @references.to_a %>
+        <div class="tab-pane fade content" id="ref">
+          <% @array = @references.to_a %>
            <% if(@array.empty?) %>
               No References added yet
           <%else%>
@@ -233,7 +245,12 @@
               <%= link_to "More",skills_path, :id => "more"%>
             <% end %>
           <% end %>
-      </div>
+
+
+
+        </div>
+    </div>
+
     </div>
   </div>
   <% end %>
