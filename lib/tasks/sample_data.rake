@@ -9,6 +9,9 @@ namespace :db do
   User.create!(email: 'employee@test.ca', username: 'employee', 
     password: 'testtest', password_confirmation: 'testtest', 
     fname: 'employee', lname: 'employee')
+  User.create!(email: 'employee1@test.ca', username: 'employee1', 
+    password: 'testtest', password_confirmation: 'testtest', 
+    fname: 'employee1', lname: 'employee')
   Skilllabel.create!(label: "Java")
   Skilllabel.create!(label: "Ruby")
   Skilllabel.create!(label: "Educational development")
