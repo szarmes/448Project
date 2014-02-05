@@ -24,7 +24,7 @@
 
     #title{
 
-      font-size: 4em;
+      font-size: 2em;
       font-weight: bold;
       line-height: 1em
     }
@@ -66,7 +66,9 @@
   border-radius: 5px;
   padding-left: 0.5em;
   padding-top: 0.5em;
-  height:8em;
+  height:11em;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
 
 }
 
@@ -156,7 +158,7 @@
       <div class = "col-lg-5" style = "">
           <p id = "title"> <%= @owner.fname%> <%= @owner.lname%> </p>
           <p id = "title"> <%= @owner.city%> <%= @owner.province%> </p>
-          <p id = "title" style = "font-size: 3em"> <%= @owner.email%></p>
+          <p id = "title" style = "font-size: 1em"> <%= @owner.email%></p>
       </div>
   </div>
 
@@ -180,8 +182,8 @@
     <div class = "col-lg-5">
       <ul class="nav nav-tabs">
         <li class = "active"><a href="#skills" data-toggle="tab">Skills</a></li>
-        <li><a href="#exp" data-toggle="tab">Expereances</a></li>
-        <li><a href="#ref" data-toggle="tab">Refferences</a></li>
+        <li><a href="#exp" data-toggle="tab">Experiences</a></li>
+        <li><a href="#ref" data-toggle="tab">References</a></li>
       </ul>
 
 
@@ -189,34 +191,35 @@
         <div class="tab-pane fade in active content" id="skills" style = ""> 
           <% @array = @skills.to_a %>
           <% if(@array.empty?) %>
-            No Skills added yet
+            No skills added yet
           <%else%>
-            <% finish = 19 %>
-            <% for i in 0..finish%>
-              <% if(i < @array.length) %>
-                <%= @array[i].label %>
-                <% if(i < (@array.length) -1) && (i != finish) %>
-                  ,
-                <% end %>
+            <% finish = 4 %>
+            <ul>
+              <% for i in 0..finish%>
+                <% if(i < @array.length) %>
+                  <li> <%= @array[i].label %> </li>
+                <%end%>
               <%end%>
-            <%end%>
-            <% if @array.length > finish + 1 %>
-              </br>
-              </br>
-              <%= link_to "More",skills_path, :id => "more"%>
+            </ul>
+            <% if @array.length > finish %>
+              <div style = "padding-right:1em;" align = "right">
+                <%= link_to "More",skills_path, :id => "more"%> 
+              </div>
             <% end %>
           <%end%>
         </div>
         <div class="tab-pane fade content" id="exp">
             <% @array = @experiences.to_a %>
           <% if(@array.empty?) %>
-            No Experiences added yet
+            No experiences added yet
           <%else %>
             <% finish = 4 %>
             <% for i in 0..finish%>
               <% if(i < @array.length) %>
                 <% exp = @array[i].title + " - " + @array[i].company_name %>
-                <%= link_to exp, {:controller => "experiences", :action => "details", :id => @array[i].experience_id}, :id => "more"%></br>
+                <div style = "padding-right:1em;" align = "right">
+                  <%= link_to exp, {:controller => "experiences", :action => "details", :id => @array[i].experience_id}, :id => "more"%></br>
+              </div>
               <%end%>
             <%end%>
             <% if @array.length > finish + 1 %>
@@ -231,13 +234,15 @@
         <div class="tab-pane fade content" id="ref">
           <% @array = @references.to_a %>
            <% if(@array.empty?) %>
-              No References added yet
+              No references added yet
           <%else%>
             <% finish = 4 %>
             <% for i in 0..finish%>
               <% if(i < @array.length) %>
                 <% ref = @array[i].fname + " " + @array[i].lname + " - " + @array[i].relationship %>
-                <%= link_to ref, {:controller => "references", :action => "one_ref", :id => @array[i].reference_id}, :id => "more"%></br>
+                <div style = "padding-right:1em;" align = "right">
+                  <%= link_to ref, {:controller => "references", :action => "one_ref", :id => @array[i].reference_id}, :id => "more"%></br>
+                </div>
               <% end %>
             <% end %>
             <% if @array.length > finish + 1 %>
