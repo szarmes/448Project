@@ -39,6 +39,20 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.integer  "experience_id",                 null: false
   end
 
+  create_table "fields", force: true do |t|
+    t.integer "field_id",    null: false
+    t.text    "description"
+  end
+
+  create_table "friendships", force: true do |t|
+    t.integer  "friendship_id", default: 0,     null: false
+    t.integer  "sender_id",                     null: false
+    t.integer  "receiver_id",                   null: false
+    t.datetime "sent_at",                       null: false
+    t.boolean  "accepted",      default: false, null: false
+    t.datetime "accepted_at"
+  end
+
   create_table "links", force: true do |t|
     t.integer "project_id", null: false
     t.integer "link_id",    null: false
@@ -67,23 +81,18 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.string  "relationship", default: "", null: false
     t.integer "yrsknown"
     t.string  "email"
-    t.integer  "reference_id", default: 0, null: false
+    t.integer "reference_id", default: 0,  null: false
     t.integer "user_id",                   null: false
   end
 
-  create_table "fields", force: true do |t|
-    t.integer "field_id", defalut: 0, null: false
-    t.text    "description"
-  end
-  
   create_table "skilllabels", force: true do |t|
-    t.integer "skilllabel_id",   default: 0,  null: false
-    t.string "label",       default: "", null: false
+    t.integer "skilllabel_id", default: 0,  null: false
+    t.string  "label",         default: "", null: false
   end
 
   create_table "skills", force: true do |t|
-    t.integer "skill_id",    default: 0,  null: false
-    t.string  "label",       default: "", null: false
+    t.integer "skill_id",   default: 0,  null: false
+    t.string  "label",      default: "", null: false
     t.integer "user_id",    default: 0,  null: false
     t.integer "posting_id"
     t.boolean "mandatory"
@@ -134,16 +143,5 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.string   "uid"
     t.string   "provider"
   end
-
-
-  create_table "friendships", force: true do |t|
-    t.integer "friendship_id", default: 0, null: false
-    t.integer "sender_id",  null: false
-    t.integer "receiver_id",  null: false
-    t.datetime "sent_at", null: false
-    t.boolean "accepted", default: false, null: false
-    t.datetime "accepted_at"
-  end
-
 
 end

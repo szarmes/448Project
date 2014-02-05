@@ -31,14 +31,12 @@
                 <li> <%= link_to "Profile", profile_path(@user), id: "brand",  style:"text-shadow:none;" %> </li>
               <% if @user.employer? %>
                 <li> <%= link_to "Postings", postings_path, id: "brand",  style:"text-shadow:none;" %> </li>
-                <li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand",  style:"text-shadow:none;" %> </li>
                 <li> <%= link_to'Sign Out', destroy_user_session_path, :method => :delete, id:"brand" %>  </li> 
               <% else %>
                 <li> <%= link_to "Skills", skills_path, id: "brand",  style:"text-shadow:none;" %> </li>
                 <li> <%= link_to "Experiences", experiences_path, id: "brand",  style:"text-shadow:none;" %> </li>
                 <li> <%= link_to "References", references_path, id: "brand",  style:"text-shadow:none;" %> </li>
                 <li> <%= link_to "Network", network_path, id: "brand",  style:"text-shadow:none;" %> </li>
-                <li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand",  style:"text-shadow:none;" %> </li>
                 <li><%= link_to'Sign Out', destroy_user_session_path, :method => :delete, id:"brand", style:"text-shadow:none;" %>  </li> 
               <% end %>
             <% else %>
