@@ -69,6 +69,7 @@
   height:11em;
   padding-bottom: 0.5em;
   margin-bottom: 1em;
+  padding: 1em;
 
 }
 
@@ -156,8 +157,8 @@
            </div>
       </div>
       <div class = "col-lg-5" style = "">
-          <p id = "title"> <%= @owner.fname%> <%= @owner.lname%> </p>
-          <p id = "title"> <%= @owner.city%> <%= @owner.province%> </p>
+          <p id = "title" style = "font-size: 3em"> <%= @owner.fname%> <%= @owner.lname%> </p>
+          <p id = "title" style = "font-size:2em"> <%= @owner.city%> <%= @owner.province%> </p>
           <p id = "title" style = "font-size: 1em"> <%= @owner.email%></p>
       </div>
   </div>
@@ -173,7 +174,12 @@
           </ul>
 
       <div class="tab-content">
-        <div class="tab-pane fade in active content" id="do"> This is what i can do for you</div>
+        <div class="tab-pane fade in active content" id="do"> 
+          After Studying at the University of Alberta I worked in Seatle for 6 years
+          under the supervision of Robert kale (project director). There I worked with a team of 20
+          people on software that was bought out by Apple. 
+
+        </div>
         
       </div>
     </div>
@@ -202,7 +208,7 @@
               <%end%>
             </ul>
             <% if @array.length > finish %>
-              <div style = "padding-right:1em;" align = "right">
+              <div style = "margin-right: 1em;" align = "right">
                 <%= link_to "More",skills_path, :id => "more"%> 
               </div>
             <% end %>
@@ -217,17 +223,15 @@
             <% for i in 0..finish%>
               <% if(i < @array.length) %>
                 <% exp = @array[i].title + " - " + @array[i].company_name %>
-                <div style = "padding-right:1em;" align = "right">
                   <%= link_to exp, {:controller => "experiences", :action => "details", :id => @array[i].experience_id}, :id => "more"%></br>
-              </div>
               <%end%>
             <%end%>
             <% if @array.length > finish + 1 %>
-              </br>
-              <%= link_to "More",skills_path, :id => "more"%>
+              <div style = "padding-right:1em;" align = "right">
+                <%= link_to "More",skills_path, :id => "more"%>
+            </div>
             <% end %>
           <%end%>
-
 
 
         </div>
@@ -240,14 +244,15 @@
             <% for i in 0..finish%>
               <% if(i < @array.length) %>
                 <% ref = @array[i].fname + " " + @array[i].lname + " - " + @array[i].relationship %>
-                <div style = "padding-right:1em;" align = "right">
+                
                   <%= link_to ref, {:controller => "references", :action => "one_ref", :id => @array[i].reference_id}, :id => "more"%></br>
-                </div>
               <% end %>
             <% end %>
             <% if @array.length > finish + 1 %>
               </br>
-              <%= link_to "More",skills_path, :id => "more"%>
+              <div style = "padding-right:1em;" align = "right">
+                <%= link_to "More",skills_path, :id => "more"%>
+              </div>
             <% end %>
           <% end %>
 
