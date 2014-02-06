@@ -171,7 +171,7 @@
          
           <ul class="nav nav-tabs">
             <li class = "active"><a href="#do" data-toggle="tab">About Me</a></li>
-             <li class = "active"><%= link_to "Your Network", network_path%></li>
+            <li><a href="#network" data-toggle="tab">Your Network</a></li>
           </ul>
 
       <div class="tab-content">
@@ -179,9 +179,34 @@
           After Studying at the University of Alberta I worked in Seatle for 6 years
           under the supervision of Robert kale (project director). There I worked with a team of 20
           people on software that was bought out by Apple. 
+        </div>
+        <div class="tab-pane fade content" id="network"> 
+
+          <div style = "margin-right: 1em;" align = "right">
+                <%= link_to "Add",network_path, :id => "more"%> 
+              </div>
+          
+          <% @array = @friendsadded.to_a %>
+          <% if(@array.empty?) %>
+              <%= @array %>
+          <%else%>
+
+          <% finish = 4 %>
+
+          <%for i in 0..finish %>
+            <% if array.length < finish%>
+              <%= @array[i].fname @array[i].lname %>
+            <%end%>
+          <%end%>
+
+          <% if @array.length > finish %>
+              <div style = "margin-right: 1em;" align = "right">
+                <%= link_to "More",network_path, :id => "more"%> 
+              </div>
+            <% end %>
+          <%end%>
 
         </div>
-        
       </div>
     </div>
 
@@ -189,6 +214,7 @@
     <div class = "col-lg-5">
       <ul class="nav nav-tabs">
         <li class = "active"><a href="#skills" data-toggle="tab">Skills</a></li>
+        <li><a href="#survey" data-toggle="tab">Survey</a></li>
         <li><a href="#exp" data-toggle="tab">Experiences</a></li>
         <li><a href="#ref" data-toggle="tab">References</a></li>
       </ul>
@@ -215,6 +241,11 @@
             <% end %>
           <%end%>
         </div>
+
+        <div class ="tab-pane fade content" id = "survey">
+          Take our survey to see how we are doing
+        </div>
+
         <div class="tab-pane fade content" id="exp">
             <% @array = @experiences.to_a %>
           <% if(@array.empty?) %>
