@@ -27,6 +27,20 @@ class CreateAuthentications < ActiveRecord::Migration
     t.integer  :experience_id,                 null: false
   end
 
+  create_table :fields do |t|
+    t.integer :field_id,    null: false
+    t.text    :description
+  end
+
+  create_table :friendships do |t|
+    t.integer  :friendship_id, default: 0,     null: false
+    t.integer  :sender_id,                     null: false
+    t.integer  :receiver_id,                   null: false
+    t.datetime :sent_at,                       null: false
+    t.boolean  :accepted,      default: false, null: false
+    t.datetime :accepted_at
+  end
+
   create_table :keywords do |t|
     t.string  :keyword,       default: "", null: false
     t.integer :posting_id,                 null: false
@@ -45,7 +59,7 @@ class CreateAuthentications < ActiveRecord::Migration
     t.string  :description,       default: "", null: false
     t.integer :salary
     t.integer :user_id,                 null: false
-    t.integer :posting_id,              null: false
+    t.integer :posting_id,  default: 0,  null: false
   end
 
   create_table :projects do |t|
@@ -62,7 +76,13 @@ class CreateAuthentications < ActiveRecord::Migration
     t.string  :relationship, default: "", null: false
     t.integer :yrsknown
     t.string  :email
+    t.integer :reference_id, default: 0,  null: false
     t.integer :user_id,                   null: false
+  end
+
+  create_table :skilllabels do |t|
+    t.integer :skilllabel_id, default: 0,  null: false
+    t.string  :label,         default: "", null: false
   end
 
   create_table :requirements do |t|
@@ -77,10 +97,21 @@ class CreateAuthentications < ActiveRecord::Migration
   end
 
   create_table :skills do |t|
-    t.string  :label,    default: "", null: false
-    t.string  :description,     default: ""
-    t.integer :user_id,  default: 0,  null: false
-    t.integer :skill_id, default: 0,  null: false
+    t.integer :skill_id,   default: 0,  null: false
+    t.string  :label,      default: "", null: false
+    t.integer :user_id,    default: 0,  null: false
+    t.integer :posting_id
+    t.boolean :mandatory
+  end
+
+  create_table :surveys do |t|
+    t.integer :user_id,   default: 0, null: false
+    t.integer :survey_id, default: 0, null: false
+    t.integer :question1
+    t.integer :question2
+    t.integer :question3
+    t.integer :question4
+    t.integer :question5
   end
 
   create_table :users do |t|
@@ -118,10 +149,5 @@ class CreateAuthentications < ActiveRecord::Migration
     t.string   :uid
     t.string   :provider
   end
-
-
-
-
-
   end
 end
