@@ -108,15 +108,17 @@
                 <td style = "padding-left: 1em;">
                   Recommendations
                   <ul>
-                    <% if @postings.size >= 1 %>
-                      <li><%= @postings[0].title %></li>
-                    <% end %>
-                    <% if @postings.size >= 2 %>
-                      <li><%= @postings[1].title %></li>
-                    <% end %>
-                    <% if @postings.size >= 3 %>
-                      <li><%= @postings[2].title %></li>
-                    <% end %>
+                    <% if !@postings.empty? %>
+                      <% if @postings.size >= 1 %>
+                        <li><%= @postings[0].title %></li>
+                      <% end %>
+                      <% if @postings.size >= 2 %>
+                        <li><%= @postings[1].title %></li>
+                      <% end %>
+                      <% if @postings.size >= 3 %>
+                        <li><%= @postings[2].title %></li>
+                      <% end %>
+                    <%end%>
                   </ul>
                   <% if @postings.size >= 4 %>
                       <p style = "text-align: right; padding: 0em; margin: 0em; padding-right: 1em; padding-bottom: 1em;"><%= link_to "More", {controller: "skills", action: "reccomend"} %></p>
