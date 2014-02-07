@@ -160,6 +160,42 @@
           <p id = "title" style = "font-size: 3em"> <%= @owner.fname%> <%= @owner.lname%> </p>
           <p id = "title" style = "font-size:2em"> <%= @owner.city%> <%= @owner.province%> </p>
           <p id = "title" style = "font-size: 1em"> <%= @owner.email%></p>
+          <% @postings = @postings.to_a %>
+          <table style = "width: 450px; height: 165px; background: #FFE2E2; border-radius: 5px;">
+            <tr style = "background: #FFADAD; border-radius: 5px;">
+              <td>
+                Recommendations
+              </tr>
+            </td>
+            <tr>
+              <td >
+                  <% if @postings.size >= 1 %>
+                    <%= @postings[0].title %>
+                  <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td >
+                  <% if @postings.size >= 2 %>
+                    <%= @postings[1].title %>
+                  <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td >
+                  <% if @postings.size >= 3 %>
+                    <%= @postings[2].title %>
+                  <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td >
+                  <% if @postings.size >= 4 %>
+                    <%= link_to "More", {controller: "skills", action: "reccomend"} %>
+                  <% end %>
+              </td>
+            </tr>
+          </table>
       </div>
   </div>
 
