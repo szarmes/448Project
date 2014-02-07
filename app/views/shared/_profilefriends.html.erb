@@ -1,0 +1,2 @@
+<% @friend = User.find_by(user_id: profilefriends.receiver_id) %>
+<%= link_to @friend.fname+" "+@friend.lname, profile_path(@friend) %> 

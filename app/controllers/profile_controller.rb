@@ -17,6 +17,11 @@ class ProfileController < ApplicationController
   def show
       @user = current_user
     @owner = User.find(params[:id])
+
+    @friendsadded = Friendship.where(sender_id: @owner.user_id, accepted: true)
+    @friendsaccepted = Friendship.where(receiver_id: @owner.user_id, accepted: true)
+    @friends = (@friendsaccepted + @friendsadded)
+    
     if(@owner.employer?)
       @postings = Posting.where(:user_id => @owner.user_id).paginate(page: params[:page])
     else

@@ -211,31 +211,23 @@
           people on software that was bought out by Apple. 
         </div>
         <div class="tab-pane fade content" id="network"> 
-
+          
           <div style = "margin-right: 1em;" align = "right">
                 <%= link_to "Add",network_path, :id => "more"%> 
               </div>
-          
-          <% @array = @friendsadded.to_a %>
-          <% if(@array.empty?) %>
-              <%= @array %>
-          <%else%>
 
-          <% finish = 4 %>
+              <% if @friends.length <= 4 %>
 
-          <%for i in 0..finish %>
-            <% if array.length < finish%>
-              <%= @array[i].fname @array[i].lname %>
-            <%end%>
-          <%end%>
-
-          <% if @array.length > finish %>
-              <div style = "margin-right: 1em;" align = "right">
-                <%= link_to "More",network_path, :id => "more"%> 
-              </div>
-            <% end %>
-          <%end%>
-
+                <% for i in 0..@friends.length-1 %>
+                  <% @friend = User.find_by(user_id: @friends[i].receiver_id) %>
+                  <%= link_to @friend.fname+" "+@friend.lname, profile_path(@friend) %> 
+                <%end%>
+              <% else %>
+                <% for i in 0..4 %>
+                    <% @friend = User.find_by(user_id: @friends[i].receiver_id) %>
+                    <%= link_to @friend.fname+" "+@friend.lname, profile_path(@friend) %>
+                  <%end%> 
+              <%end%>
         </div>
       </div>
     </div>
