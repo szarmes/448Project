@@ -162,38 +162,30 @@
           <p id = "title" style = "font-size: 1em"> <%= @owner.email%></p>
           <% @postings = @postings.to_a %>
           <% if @postings.size >= 1 %>
-            <table style = "width: 450px; height: 165px; background: #FFE2E2; border-radius: 5px;">
-              <tr style = "background: #FFADAD; border-radius: 5px;">
+
+            <table style = "width: 520px; height: 165px; background: #FFFFE0; border-radius: 5px; padding: 1em;">
+              <tr style = "background: #FFFFB4; border-radius: 5px;">
                 <td>
-                  Recommendations
+                  Notifications
                 </tr>
               </td>
               <tr>
-                <td >
+                <td style = "padding-left: 1em;">
+                  Recommendations
+                  <ul>
                     <% if @postings.size >= 1 %>
-                      <%= @postings[0].title %>
+                      <li><%= @postings[0].title %></li>
                     <% end %>
-                </td>
-              </tr>
-              <tr>
-                <td >
                     <% if @postings.size >= 2 %>
-                      <%= @postings[1].title %>
+                      <li><%= @postings[1].title %></li>
                     <% end %>
-                </td>
-              </tr>
-              <tr>
-                <td >
                     <% if @postings.size >= 3 %>
-                      <%= @postings[2].title %>
+                      <li><%= @postings[2].title %></li>
                     <% end %>
-                </td>
-              </tr>
-              <tr>
-                <td >
-                    <% if @postings.size >= 4 %>
-                      <%= link_to "More", {controller: "skills", action: "reccomend"} %>
-                    <% end %>
+                  </ul>
+                  <% if @postings.size >= 4 %>
+                      <p style = "text-align: right; padding: 0em; margin: 0em; padding-right: 1em;"><%= link_to "More", {controller: "skills", action: "reccomend"} %></p>
+                  <% end %>
                 </td>
               </tr>
             </table>
