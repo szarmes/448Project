@@ -1,23 +1,33 @@
 <h1> Add a Skill</h1>
 
-<%= simple_form_for @skill, :url => { :action => "create" } do |f| %>
-  <div> 
-    <%= f.autocomplete_field :label, autocomplete_skilllabel_label_skills_path, :default => @skill.label, :autofocus => true%>
+
+<div class = "row" height = 30px style = "padding-left: 1.5em;">
+  <div class = "col-lg-2" style ="" ></div>
+    <div class = "col-lg-8" style ="" >
+        <%= simple_form_for @skill, :url => { :action => "create" } do |f| %>
+        <div> 
+          <%= f.autocomplete_field :label, autocomplete_skilllabel_label_skills_path, :default => @skill.label, :autofocus => true%>
+        </div>
+        <% if @user.employer? %>
+          <div>
+            <%= f.hidden_field :posting_id, :value => @postID %>
+          </div>
+          <div>
+            <%= f.input :mandatory, collection: [['Mandatory', true], ['Optional',false]], :default => 1%>
+          </div>
+        <% end %>
+        <%= f.submit "Submit",:label => "Submit", class: "btn btn-large btn-primary" %>
+    </div>
   </div>
-  <% if @user.employer? %>
-    <div>
-      <%= f.hidden_field :posting_id, :value => @postID %>
-    </div>
-    <div>
-      <%= f.input :mandatory, collection: [['Mandatory', true], ['Optional',false]], :default => 1%>
-    </div>
-  <% end %>
-
-
- <%= f.submit "Submit",:label => "Submit", class: "btn btn-large btn-primary" %>
 
 <% end %>
-	<% if !@skills.nil? %>
-    <h1>All Skills</h1>
-		<%= render partial: 'shared/skills', collection: @skills %>
-	<% end %>
+
+  <div class = "row" height = 30px style = "">
+    <div class = "col-lg-2" style ="" ></div>
+      <div class = "col-lg-8" style ="" >
+      	<% if !@skills.nil? %>
+          <h1>All Skills</h1>
+      		<%= render partial: 'shared/skills', collection: @skills %>
+      	<% end %>
+      </div>
+    </div>
