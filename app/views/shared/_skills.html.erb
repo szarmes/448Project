@@ -1,13 +1,20 @@
 <head>
+
+  <style = "text/css">
+    .space{
+      padding: 0.5em;
+    }
+
+  </style>
 </head>
   <body>
-    <table>
+    <table border = "0">
       <tr>
-        <td style = "max-width:12em"><p><%= skills.label %></p></td>
+        <td class = "space" style = "max-width:12em; width: 12em"><p><%= skills.label %></p></td>
         <% if !skills.nil? %>
           <% if skills.user_id == @userID %>
-            <td><%= link_to "Edit this Skill", edit_skill_path(skills.skill_id), class: "btn btn-small btn-info"%></td>
-            <td><%= link_to "Delete this Skill", skills, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %></td>
+            <td class = "space"><%= link_to "Edit this Skill", edit_skill_path(skills.skill_id), class: "btn btn-small btn-info"%></td>
+            <td class = "space"><%= link_to "Delete this Skill", skills, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %></td>
             <% end %>
           <% end %>
       </tr>

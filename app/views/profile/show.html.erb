@@ -217,9 +217,9 @@
                   <%= link_to exp, {:controller => "experiences", :action => "details", :id => @array[i].experience_id}, :id => "more"%></br>
               <%end%>
             <%end%>
-            <% if @array.length > finish + 1 %>
+            <% if @array.length < finish + 1 %>
               <div style = "" align = "right">
-                <%= link_to "More",skills_path, :id => "more"%>
+                <%= link_to "More",experiences_path, :id => "more"%>
             </div>
             <% end %>
           <%end%>
