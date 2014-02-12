@@ -25,6 +25,7 @@ First_Website::Application.routes.draw do
   match '/reccomended', to: 'skills#reccomend', via:'get'
   match '/details', to: 'experiences#details', via: 'get'
   match '/one_ref', to: 'references#one_ref', via: 'get'
+  match '/add_exp', to: "experiences#add", via: 'get'
     
   match '/auth/:provider/callback', to: 'authentications#create', via: 'get'
   resources :authentications

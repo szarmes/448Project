@@ -1,58 +1,64 @@
 <head>
+    <style = "text/css">
+      .picholder{
+        width: 6em;
+      }
+
+    </style>
+
 </head>
   <body>
-    <table>
-      <tr>
-        <td style = "max-width:12em"><p><%= experiences.title %></p></td>
-        <td></td><td></td><td></td>
-        <% if !experiences.nil? %>
-          <% if experiences.user_id == @userID %>
-            <td><%= link_to "Edit this Experience", edit_experience_path(experiences.experience_id), class: "btn btn-small btn-info"%></td>
-            <td><%= link_to "Delete this Experience", experiences, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %></td>
-            <td><%= link_to "Add a Project", projects_path(:expID => experiences.experience_id), class: "btn btn-small btn-primary" %></td>
-            <% end %>
-          <% end %>
-      </tr>
-      <tr>
-        <td style = "max-width:12em"><p><%= experiences.description %></p></td>
-      </tr>
-      <tr>
-        <td style = "max-width:12em"><p><%= experiences.company_name %></p></td>
-      </tr>
-      <tr>
-        <td style = "max-width:12em"><p>Start Date:</td><td><%= experiences.sdate.strftime("%b-%d-%Y") %></p></td>
-        <% if !experiences.fdate.nil? %>
-          <td style = "max-width:12em"><p>End Date :</td><td><%= experiences.fdate.strftime("%b-%d-%Y") %></p></td>
-        <% end %>
-      </tr>
-      <tr>
-        <% if !experiences.company_country.nil? %>
-          <td style = "max-width:12em"><p><%= experiences.company_country %></p></td>
-        <% end %>
-        <% if !experiences.company_city.nil? %>
-          <td style = "max-width:12em"><p><%= experiences.company_city %></p></td>
-        <% end %>
-        <% if !experiences.company_province.nil? %>
-          <td style = "max-width:12em"><p><%= experiences.company_province %></p></td>
-        <% end %>
-        <% if !experiences.company_address.nil? %>
-          <td style = "max-width:12em"><p><%= experiences.company_address %></p></td>
-        <% end %>
-      </tr>
-      <tr>
-        <% if !experiences.supervisor.nil? %>
-          <td style = "max-width:12em"><p><%= experiences.supervisor %></p></td>
-        <% end %>
-        <% if !experiences.supervisor_phone.nil? %>
-          <td style = "max-width:12em"><p><%= experiences.supervisor_phone %></p></td>
-        <% end %>
-      </tr>
-    </table>
+    <div class = "row" height = 30px style = "padding-left: 1.5em;">
+      <div class = "col-lg-12" style ="" >
+        <table border = 0 style ="margin: 2em">
+          <tr>
+            <td class = "picholder"> this is where the picture goes </td>
+            <td style = "width: 50em"><p>
+              <%= link_to experiences.title, {:controller => "experiences", :action => "details", :id => experiences.experience_id}, :id => "more"%></p>
+              <p><%= experiences.description %></p>
+            </td>
+          </tr>
+            <% if !experiences.nil? %>
+              <% if experiences.user_id == @userID %>
+              <tr>
+                <td></td>
+                <td>
+                  <table>
+                    <tr>
+                      <td>
+                        <div class = "hover">
+                          <%= link_to image_tag('edit.png'), edit_experience_path(experiences.experience_id), class: "btn btn-small btn-info"%>
+                          <div class = "tooltip">
+                            Click here to edit
+                           </div>
+                       </div>
+                     </td>
+                     <td>
+                      <div class = "hover">
+                          <%= link_to image_tag('delete.png'), experiences, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %>
+                          <div class = "tooltip">
+                            Click here to delete
+                           </div>
+                       </div>
+                     </td>
 
-    <% @projects = Project.where(:experience_id => experiences.experience_id).paginate(page: params[:page]) %>
+                     <td>
 
-    <% if !@projects.empty? %>
-    <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Projects for this experience</p>
-    <%= render partial: 'shared/projects', collection: @projects %>
-  <% end %>
- </body>
+                      <div class = "hover">
+                         <%= link_to image_tag('pencil.png'), projects_path(:expID => experiences.experience_id), class: "btn btn-small btn-primary" %>
+
+                          <div class = "tooltip">
+                            Click here to add a project
+                           </div>
+                       </div>
+                     </td>
+                   </tr>
+                 </table>
+                </td>
+                <% end %>
+              <% end %>
+            </tr>
+        </table>
+      </div>
+    </div>
+  </body>
