@@ -1,22 +1,28 @@
 <h1> Your Network </h1>
 
-	<%= form_tag("/findfriend", method: "get") do %>
-        <div style = "max-width:500px;">
-        	<p>Find people via email address</p>
-        	<%= email_field_tag(:q)%> 
-        </div>
-        <%= submit_tag("Find Friend",class: "btn btn-small btn-primary") %> 
-    <% end %>
+	
 
 	<% if user_signed_in? and !@requests.empty? %>
 		<p> Friend request(s) pending: </p>
 		<%= render partial: 'shared/friendrequests', collection: @requests %>
 	<% end %>
 
+<<<<<<< HEAD
 	<h2> Friends </h2>
 
 	<%= render partial: 'shared/friendslist', collection: @friends %>
 	
+=======
+	<%= render partial: 'shared/friendsadded', collection: @friendsadded %>
+	<%= render partial: 'shared/friendsaccepted', collection: @friendsaccepted %>
+>>>>>>> b0f29d9061525871f5435499286c718f5f70078f
 
+<%= form_tag("/findfriend", method: "get") do %>
+        <div style = "max-width:500px;">
+        	<p>Find people via email address</p>
+        	<%= email_field_tag(:q)%> 
+        </div>
+        <%= submit_tag("Find Friend",class: "btn btn-small btn-primary") %> 
+    <% end %>
 
 

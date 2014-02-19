@@ -66,6 +66,13 @@ class ReferencesController < ApplicationController
 
   end
 
+  def one_ref
+
+    @user = current_user
+    @one = Reference.find(params[:id])
+
+  end
+
   private
     
     def reference_params

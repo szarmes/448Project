@@ -1,72 +1,7 @@
-<h1> Add an Experience</h1>
 
-<%= simple_form_for @experience, :url => { :action => "create" } do |f| %>
-
-  <p> Fields marked with * are required </p>
-  
-  <div><%= f.label "Title *" %> 
-  E.g. "Programming with Java" <br />
-  <%= f.text_field :title, :autofocus => true %></div>
-
-  <div>
-  	<%= f.label "Description/Responsibilities *" %>
-    <%= f.text_area :description, :autofocus => true %>
-  </div>
-
-  <div>
-  	<%= f.label "Company Name*" %>
-    <%= f.text_field :company_name, :autofocus => true %>
-  </div>
-
-  <div>
-  	<%= f.label "Starting Date *" %>
-    <%= f.date_field :sdate, :autofocus => true %>
-  </div>
-  <div>
-  	<%= f.label "Finish Date" %>
-    <%= f.date_field :fdate, :autofocus => true %>
-  </div>
-
- 
-   <div>
-  	<%= f.label "Company Address" %>
-    <%= f.text_field :company_address, :autofocus => true %>
-  </div>
-
-   <div>
-  	<%= f.label "Company City" %>
-    <%= f.text_field :company_city, :autofocus => true %>
-  </div>
-
-   <div>
-  	<%= f.label "Company Province" %>
-    <%= f.text_field :company_province, :autofocus => true %>
-  </div>
-
-  <div>
-    <%= f.label "Company Country" %>
-    <%= f.text_field :company_country, :autofocus => true %>
-  </div>
-
-   <div>
-  	<%= f.label "Supervisor" %>
-    <%= f.text_field :supervisor, :autofocus => true %>
-  </div>
-   <div>
-  	<%= f.label "Supervisor Phone Number" %>
-    <%= f.text_field :supervisor_phone, :autofocus => true %>
-  </div>
-
-   <div>
-  	<%= f.hidden_field :experience_id, :value => 0 %>
-    
-  </div>
-
-
- <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
-
-<% end %>
   <% if !@experiences.nil? %>
     <h1>All Experiences</h1>
+   <%= link_to "Add an Experience", {:controller => "experiences", :action => "add"}, class: "btn btn-small btn-info"%>
     <%= render partial: 'shared/experiences', collection: @experiences %>
   <% end %>
+

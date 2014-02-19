@@ -1,247 +1,200 @@
-<style =  "text/css">
+<head>
+  <style type="text/css">
 
-.pic{
-    border: 0.2em solid grey;
-    padding: 0.5em;
-}
+    #title{
 
-#more{
+      font-size: 2em;
+      font-weight: bold;
+      line-height: 1em
+    }
 
-    color: black;
+    .pic{
+      border-right:0em solid grey;
+      padding-right: 3em;
+      padding-bottom: 1em;
 
-}
+    }
+.content{
 
-#more:hover{
-
-    background-color: #08C;
-}
-#minititle{
-
-    font-size: 20px;
-    line-height: 1em;
-}
-
-#description{
-
-    font-size: 15px;
-    margin-bottom: 1em;
-    padding-left: 1em;
-}
-
-#title{
-    padding-left: 0.5em;
-    font-size: 3em;
-    font-weight: 900;
-    line-height:90%;
-    display: inline;
+  margin-top: 1em;
+  background-color: #E6E6E6;
+  border-radius: 5px;
+  padding-left: 0.5em;
+  padding-top: 0.5em;
+  height:11em;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  padding: 1em;
 
 }
 
-#title2{
-    font-size: 3em;
-    font-weight: 900;
-    line-height:90%;
-    color: grey;
-    display:inline;
 
-}
+  </style>
 
-#cmtBox{
+  <script type="text/javascript">
 
-    border:0.2em;
-    border-style: solid;
-    border-color: black;
-    border-radius: 0.2em;
-    padding-left: 0.8em;
-    width: 165%;
-    height: 10em;
-    float: left;
-    font-size: 1.3em;
-    padding-top: 0.5em;
-    border-radius: 10px;
-}
+    $('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
 
-#cmt{
-
-    padding-left: 0.5em;
-    font-size: 1.7em;
-    font-weight: 900;
-    line-height:90%;
-    padding-top: 0.3em;
-    padding-bottom: 0.3em;
-    width:7em;
-    margin-top: 0.2em;
+  </script>
+</head>
 
 
-    display: block;
-    border-radius: 2px 2px 0 0;
-    font-family: 'Lily Script One', helveti;
-    cursor: pointer;
-    border-radius: 10px;
-    background: #08C;
-    color: white;
+<body>
 
-
-}
-
-#package{
-
-    width: 65%;
-    float:left;
-    padding-left: 0.6em;
-    padding-top: 1em;
-    border: 0em;
-    border-style: solid;
-    border-color: black;
-    margin-left: -8em;
-}
-
-#tabs{
-
-    padding-top: 1em;
-    height: 22em;
-    padding-left: 0em;
-    
-
-}
-
-#format{
-
-    vertical-align: top;
-}
-
-#cap{
-    border-radius: 1em;
-    border-top: 0em solid grey;
-    border-left: 0em solid grey;
-    border-right: 0em solid grey;
-    margin-bottom: -9em;
-    
-}
-
-.tabs input[type=radio] {
-          position: absolute;
-          top: -9999px;
-          left: -9999px;
-      }
-      .tabs {
-        width: 650px;
-        float: left;
-        list-style: none;
-        position: relative;
-        padding: 0;
-        margin: 50px auto;
-        margin-top: 0px;
-        margin-right: 0px;
-      }
-      .tabs li{
-        float: left;
-      }
-      .tabs label {
-          display: block;
-          padding: 10px 20px;
-          border-radius: 2px 2px 0 0;
-          color: #08C;
-          font-size: 24px;
-          font-weight: normal;
-          font-family: 'Lily Script One', helveti;
-          background: rgba(255,255,255,0.2);
-          cursor: pointer;
-          position: relative;
-          top: 3px;
-
-          border-radius: 10px;
-          -webkit-transition: all 0.2s ease-in-out;
-          -moz-transition: all 0.2s ease-in-out;
-          -o-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out;
-      }
-      .tabs label:hover {
-        background: rgba(255,255,255,0.5);
-        top: 0;
-      }
-       
-      [id^=tab]:checked + label {
-        background: #08C;
-        color: white;
-        top: 0;
-      }
-       
-      [id^=tab]:checked ~ [id^=tab-content] {
-          display: block;
-      }
-      .tab-content{
-        z-index: 2;
-        display: none;
-        text-align: left;
-        width: 90%;
-        font-size: 20px;
-        line-height: 200%;
-        padding-top: 10px;
-        background: #08C;
-        padding: 15px;
-        color: white;
-        position: absolute;
-        top: 43px;
-        left: 0;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        box-sizing: border-box;
-      }
-
-body, html {
-          height: 100%;
-          margin: 0;
-          -webkit-font-smoothing: antialiased;
-          font-weight: 100;
-         /*background: #aadfeb;*/
-          background: white;
-          font-family: helvetica;
-      }
-</style>
-
-<% if  @owner.employer?%>
+  <% if  @owner.employer?%>
       <div border = 0 style ="margin-left: 5.5em" >
         <div class = "row" height = 30px style = "padding-left: 1.5em;">
-            <div class = "col-lg-4" style =" border-right: 0.2em solid grey;" >
+            <div class = "col-lg-4" style ="" >
                 <div>
-                    <%= image_tag('king.jpeg', :class => "pic") %>
+                    <%= image_tag('prof.jpeg', :class => "pic") %>
                  </div>
             </div>
-            <div class = "col-lg-8" style = "margin-top: 1em;">
-                <p id = "title"> <%= @owner.fname %> <%= @owner.lname %><p id = "title2"></p> </p>
-                <p id = "title"> Hiring At <p id = "title2"> <%= @owner.company_name %></p> </p>
-                <p id = "title"> Contact <p id = "title2"> 888 556 3600</p> </p>
-                <p id = "title"> or email <p id = "title2">securityOffice@gmail.ca</p></p>
+            <div class = "col-lg-8" style = "">
+                <p id = "title"> <%= @owner.fname %> <%= @owner.lname %> </p>
+                <p id = "title"> Hiring At  <%= @owner.company_name %> </p>
+
+                <p id = "title"> 
+                  <% if(!@owner.phone_number.empty?) %>
+                    Contact: <%= @owner.phone_number %>
+                  <% end %>
+                </p>
+                <p id = "title" style = "font-size: 3em"> 
+                  <% if(!@owner.email.empty?) %>
+                    <%= @owner.email %>
+                  <% end %>
+                </p>
             </div>
         </div>
+
          <%= render partial: 'shared/profilepostings', collection: @postings %>
          
       </div>
-    
-
-
-
-
-
-
 
     <!-- -------------------------------------------------------------------------------- -->
 <% else %>
 
-    <div border = 0 style ="margin-left: 5.5em" >
-        <div class = "row" height = 30px style = "padding-left: 1.5em;">
-            <div class = "col-lg-4" style =" border-right: 0.2em solid grey;" >
-                <div>
-                    <%= image_tag('king.jpeg', :class => "pic") %>
-                 </div>
-            </div>
-            <div class = "col-lg-8" style = "margin-top: 3em;">
-                <p id = "title"> <%= @owner.fname%> <%= @owner.lname%> </p>
-                <p id = "title"> <%= @owner.city%> <%= @owner.province%> </p>
-                <p id = "title"> <%= @owner.email%></p>
-            </div>
+  <div class = "row" height = 30px style = "">
+
+      <div class = "col-lg-1">
+      </div>
+      <div class = "col-lg-4" style ="" >
+          <div style = "">
+              <%= image_tag('prof.jpeg', :class => "pic") %>
+           </div>
+      </div>
+      <div class = "col-lg-5" style = "">
+          <p id = "title" style = "font-size: 3em"> <%= @owner.fname%> <%= @owner.lname%> </p>
+          <p id = "title" style = "font-size:2em"> <%= @owner.city%> <%= @owner.province%> </p>
+          <p id = "title" style = "font-size: 1em"> <%= @owner.email%></p>
+          <% @postings = @postings.to_a %>
+          <% if @postings.size >= 1 %>
+
+            <table style = "width: 520px; max-height: 165px; background: #FFFFE0; border-radius: 5px; padding: 1em;">
+              <tr style = "background: #FFFFB4; border-radius: 5px;">
+                <td>
+                  Notifications
+                </tr>
+              </td>
+              <tr>
+                <td style = "padding-left: 1em;">
+                  Recommendations
+                  <ul>
+                    <% if !@postings.empty? %>
+                      <% if @postings.size >= 1 %>
+                        <li><%= @postings[0].title %></li>
+                      <% end %>
+                      <% if @postings.size >= 2 %>
+                        <li><%= @postings[1].title %></li>
+                      <% end %>
+                      <% if @postings.size >= 3 %>
+                        <li><%= @postings[2].title %></li>
+                      <% end %>
+                    <%end%>
+                  </ul>
+                  <% if @postings.size >= 4 %>
+                      <p style = "text-align: right; padding: 0em; margin: 0em; padding-right: 1em; padding-bottom: 1em;"><%= link_to "More", {controller: "skills", action: "reccomend"} %></p>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+          <% end %>
+      </div>
+  </div>
+
+
+  <div class = "row" style = "padding-top: 2em">
+
+    <div class = "col-lg-5" style = "height: 20em; vertical-align: top;">
+
+         
+          <ul class="nav nav-tabs">
+            <li class = "active"><a href="#do" data-toggle="tab">About Me</a></li>
+            <li><a href="#network" data-toggle="tab">Your Network</a></li>
+          </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade in active content" id="do"> 
+          After Studying at the University of Alberta I worked in Seatle for 6 years
+          under the supervision of Robert kale (project director). There I worked with a team of 20
+          people on software that was bought out by Apple. 
         </div>
+        <div class="tab-pane fade content" id="network"> 
+          
+          <div style = "" align = "right">
+                <%= link_to "Add",network_path, :id => "more"%> 
+              </div>
+
+              <% if @friends.length <= 4 %>
+
+                <% for i in 0..@friends.length-1 %>
+                  <% @friend = User.find_by(user_id: @friends[i].receiver_id) %>
+                  <%= link_to @friend.fname+" "+@friend.lname, profile_path(@friend) %> 
+                <%end%>
+              <% else %>
+                <% for i in 0..4 %>
+                    <% @friend = User.find_by(user_id: @friends[i].receiver_id) %>
+                    <%= link_to @friend.fname+" "+@friend.lname, profile_path(@friend) %>
+                  <%end%> 
+              <%end%>
+        </div>
+      </div>
+    </div>
+
+
+    <div class = "col-lg-5">
+      <ul class="nav nav-tabs">
+        <li class = "active"><a href="#skills" data-toggle="tab">Skills</a></li>
+        <li><a href="#survey" data-toggle="tab">Survey</a></li>
+        <li><a href="#exp" data-toggle="tab">Experiences</a></li>
+        <li><a href="#ref" data-toggle="tab">References</a></li>
+      </ul>
+
+
+      <div class="tab-content">
+        <div class="tab-pane fade in active content" id="skills" style = ""> 
+          <% @array = @skills.to_a %>
+          <% if(@array.empty?) %>
+            No skills added yet
+          <%else%>
+            <% finish = 4 %>
+            <ul>
+              <% for i in 0..finish%>
+                <% if(i < @array.length) %>
+                  <li> <%= @array[i].label %> </li>
+                <%end%>
+              <%end%>
+            </ul>
+            <% if @array.length > finish %>
+              <div style = "" align = "right">
+                <%= link_to "More",skills_path, :id => "more"%> 
+              </div>
+            <% end %>
+          <%end%>
+        </div>
+<<<<<<< HEAD
         <div style = "padding-left: 1.5em;">
         <div class ="row" id = "cap" style = "padding-left: 0em;">
             <div class = "col-lg-7" style = "margin-bottom: 4em;">
@@ -477,14 +430,58 @@ body, html {
                         This is what i can do for you 
                     </p>
                 </div>
-            </div>
+=======
+
+        <div class ="tab-pane fade content" id = "survey">
+          Take our survey to see how we are doing
         </div>
+
+        <div class="tab-pane fade content" id="exp">
+            <% @array = @experiences.to_a %>
+          <% if(@array.empty?) %>
+            No experiences added yet
+          <%else %>
+            <% finish = 4 %>
+            <% for i in 0..finish%>
+              <% if(i < @array.length) %>
+                <% exp = @array[i].title + " - " + @array[i].company_name %>
+                  <%= link_to exp, {:controller => "experiences", :action => "details", :id => @array[i].experience_id}, :id => "more"%></br>
+              <%end%>
+            <%end%>
+            <% if @array.length < finish + 1 %>
+              <div style = "" align = "right">
+                <%= link_to "More",experiences_path, :id => "more"%>
+>>>>>>> b0f29d9061525871f5435499286c718f5f70078f
+            </div>
+            <% end %>
+          <%end%>
+
+
+        </div>
+        <div class="tab-pane fade content" id="ref">
+          <% @array = @references.to_a %>
+           <% if(@array.empty?) %>
+              No references added yet
+          <%else%>
+            <% finish = 4 %>
+            <% for i in 0..finish%>
+              <% if(i < @array.length) %>
+                <% ref = @array[i].fname + " " + @array[i].lname + " - " + @array[i].relationship %>
+                
+                  <%= link_to ref, {:controller => "references", :action => "one_ref", :id => @array[i].reference_id}, :id => "more"%></br>
+              <% end %>
+            <% end %>
+            <% if @array.length > finish + 1 %>
+              </br>
+              <div style = "" align = "right">
+                <%= link_to "More",skills_path, :id => "more"%>
+              </div>
+            <% end %>
+          <% end %>
         </div>
     </div>
 
-    <% if user_signed_in? and @user.user_id != @owner.user_id %>
-      <%= link_to "+Add friend", {:controller => "friendships", :action => 'addfriend', :sender => @user.user_id, :receiver => @owner.user_id}, class: "btn btn-small btn-primary"%>
-    <% end %>
-
-
-<% end %>
+    </div>
+  </div>
+  <% end %>
+</body>

@@ -39,11 +39,18 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.integer  "experience_id",                 null: false
   end
 
-  create_table "keywords", force: true do |t|
-    t.string  "keyword",       default: "", null: false
-    t.integer "posting_id",                 null: false
-    t.integer "skill_id",                   null: false
-    t.integer "experience_id",              null: false
+  create_table "fields", force: true do |t|
+    t.integer "field_id",    null: false
+    t.text    "description"
+  end
+
+  create_table "friendships", force: true do |t|
+    t.integer  "friendship_id", default: 0,     null: false
+    t.integer  "sender_id",                     null: false
+    t.integer  "receiver_id",                   null: false
+    t.datetime "sent_at",                       null: false
+    t.boolean  "accepted",      default: false, null: false
+    t.datetime "accepted_at"
   end
 
   create_table "links", force: true do |t|
@@ -57,7 +64,7 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.string  "description", default: "", null: false
     t.integer "salary"
     t.integer "user_id",                  null: false
-    t.integer "posting_id",               null: false
+    t.integer "posting_id",  default: 0,  null: false
   end
 
   create_table "projects", force: true do |t|
@@ -74,25 +81,21 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.string  "relationship", default: "", null: false
     t.integer "yrsknown"
     t.string  "email"
+    t.integer "reference_id", default: 0,  null: false
     t.integer "user_id",                   null: false
   end
 
-  create_table "requirements", force: true do |t|
-    t.boolean "mandatory",      default: true, null: false
-    t.string  "degree"
-    t.string  "educationLvl"
-    t.string  "description",    default: "",   null: false
-    t.integer "exp"
-    t.string  "exp_area"
-    t.integer "posting_id",                    null: false
-    t.integer "requirement_id",                null: false
+  create_table "skilllabels", force: true do |t|
+    t.integer "skilllabel_id", default: 0,  null: false
+    t.string  "label",         default: "", null: false
   end
 
   create_table "skills", force: true do |t|
-    t.string  "label",       default: "", null: false
-    t.string  "description", default: ""
-    t.integer "user_id",     default: 0,  null: false
-    t.integer "skill_id",    default: 0,  null: false
+    t.integer "skill_id",   default: 0,  null: false
+    t.string  "label",      default: "", null: false
+    t.integer "user_id",    default: 0,  null: false
+    t.integer "posting_id"
+    t.boolean "mandatory"
   end
 
   create_table "surveys", force: true do |t|
@@ -141,6 +144,7 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.string   "provider"
   end
 
+<<<<<<< HEAD
 
   create_table "friendships", force: true do |t|
     t.integer "friendship_id", default: 0, null: false
@@ -160,4 +164,6 @@ ActiveRecord::Schema.define(version: 20131125022356) do
   end
 
 
+=======
+>>>>>>> b0f29d9061525871f5435499286c718f5f70078f
 end

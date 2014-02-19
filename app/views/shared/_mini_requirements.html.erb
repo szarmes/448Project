@@ -1,0 +1,16 @@
+	<% if mini_requirements.mandatory %>
+		This requirement is mandatory
+	<% else %>
+		This requirement is optional
+	<%end%>
+	<br>
+	 <%= mini_requirements.description %>
+	<br>
+	 A <%= mini_requirements.degree %> is required
+	 <br>
+	 <%= mini_requirements.educationLvl %> is required
+	 <br>
+	  A minimum of <%= mini_requirements.exp %> experience is needed
+	  <br>
+	  in the field of <%= mini_requirements.exp_area %>
+

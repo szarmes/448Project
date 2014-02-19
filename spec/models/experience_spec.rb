@@ -21,7 +21,6 @@ describe Experience do
     it { should respond_to(:user_id) }
     it { should respond_to(:experience_id) }
     it { should belong_to (:user) }
-    it { should have_many (:keywords) }
 
     describe "when experience_id is set" do
     it "should equal ex.id" do
@@ -55,24 +54,4 @@ describe Experience do
             expect(exp).to_not be_valid
         end
     end
-    describe "keywords associations" do
-    before do
-      @keyword = FactoryGirl.build(:keyword, experience_id: exp.experience_id)
-      @keyword.save
-      @keyword1 = FactoryGirl.build(:keyword, experience_id: 5)
-      @keyword1.save
-    end
-    it "should be destroyed when experience is destroyed" do
-      Keyword.all.should include(@keyword1) 
-      Keyword.all.should include(@keyword)
-      exp.keywords.push(@keyword)
-      exp.destroy
-      Keyword.all.should_not include(@keyword)
-      Keyword.all.should include(@keyword1)
-    end
-  end
-
-
-
-
 end

@@ -14,6 +14,13 @@ class ExperiencesController < ApplicationController
 
   end
 
+  def add
+    @experience = Experience.new
+    @user = current_user
+
+  end
+
+
   def update
     @experience = Experience.find(params[:id])
     if (user_signed_in? && current_user.user_id == @experience.user_id && !current_user.employer)
@@ -66,7 +73,12 @@ class ExperiencesController < ApplicationController
 
   	end
 
+  
   	
+  end
+  def details
+    @user = current_user
+    @details = Experience.find(params[:id])
   end
 
   private

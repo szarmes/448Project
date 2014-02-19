@@ -1,0 +1,54 @@
+<html>
+<body>
+<p>Title: <%= @details.title %> </p>
+<p>Description: <%= @details.description %> </p>
+<p>Start Date: <%= @details.sdate %> </p>
+<p>Company Name: <%= @details.company_name %> </p>
+
+<p>
+<% if(!@details.fdate.nil?)%>
+	Finish Date: <%= @details.fdate %> 
+<%end%>
+</p>
+
+
+<p>
+	<% if(!@details.company_address.empty?)%>
+		Company Address: <%= @details.company_address %> 
+	<%end%>
+</p>
+
+<p>
+	<% if(!@details.company_city.empty?) %>
+		Company City: <%= @details.company_city %>
+	<%end%>
+</p>
+
+
+<p>
+	<% if(!@details.company_province.empty?) %>
+		Company Province: <%= @details.company_province %> 
+	<%end%>
+</p>
+
+
+<p>
+	<% if(!@details.company_country.empty?) %>
+		Company Province: <%= @details.company_country %> 
+	<%end%>
+</p>
+
+<p>
+	<% if(!@details.supervisor.empty?) %>
+		Supervisor: <%= @details.supervisor %> 
+	<%end%>
+</p>
+
+<p>
+	<% if(!@details.supervisor_phone.empty?) %>
+		Supervisor Phone Number: <%= @details.supervisor_phone %> 
+	<%end%>
+</p>
+
+</body>
+</html>
