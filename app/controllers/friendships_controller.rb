@@ -5,8 +5,9 @@ class FriendshipsController < ApplicationController
     @user = current_user
     @userID = current_user.user_id
     @requests = Friendship.where(receiver_id: @user.user_id, accepted: false)
-    @friendsadded = Friendship.where(sender_id: @user.user_id, accepted: true)
-    @friendsaccepted = Friendship.where(receiver_id: @user.user_id, accepted: true)
+    @requested = Friendship.where(sender_id: @user.user_id, accepted: true)
+    @accepted = Friendship.where(receiver_id: @user.user_id, accepted: true)
+    @friends= @requested+@accepted
 
   end
 
@@ -30,15 +31,15 @@ class FriendshipsController < ApplicationController
     if user_signed_in?
       @sender = params[:sender]
       @receiver = params[:receiver]
-      if (Friendship.find_by(sender_id: @sender, receiver_id: @receiver).nil? &&
-        Friendship.find_by(sender_id: @receiver, receiver_id: @sender).nil?)
+      if Friendship.find_by(sender_id: @sender, receiver_id: @receiver).nil? &&
+        Friendship.find_by(sender_id: @receiver, receiver_id: @sender).nil?
 
         @friend = Friendship.create(friendship_id: 0, sender_id: @sender, receiver_id: @receiver, sent_at: DateTime.now, accepted: false)
 
         if @friend.save
 
           flash[:success] = "Friend request sent"
-          redirect_to root_path
+          redirect_to root_path 
         else
           flash[:error] = "Oops, something went wrong."
           redirect_to root_path

@@ -16,6 +16,8 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'faye'
+gem 'thin'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

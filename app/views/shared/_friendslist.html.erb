@@ -1,0 +1,9 @@
+<% if @user.user_id == friendslist.receiver_id %>
+	<% @friend = User.find_by(user_id: friendslist.sender_id) %>
+<% else %>
+	<% @friend = User.find_by(user_id: friendslist.receiver_id) %>
+<% end %>
+<%= link_to @friend.fname+" "+@friend.lname, profile_path(@friend) %> 
+
+<%= link_to "Remove this Friend", friendslist, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %>
+</p>

@@ -7,11 +7,7 @@
     <ul class="nav pull-left">
         <li><%= link_to "Survey", survey_path(@user), id: "brand",  style:"text-shadow:none;" %></li>
     </ul>
-    <% if user_signed_in? and !Friendship.find_by(receiver_id: @user.user_id, accepted: false).nil? %>
-    <ul class="nav pull-left">
-        <li><%= link_to "New Friend Request", network_path(@user), id: "brand",  style:"text-shadow:none;" %></li>
-    </ul>
-    <% end %>
+    
 
   </div><!-- /.navbar-collapse -->
 </nav>

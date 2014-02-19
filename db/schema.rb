@@ -151,5 +151,13 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.datetime "accepted_at"
   end
 
+  create_table "messages", force: true do |t|
+    t.integer "friendship_id", default: 0, null: false
+    t.integer "sender_id",  null: false
+    t.integer "receiver_id",  null: false
+    t.datetime "sent_at", null: false
+    t.string "content", null: false
+  end
+
 
 end

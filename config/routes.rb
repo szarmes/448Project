@@ -17,6 +17,7 @@ First_Website::Application.routes.draw do
   resources :profile
   resources :surveys
   resources :friendships
+  resources :messages
   
   match '/search', to: 'search#search', via: 'get'
   match '/findfriend', to: 'friendships#findfriend', via: 'get'
@@ -26,9 +27,11 @@ First_Website::Application.routes.draw do
   resources :authentications
 
   get  'addfriend', to: 'friendships#addfriend'
+  post  'addfriend', to: 'friendships#addfriend'
   get  'accept', to: 'friendships#accept'
   get  'decline', to: 'friendships#decline'
   get 'network', to: 'friendships#index'
+  get 'chat', to: 'messages#index'
 
 
    # get 'signin' => 'devise/sessions#new', :as => :new_user_session
