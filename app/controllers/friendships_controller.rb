@@ -8,7 +8,29 @@ class FriendshipsController < ApplicationController
     @requested = Friendship.where(sender_id: @user.user_id, accepted: true)
     @accepted = Friendship.where(receiver_id: @user.user_id, accepted: true)
     @friends= @requested+@accepted
-
+    @online = Array.new
+    @friends.each do |r|
+      if r.receiver_id==@user.user_id
+        @friend = User.find_by(user_id: r.sender_id)
+         if @friend.last_seen_at > 5.minutes.ago
+          @online.push(r)
+        end
+      else
+        @friend = User.find_by(user_id: r.receiver_id)
+         if @friend.last_seen_at > 5.minutes.ago
+          @online.push(r)
+        end
+      end
+    end
+    @newmessages = Message.where(receiver_id: @user.user_id).group(:sender_id)
+    @newmessages.each do |r|
+      @lastviewed = "2013-02-23 19:49:25"
+      @chatviews = Chatview.where(id1: r.sender_id, viewer: @user.user_id).order("last_viewed_at DESC") + Chatview.where(id2: r.sender_id, viewer: @user.user_id).order("last_viewed_at DESC")
+      if !@chatviews.empty?
+        @lastviewed =  @chatviews.first.last_viewed_at
+      end
+      @newmessages.delete_if {|s| s.sent_at < @lastviewed}
+    end
   end
 
   def create
