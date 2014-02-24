@@ -17,11 +17,12 @@ First_Website::Application.routes.draw do
   resources :links
   resources :profile
   resources :surveys
-  resources :friendships
+  resources :network
   resources :messages
-  
+  resources :friendships
+
   match '/search', to: 'search#search', via: 'get'
-  match '/findfriend', to: 'friendships#findfriend', via: 'get'
+  match '/findfriend', to: 'network#findfriend', via: 'get'
   match '/results', to: 'surveys#add', via: 'post'
   match '/reccomended', to: 'skills#reccomend', via:'get'
   match '/details', to: 'experiences#details', via: 'get'
@@ -31,12 +32,13 @@ First_Website::Application.routes.draw do
   match '/auth/:provider/callback', to: 'authentications#create', via: 'get'
   resources :authentications
 
-  get  'addfriend', to: 'friendships#addfriend'
-  post  'addfriend', to: 'friendships#addfriend'
-  get  'accept', to: 'friendships#accept'
-  get  'decline', to: 'friendships#decline'
-  get 'network', to: 'friendships#index'
-  get 'chat', to: 'messages#index'
+  get  'addfriend', to: 'network#addfriend'
+  post  'addfriend', to: 'network#addfriend'
+  get  'accept', to: 'network#accept'
+  get  'decline', to: 'network#decline'
+  get 'network', to: 'network#index'
+  get 'privatechat', to: 'messages#privatechat'
+  get 'storemsg', to: 'messages#storemsg'
 
 
    # get 'signin' => 'devise/sessions#new', :as => :new_user_session

@@ -1,0 +1,14 @@
+<% if @user.user_id == onlinefriends.receiver_id %>
+	<% @friend = User.find_by(user_id: onlinefriends.sender_id) %>
+<% else %>
+	<% @friend = User.find_by(user_id: onlinefriends.receiver_id) %>
+<% end %>
+<%= link_to @friend.fname+" "+@friend.lname, profile_path(@friend) %> 
+<% if @user.user_id<@friend.user_id %>
+
+<%= link_to "Chat", {controller: "messages", action: "privatechat", id1: @user.user_id, id2: @friend.user_id}, class: "btn btn-small btn-primary" %>
+<% else %>
+<%= link_to "Chat", {controller: "messages", action: "privatechat", id1: @friend.user_id, id2: @user.user_id}, class: "btn btn-small btn-primary" %>
+<% end %>
+
+</p>

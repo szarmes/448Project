@@ -16,46 +16,6 @@
         </li>
     </ul>
     <ul class="nav pull-right">
-<<<<<<< HEAD
-            <li style = "margin-bottom:0px;">
-                <%= form_tag("/search", method: "get") do %>
-                <div style = "height:10px; padding-top: 6px;" >
-                    <%= text_field_tag(:q)%> 
-                </div>
-            </li>
-            <li>
-                <div style = "height:10px; padding-top: 0px;" >
-                    <%= submit_tag("Search",class: "btn btn-small btn-primary") %> 
-                    <% end %>
-                </div>
-            </li>
-            <% if user_signed_in? %>
-                <li> <%= link_to "Profile", profile_path(@user), id: "brand",  style:"text-shadow:none;" %> </li>
-              <% if @user.employer? %>
-                <li> <%= link_to "Postings", postings_path, id: "brand",  style:"text-shadow:none;" %> </li>
-                <li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand",  style:"text-shadow:none;" %> </li>
-                <li> <%= link_to'Sign Out', destroy_user_session_path, :method => :delete, id:"brand" %>  </li> 
-              <% else %>
-                <li> <%= link_to "Skills", skills_path, id: "brand",  style:"text-shadow:none;" %> </li>
-                <li> <%= link_to "Experiences", experiences_path, id: "brand",  style:"text-shadow:none;" %> </li>
-                <li> <%= link_to "References", references_path, id: "brand",  style:"text-shadow:none;" %> </li>
-                <% @notifications = Friendship.where(receiver_id: @user.user_id, accepted: false) %>
-                <% if user_signed_in? and !@notifications.empty? %>
-                  <li><%= link_to "Network", network_path(@user), id: "brand",  style:"text-shadow:none;" %></li>
-                  <li><%= link_to @notifications.size, network_path(@user), id: "brand",  style:"text-shadow:none;color:red;padding-left:0px;padding-right:0px;" %></li>
-                <% else %>
-                  <li> <%= link_to "Network", network_path, id: "brand",  style:"text-shadow:none;" %> </li>
-                <% end %>
-                <li> <%= link_to'Account Settings', edit_user_registration_path, id: "brand",  style:"text-shadow:none;" %> </li>
-                <li><%= link_to'Sign Out', destroy_user_session_path, :method => :delete, id:"brand", style:"text-shadow:none;" %>  </li> 
-              <% end %>
-            <% else %>
-                <li><%= link_to "Sign In", new_user_session_path, id: "brand",  style:"text-shadow:none;"%></li>
-                <li><%= link_to "Sign Up", new_user_registration_path, id: "brand",  style:"text-shadow:none;" %></li>
-            <% end %>
-        </ul>
-   
-=======
       <% if user_signed_in? %>
           <li> <%= link_to "Home", profile_path(@user), id: "brand",  style:"text-shadow:none;" %> </li>
         <% if @user.employer? %>
@@ -69,7 +29,5 @@
           <li><%= link_to "Sign Up", new_user_registration_path, id: "brand",  style:"text-shadow:none;" %></li>
       <% end %>
     </ul>  
->>>>>>> b0f29d9061525871f5435499286c718f5f70078f
   </div><!-- /.navbar-collapse -->
 </nav>
-

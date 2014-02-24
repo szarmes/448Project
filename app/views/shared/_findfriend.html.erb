@@ -1,7 +1,7 @@
 <% @friend =findfriend %>
-<% if user_signed_in? && @user.user_id != @friend.user_id && @friend.employer==false%>
+<% if user_signed_in? && @user.user_id != @friend.user_id %>
 <%= link_to @friend.fname+" "+@friend.lname, profile_path(@friend) %>
 
-      <%= link_to "+Add friend", {:controller => "friendships", :action => 'addfriend', :sender => @user.user_id, :receiver => @friend.user_id}, class: "btn btn-small btn-primary"%>
+      <%= link_to "+Add friend", {:controller => "newtork", :action => 'addfriend', :sender => @user.user_id, :receiver => @friend.user_id}, class: "btn btn-small btn-primary"%>
 
 <% end %>
