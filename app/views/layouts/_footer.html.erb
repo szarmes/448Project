@@ -1,12 +1,12 @@
-<nav class="navbar navbar-collaps" role="navigation" >
+<nav class="navbar" role="navigation" >
   <!-- Brand and toggle get grouped for better mobile display -->
   
 
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style = "background-color:black; width: 88em;position:fixed;
-   bottom:0px;">
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style = "background-color:black; width: 88em">
+
     <ul class="nav pull-left">
-    	<% if user_signed_in?%>
+      <% if user_signed_in?%>
       <p style = "height: 30px;"></p>
     <!--    <li><%= link_to "Survey", survey_path(@user), id: "brand",  style:"text-shadow:none;" %></li>
         <li><%= link_to "Reccomended", {controller: "skills", action: "reccomend"}, id: "brand",  style:"text-shadow:none;" %></li>-->
@@ -27,7 +27,7 @@
       end
       %>
 
-      <%if !@newmessages.empty?%>
+    <%if !@newmessages.empty?%>
       <li> <%= link_to "New Message(s)", network_path, id: "brand",  style:"text-shadow:none;" %> </li>
       <%end%>
       <% @friends = Friendship.where(receiver_id: @user.user_id, accepted: true) %>
@@ -55,4 +55,3 @@
   </div><!-- /.navbar-collapse -->
 
 </nav>
-

@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20140220233716) do
     t.datetime "updated_at"
   end
 
+  create_table "chatviews", force: true do |t|
+    t.integer  "id1",            default: 0, null: false
+    t.integer  "id2",            default: 0, null: false
+    t.integer  "viewer",         default: 0, null: false
+    t.datetime "last_viewed_at",             null: false
+  end
+
   create_table "experiences", force: true do |t|
     t.string   "title",            default: "", null: false
     t.string   "description",      default: "", null: false
@@ -63,15 +70,8 @@ ActiveRecord::Schema.define(version: 20140220233716) do
     t.integer  "sender_id",   default: 0,  null: false
     t.integer  "receiver_id", default: 0,  null: false
     t.datetime "sent_at",                  null: false
-    t.text   "message",     default: "", null: false
+    t.text     "message",     default: "", null: false
     t.string   "sender_name"
-  end
-
-  create_table "chatviews", force: true do |t|
-    t.integer  "id1",   default: 0,  null: false
-    t.integer  "id2", default: 0,  null: false
-    t.integer "viewer", default: 0, null:false
-    t.datetime "last_viewed_at",                  null: false
   end
 
   create_table "postings", force: true do |t|
