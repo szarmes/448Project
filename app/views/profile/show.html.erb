@@ -143,10 +143,6 @@
         </div>
         <div class="tab-pane fade content" id="network"> 
           
-          <div style = "" align = "right">
-                <%= link_to "Add",network_path, :id => "more"%> 
-              </div>
-
               <% if @friends.length <= 4 %>
 
                 <% for i in 0..@friends.length-1 %>
@@ -159,6 +155,11 @@
                     <%= link_to @friend.fname+" "+@friend.lname, profile_path(@friend) %>
                   <%end%> 
               <%end%>
+
+
+              <div style = "" align = "right">
+                <%= link_to "More",network_path, :id => "more"%> 
+              </div>
         </div>
       </div>
     </div>
@@ -211,11 +212,10 @@
                   <%= link_to exp, {:controller => "experiences", :action => "details", :id => @array[i].experience_id}, :id => "more"%></br>
               <%end%>
             <%end%>
-            <% if @array.length < finish + 1 %>
+            
               <div style = "" align = "right">
                 <%= link_to "More",experiences_path, :id => "more"%>
             </div>
-            <% end %>
           <%end%>
 
 

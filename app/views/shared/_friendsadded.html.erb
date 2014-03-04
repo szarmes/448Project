@@ -1,5 +1,22 @@
 <% @friend = User.find_by(user_id: friendsadded.receiver_id) %>
-<%= link_to @friend.fname+" "+@friend.lname, profile_path(@friend) %> 
 
-<%= link_to "Remove this Friend", friendsadded, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %>
-</p>
+
+
+<div class = "row" height = 30px style = "margin-bottom: 10em">
+	<div class = "col-lg-1">
+		<%= image_tag('prof.jpeg', :class => "minipic") %>
+	</div>
+  <div class = "col-lg-2" style ="" >
+	<%= link_to @friend.fname+" "+@friend.lname, profile_path(@friend) %> 
+	</div>
+	<div class = "col-lg-8" style ="" >
+		<div class = "hover">
+			<%= link_to image_tag('delete.png'), friendsadded, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-small btn-danger" %>
+			<div class = "tooltip">
+				Click to remove friend
+			</div>
+		</div>
+	</div>
+</div>
+
+
