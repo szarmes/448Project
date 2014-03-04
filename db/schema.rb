@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125022356) do
+ActiveRecord::Schema.define(version: 20140220233716) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -57,6 +57,21 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.integer "project_id", null: false
     t.integer "link_id",    null: false
     t.string  "url",        null: false
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer  "sender_id",   default: 0,  null: false
+    t.integer  "receiver_id", default: 0,  null: false
+    t.datetime "sent_at",                  null: false
+    t.text   "message",     default: "", null: false
+    t.string   "sender_name"
+  end
+
+  create_table "chatviews", force: true do |t|
+    t.integer  "id1",   default: 0,  null: false
+    t.integer  "id2", default: 0,  null: false
+    t.integer "viewer", default: 0, null:false
+    t.datetime "last_viewed_at",                  null: false
   end
 
   create_table "postings", force: true do |t|
@@ -142,6 +157,7 @@ ActiveRecord::Schema.define(version: 20131125022356) do
     t.boolean  "admin",                  default: false, null: false
     t.string   "uid"
     t.string   "provider"
+    t.datetime "last_seen_at"
   end
 
 end

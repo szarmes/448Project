@@ -7,9 +7,25 @@
 		<%= render partial: 'shared/friendrequests', collection: @requests %>
 	<% end %>
 
-	<%= render partial: 'shared/friendsadded', collection: @friendsadded %>
-	<%= render partial: 'shared/friendsaccepted', collection: @friendsaccepted %>
-<div style = "margin-top: 8em">
+	<h2>Message Notifications </h2>
+	<%= render partial: 'shared/newmessages', collection: @newmessages %>
+	<% if @newmessages.empty? %>
+		<p>No new messages. </p>
+	<%end%>
+	<h2>Currently Online </h2>
+
+	<%= render partial: 'shared/onlinefriends', collection: @online %>
+	<% if @online.empty? %>
+		<p>No friends are currently online. </p>
+	<%end%>
+
+	<h2>Friends </h2>
+
+	<%= render partial: 'shared/friendslist', collection: @friends %>
+	<% if @friends.empty? %>
+		<p>No friends yet. </p>
+	<%end%>
+	
 <%= form_tag("/findfriend", method: "get") do %>
         <div style = "max-width:500px;">
         	<p>Find people via email address</p>

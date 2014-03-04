@@ -1,0 +1,28 @@
+
+<script>
+
+$(function() {
+  var faye = new Faye.Client('http://localhost:9292/faye');
+  faye.subscribe('<%=@channel%>', function(data) {
+    eval(data);
+  });
+});
+</script>
+<div class="chat_container">
+  <div id="chat_room">
+    <p>Chat with <%= link_to @other.fname+" "+@other.lname, profile_path(@other) %> </p>
+  </div>
+  <ul id="chat">
+    <%= render @messages %>
+  </ul>
+</div>
+ <div >
+  <%= simple_form_for Message.new, :id => "new_message", :controller => "messages", :action => "create", :remote => true do |f| %>
+  <%= f.text_field :message, :autocomplete => "off", :autofocus => true %>
+  <%= f.hidden_field :sender_id, :value => @user.user_id %>
+  <%= f.hidden_field :receiver_id, :value => @other.user_id %>
+  <%= f.hidden_field :sent_at, :value => Time.now %>
+  <%= f.hidden_field :sender_name, :value => @user.fname+' '+@user.lname %>
+  <%= f.submit "Send", class: "btn btn-medium btn-primary" %>  
+  <% end %>
+</div>

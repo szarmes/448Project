@@ -16,8 +16,13 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'faye'
+gem 'thin'
 gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquery-autocomplete'
 gem 'jquery-rails', '2.3.0'
+gem 'gon'
+gem 'rego-devise-lastseenable'
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
