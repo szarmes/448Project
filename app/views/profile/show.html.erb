@@ -57,12 +57,12 @@
                 <p id = "title"> Hiring At  <%= @owner.company_name %> </p>
 
                 <p id = "title"> 
-                  <% if(!@owner.phone_number.empty?) %>
+                  <% if(!@owner.phone_number.nil?) %>
                     Contact: <%= @owner.phone_number %>
                   <% end %>
                 </p>
                 <p id = "title" style = "font-size: 3em"> 
-                  <% if(!@owner.email.empty?) %>
+                  <% if(!@owner.email.nil?) %>
                     <%= @owner.email %>
                   <% end %>
                 </p>
