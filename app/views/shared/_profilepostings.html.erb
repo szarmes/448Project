@@ -51,14 +51,20 @@
     <div class = "col-lg-6">
 
         <div class = "tab_header2" style = "background: #3399FF">
+          <% if !profilepostings.title.nil? %>
             <%= profilepostings.title%>
+            <%end%>
         </div>
 
         <div class = "salary" style = "left: 12em; top: -2em;" >
+          <% if !profilepostings.salary.nil? %>
             $<%= profilepostings.salary%>
+            <%end%>
         </div>
         <div class = "content2" style = "">
+          <% if !profilepostings.description.nil? %>
             <%= profilepostings.description%>
+            <%end%>
         </div>
 
     </div>
