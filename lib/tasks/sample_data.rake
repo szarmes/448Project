@@ -20,8 +20,8 @@ namespace :db do
   Skill.create!(label: "Ruby", user_id: 2)
   Skill.create!(label: "Educational development", user_id: 2)
   Skill.create!(label: "Typing", user_id: 2)
-  Posting.create!(title: "Working with ruby", description: "Come wokr for us and make Ruby things!", user_id: 2)
-  Posting.create!(title: "Working with Java", description: "Come wokr for us and make Java things!", user_id: 2)
+  Posting.create!(title: "Working with ruby", description: "Come wokr for us and make Ruby things!", user_id: 1)
+  Posting.create!(title: "Working with Java", description: "Come wokr for us and make Java things!", user_id: 1)
   Posting.create!(title: "Working with Typing and Educational Development", 
   	description: "Come wokr for us and make typing and education things!", user_id: 2)
   Skill.create!(label: "Java", user_id: 1, posting_id: 1, mandatory: true)
